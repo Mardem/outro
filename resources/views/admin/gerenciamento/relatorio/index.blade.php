@@ -1,0 +1,106 @@
+@extends('layouts.admin.main')
+
+@section('showGerenciamento', 'show')
+@section('activeRelatorio', 'active')
+@section('content')
+
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3 offset-md-3 grid-margin stretch-card">
+            <div class="card card-statistics">
+                <div class="card-body">
+                    <div class="clearfix">
+                        <div class="float-left">
+                            <i class="ti-user text-info icon-lg"></i>
+                        </div>
+                        <div class="float-right">
+                            <p class="mb-0 text-right">Total de ocorrências</p>
+                            <div class="fluid-container">
+                                <h3 class="font-weight-medium text-right mb-0">{{ $ocorrencias->count() }}</h3>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="text-muted mt-3 mb-0">
+                        <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> todas ocorrências cadastrados
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12 grid-margin strech-card">
+            <div class="card">
+                <div class="card-body">
+                    <form action="{{ route('searchRelatorio') }}" method="post">
+                        @csrf
+
+                        <div class="input-group col-6">
+                            <label for="data_inicio">De:</label>
+                            <input type="text" class="form-control" id="data_inicio" name="data_inicio" placeholder="">
+                            <label for="data_fim">Até:</label>
+                            <input type="text" class="form-control" id="data_fim" name="data_fim" placeholder="">
+                            <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+                        </div>
+                    </form>
+                    <span style="float: right;">
+                        <button type="button" class="btn btn-outline-primary" onclick="generatePDF()">Imprimir</button>
+                    </span>
+                    <h4 class="card-title">Ocorrências</h4>
+                    <p class="card-description">
+                        Relatório de todas as ocorrências do sistema.
+                    </p>
+
+                    <div class="table-responsive">
+                        <table class="table table-hover" id="tabelaRelatorio">
+                            <thead>
+                            <tr>
+                                <th>Sócio</th>
+                                <th>Data da Ocorrência</th>
+                                <th>Título</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @foreach($ocorrencias as $ocorrencia)
+                                @php
+                                    try {
+                                        $socio = \App\Models\Socio::where('id', $ocorrencia->socio_id)->first();
+                                    } catch (\Exception $e) {
+                                }
+                                @endphp
+                                <tr>
+                                    <td>{{ $socio->nome }}</td>
+                                    <td>{{ $ocorrencia->data_ocorrencia }}</td>
+                                    <td>{{ $ocorrencia->titulo }}</td>
+                                </tr>
+                            @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+
+@section('scripts')
+    <script>
+        function generatePDF() {
+            let pdf = new jsPDF();
+
+            let res = pdf.autoTableHtmlToJson(document.getElementById("tabelaRelatorio"));
+
+
+            pdf.autoTable(res.columns, res.data, {
+                margin: {
+                    top: 10
+                },
+                styles: {
+                    fontSize: 12
+                }
+            });
+
+            window.open(pdf.output("bloburl"));
+        }
+    </script>
+@endsection
