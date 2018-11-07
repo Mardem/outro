@@ -45,9 +45,9 @@ class RedefinirSenha extends ResetPassword
         return (new MailMessage)
             ->greeting("Redefinição de senha")
             ->line('Estamos enviando este e-mail porque recebemos uma solicitação de senha esquecida.')
-            ->action('Redefinir Senha', url(config('app.url') . route('password.reset', $this->token, false)))
+            ->action('Redefinir Senha', url(url('/') . route('password.reset', $this->token, false)))
             ->line('Se você não solicitou uma redefinição de senha, nenhuma outra ação será necessária. Desconsidere essa mensagem.')
-            ->from("solucao.redefinicao@gmail.com")
+            ->from("solucao.redefinicao@gmail.com", "Solução - Redefinição de Senha")
             ->subject('Alteração de senha');
     }
 }
