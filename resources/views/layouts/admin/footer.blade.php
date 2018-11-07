@@ -5,7 +5,6 @@
 <!-- container-scroller -->
 
 <!-- plugins:js -->
-<script src="{{ asset('js/jquery-3.3.1.min.js') }}"></script>
 <script src="{{ asset('js/bootstrap.min.js') }}"></script>
 <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
 <script src="{{ asset('admin/vendors/js/vendor.bundle.addons.js') }}"></script>
