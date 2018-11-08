@@ -16,6 +16,11 @@
     <link rel="stylesheet" href="{{ asset('css/admin/easy-autocomplete.themes.min.css') }}">
     <link rel="stylesheet" href="{{ asset('admin/vendors/tagsinput/bootstrap-tagsinput.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
+
+    <link rel="stylesheet" href="{{ asset('css/foundation-datepicker.css') }}">
+
+    @yield('styles')
+
 </head>
 
 <body>

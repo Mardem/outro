@@ -24,7 +24,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        if(Auth::user()->category == 1) {
+        if(Auth::user()->category == 1 || Auth::user()->category == 2) {
             return redirect()->route('admin');
         } else {
             return view('home');

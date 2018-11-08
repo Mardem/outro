@@ -10,7 +10,7 @@
 <script src="{{ asset('admin/vendors/js/vendor.bundle.addons.js') }}"></script>
 <script src="{{ asset('js/jquery.inputmask.bundle.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
-<script src="{{ asset("js/admin/datapicker/bootstrap-datepicker.pt-BR.min.js") }}"></script>
+
 <script src="{{ asset('js/jquery.easy-autocomplete.min.js') }}"></script>
 <script src="{{ asset('admin/vendors/tagsinput/bootstrap-tagsinput.min.js') }}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>

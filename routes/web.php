@@ -29,12 +29,15 @@ Route::group(['middleware' => ['auth'],'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/users-json', 'PesquisasController@user')->name('jsonUsers');
     Route::get('/socios-json', 'PesquisasController@socio')->name('jsonSocios');
 
-    Route::resource('/controle/usuario', 'UsuariosController');
+    Route::group(['middleware' => ['can:admin']], function() {
+        Route::resource('/controle/usuario', 'UsuariosController');
+        Route::resource('/gerenciamento/relatorio', 'RelatorioController');
+    });
+
     Route::resource('/controle/socios', 'SociosController');
 
     Route::resource('/gerenciamento/ocorrencia', 'GerenciamentosController');
     Route::resource('gerenciamento/mensagem', 'Partials\MessagersController');
-    Route::resource('/gerenciamento/relatorio', 'RelatorioController');
 
     Route::post('/gerenciamento/relatorio', 'PesquisasController@searchRelatorio')->name('searchRelatorio');
 

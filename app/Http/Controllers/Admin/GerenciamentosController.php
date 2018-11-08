@@ -46,6 +46,13 @@ class GerenciamentosController extends Controller
      */
     public function store(Request $request)
     {
+
+        $data = explode('/', $request->data_hora);
+        $year = explode(' ', $data[2]); # [0] => Ano [1] => Horas
+        $date = $year[0] . '-' . $data[1] . '-' . $data[0] . " " . $year[1];
+
+        $request->data_hora = $date; # Formatando a data para salvar no banco
+
         try {
             $g = Gerenciamento::create($request->all());
             return redirect()->route('ocorrencia.show', ['id' => $g])->with("success", "Ocorrência criada com sucesso!");

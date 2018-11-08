@@ -47,6 +47,7 @@
                             <input type="text" class="form-control" name="data_ocorrencia" id="data_ocorrencia"
                                    placeholder="" required=""
                                    oninvalid="this.setCustomValidity('Campo obrigatório!')"
+                                   data-toggle="datepicker"
                                    oninput="setCustomValidity('')" autocomplete="off">
                         </div>
 
@@ -63,7 +64,7 @@
                         </p>
 
                         <div class="form-group">
-                            <div class="form-group col-md-12">
+                            <div class="form-group">
                                 <label for="tipo">Título*:</label>
                                 <input type="text" class="form-control" id="titulo" name="titulo"
                                        placeholder="Digite o título!" required>
@@ -73,20 +74,18 @@
                         <div class="form-group">
                             <label for="situacao">Situação*:</label>
                             <select name="situacao" id="situacao" class="form-control" required>
-                                <option disabled></option>
                                 <option value="1">Resolvido</option>
                                 <option value="2">Não Resolvido</option>
                                 <option value="3">Agendado</option>
                             </select>
                         </div>
 
-                        <div class="form-group" style="display: none" id="data_hora">
-                            <div class="form-group col-md-6">
-                                <label for="data_hora">Data Contato*</label>
-                                <input type="text" class="form-control" id="data_hora" name="data_hora"
-                                       placeholder="">
-                            </div>
+                        <div class="form-group" id="data_hora" style="display: none;">
+
+                            <label for="data_hora">Data do Contato*</label>
+                            <input type="text" class="span2 form-control" id="dpn" name="data_hora" autocomplete="off">
                         </div>
+
 
                     </div>
                 </div>
@@ -110,22 +109,6 @@
 @endsection
 
 @section('scripts')
-    <script>
-        $(document).ready(function(){
-
-            $("#data_ocorrencia").datepicker({
-                language: "pt-BR",
-            });
-
-            $('#situacao').on('change', function() {
-                let situacao = $(this).find('option:selected').text().trim();
-                if(situacao == 'Agendado') {
-                    $('#data_hora').show();
-                }
-                else if(situacao != 'Agendado') {
-                    $('#data_hora').hide();
-                }
-            });
-        });
-    </script>
+    <script src="{{ asset('js/admin/datepicker/foundation-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/admin/ocorrencia.min.js') }}"></script>
 @endsection
