@@ -20,7 +20,6 @@ class CreateGerenciamentosTable extends Migration
             $table->string('titulo')->nullable();
             $table->string('situacao')->nullable();
             $table->string('data_hora')->nullable();
-
             $table->softDeletes();
             $table->timestamps();
         });

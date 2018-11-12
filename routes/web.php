@@ -19,7 +19,7 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::group(['middleware' => ['auth'],'prefix' => 'admin', 'namespace' => 'Admin'], function () {
+Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/home', 'AdminController@index')->name('admin');
 
     # Pesquisas
@@ -29,7 +29,7 @@ Route::group(['middleware' => ['auth'],'prefix' => 'admin', 'namespace' => 'Admi
     Route::get('/users-json', 'PesquisasController@user')->name('jsonUsers');
     Route::get('/socios-json', 'PesquisasController@socio')->name('jsonSocios');
 
-    Route::group(['middleware' => ['can:admin']], function() {
+    Route::group(['middleware' => ['can:admin']], function () {
         Route::resource('/controle/usuario', 'UsuariosController');
         Route::resource('/gerenciamento/relatorio', 'RelatorioController');
     });

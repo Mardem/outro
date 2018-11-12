@@ -9,6 +9,7 @@ class Gerenciamento extends Model
 {
     use SoftDeletes;
     protected $guarded = [
-        'id'
+        'id',
+        'dataContato'
     ];
 }

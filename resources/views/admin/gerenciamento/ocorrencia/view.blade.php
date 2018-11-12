@@ -54,7 +54,7 @@
 
                         <div class="form-group">
                             <label for="data_ocorrencia">Data Ocorrência*:</label>
-                            <input type="text" class="form-control" id="data_ocorrencia" name="data_ocorrencia" placeholder=" "
+                            <input type="text" class="form-control" id="data_ocorrencia" name="data_ocorrencia"
                                    value="{{ $ocorrencia->data_ocorrencia }}" required>
                         </div>
 
@@ -70,13 +70,13 @@
                             Preencha os campos com os dados do contato
                         </p>
 
+
                         <div class="form-group">
-                            <div class="form-group col-md-12">
-                                <label for="tipo">Título*</label>
-                                <input type="text" class="form-control" id="titulo" name="titulo"
-                                       placeholder="Digite o título!" value="{{ $ocorrencia->titulo }}" required>
-                            </div>
+                            <label for="tipo">Título*</label>
+                            <input type="text" class="form-control" id="titulo" name="titulo"
+                                   placeholder="Digite o título!" value="{{ $ocorrencia->titulo }}" required>
                         </div>
+
 
                         <div class="form-group">
                             <label for="situacao">Perfil:</label>
@@ -92,6 +92,7 @@
                                 @else
                                     <option value="0">Sócio</option>
                                 @endif
+
                                 <option disabled></option>
                                 <option disabled>Outras opções</option>
 
@@ -101,13 +102,23 @@
                             </select>
                         </div>
 
-                        <div class="form-group" style="display: none" id="data_hora">
-                            <div class="form-group col-md-6">
-                                <label for="data_hora">Data/Hora*</label>
-                                <input type="text" class="form-control" id="data_hora" name="data_hora"
-                                       placeholder="" value="{{ $ocorrencia->data_hora }}">
-                            </div>
+
+                        @php
+                            $resultDate;
+                            try {
+                                $date = new Date($ocorrencia->data_hora);
+                                $resultDate = $date->format('d/m/Y H:m:s');
+                            } catch (\Exception $e) {
+                                $resultDate = $ocorrencia->data_hora;
+                            }
+                        @endphp
+
+                        <div class="form-group">
+                            <label for="data_hora">Data/Hora*</label>
+                            <input type="text" class="form-control" id="dpn" name="dataContato"
+                                   placeholder="" value="{{ $resultDate }}">
                         </div>
+
 
                     </div>
                 </div>
@@ -118,7 +129,8 @@
             <div class="col-sm-12 grid-margin strech-car">
                 <div class="card">
                     <div class="card-body">
-                        <button class="btn btn-block btn-outline-success" type="submit" id="atualizar">Atualizar</button>
+                        <button class="btn btn-block btn-outline-success" type="submit" id="atualizar">Atualizar
+                        </button>
                     </div>
                 </div>
             </div>
@@ -140,7 +152,8 @@
 
 
     <!-- Modal -->
-    <div class="modal fade" id="mensagens" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" aria-hidden="true">
+    <div class="modal fade" id="mensagens" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
+         aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
 
@@ -221,7 +234,8 @@
 
                                             <div class="dropdown-divider"></div>
 
-                                            <form action="{{ route('mensagem.destroy', ['id' => $mensagem->id]) }}" method="post">
+                                            <form action="{{ route('mensagem.destroy', ['id' => $mensagem->id]) }}"
+                                                  method="post">
                                                 @method('DELETE')
                                                 @csrf
                                                 <button class="btn btn-link text-danger" type="submit">
@@ -247,17 +261,10 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('js/notificacoes.js') }}"></script>
+    <script src="{{ asset('js/admin/datepicker/foundation-datepicker.min.js') }}"></script>
+    <script src="{{ asset('js/admin/ocorrencia.min.js') }}"></script>
     <script>
-        function mostrar()
-        {
-            let s = document.getElementById("situacao").value;
-            if(s == 3) {
-                document.getElementById("data_hora").style.display = 'block';
-            }
-            else if(s != 3) {
-                document.getElementById("data_hora").style.display = 'none';
-            }
-        }
         mostrar();
     </script>
 @endsection

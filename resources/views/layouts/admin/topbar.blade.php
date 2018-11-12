@@ -1,7 +1,7 @@
 <nav class="navbar default-layout col-lg-12 col-12 p-0 fixed-top d-flex flex-row">
     <div class="text-center navbar-brand-wrapper d-flex align-items-top justify-content-center">
-        <a class="navbar-brand brand-logo" href="index.html">
-            Solução
+        <a class="navbar-brand brand-logo">
+            <img src="{{ asset('images/logo-200.png') }}" alt="">
         </a>
 
     </div>
@@ -10,8 +10,15 @@
         <ul class="navbar-nav navbar-nav-right">
             <li class="nav-item dropdown d-none d-xl-inline-block">
                 <a class="nav-link dropdown-toggle" id="UserDropdown" href="#" data-toggle="dropdown" aria-expanded="false">
-                    <span class="profile-text">Olá, {{ Auth::user()->name }} !</span>
-                    <img class="img-xs rounded-circle" src="{{ asset('https://image.flaticon.com/icons/svg/149/149074.svg') }}" alt="Profile image">
+                    <span class="profile-text">Olá, {{ Auth::user()->name }}!</span>
+
+                    @if(Auth::user()->category == 1)
+                        <img class="img-xs rounded-circle" src="{{ asset('https://image.flaticon.com/icons/svg/149/149074.svg') }}"
+                             alt="Perfil administrador">
+                    @elseif(Auth::user()->category == 2)
+                        <img class="img-xs rounded-circle" src="{{ asset('https://image.flaticon.com/icons/svg/1264/1264779.svg') }}"
+                             alt="Perfil operador" style="background: #fff; padding: 3px">
+                    @endif
                 </a>
                 <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                     <a class="dropdown-item p-0">
@@ -26,9 +33,6 @@
                                 <i class="mdi mdi-alarm-check mr-0 text-gray"></i>
                             </div>
                         </div>
-                    </a>
-                    <a class="dropdown-item mt-2" href="#">
-                        Perfil
                     </a>
                     <a class="dropdown-item text-danger" href="#" onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
