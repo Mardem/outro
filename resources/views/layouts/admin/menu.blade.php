@@ -83,22 +83,23 @@
         </li>
 
         <li class="nav-item">
-            <a class="nav-link" data-toggle="collapse" href="#contato" aria-expanded="false" aria-controls="contato">
+            <a class="nav-link" data-toggle="collapse" href="#contact" aria-expanded="false"
+               aria-controls="contact">
                 <i class="menu-icon ti-agenda"></i>
                 <span class="menu-title">Contato</span>
                 <i class="menu-arrow"></i>
             </a>
-            <div class="collapse @yield('showContato')" id="contato">
+            <div class="collapse @yield('showContact')" id="contact">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">SMS</a>
+                    <li class="nav-item @yield('activeSMS')">
+                        <a class="nav-link" href="sms.index">SMS</a>
                     </li>
+
                     <li class="nav-item @yield('activeEmail')">
-                        <a class="nav-link" href="{{ route('email.create') }}">Email</a>
+                        <a class="nav-link" href="email.index">Email</a>
                     </li>
                 </ul>
             </div>
         </li>
-
     </ul>
 </nav>

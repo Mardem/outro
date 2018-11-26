@@ -101,7 +101,7 @@ class SMSController extends Controller
             $response = $smsFacade->listMessagesReceived();
             echo "Status: " . $response->getStatusCode() . " - " . $response->getStatusDescription();
             echo "\nDetalhe: " . $response->getDetailCode() . " - " . $response->getDetailDescription();
-            
+
             if ($response->hasMessages()) {
                 $messages = $response->getReceivedMessages();
                 foreach ($messages as $smsReceived) {

@@ -31,17 +31,31 @@
         <div class="col-sm-12 grid-margin strech-card">
             <div class="card">
                 <div class="card-body">
-                    <form action="{{ route('searchRelatorio') }}" method="post">
+                    <form action="{{ route('searchRelatorio') }}" method="post" class="mb-3">
                         @csrf
 
-                        <div class="input-group col-6">
-                            <label for="data_inicio">De:</label>
-                            <input type="text" class="form-control" id="data_inicio" name="data_inicio" placeholder="">
-                            <label for="data_fim">Até:</label>
-                            <input type="text" class="form-control" id="data_fim" name="data_fim" placeholder="">
-                            <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+                        <div class="row">
+                            <div class="col col-sm-4">
+                                <div class="form-group">
+                                    <label for="data_inicio">De:</label>
+                                    <input type="text" class="form-control" id="data_inicio" name="data_inicio" placeholder="Ex: 99/99/9999" required>
+                                </div>
+                            </div>
+                            <div class="col col-sm-4">
+                                <div class="form-group">
+                                    <label for="data_fim">Até:</label>
+                                    <input type="text" class="form-control" id="data_fim" name="data_fim" placeholder="Ex: 99/99/9999" required>
+                                </div>
+                            </div>
+                            <div class="col col-sm-4">
+                                <div class="form-group mt-4">
+                                    <button type="submit" class="btn btn-outline-primary">Pesquisar</button>
+                                </div>
+                            </div>
                         </div>
+
                     </form>
+
                     <span style="float: right;">
                         <button type="button" class="btn btn-outline-primary" onclick="generatePDF()">Imprimir</button>
                     </span>

@@ -1,7 +1,7 @@
 @extends('layouts.admin.main')
 
 @section('showControle', 'show')
-@section('activeUsuarios', 'active')
+@section('activeSocios', 'active')
 @section('content')
     <form action="{{ route('socios.store') }}" method="post" id="form-send">
         @csrf
@@ -12,7 +12,7 @@
                     <div class="card-body">
                         <div class="cad-title">
                             <nav class="breadcrumb" style="margin: 0">
-                                <a class="breadcrumb-item" href="{{ route('usuario.index') }}">Controle</a>
+                                <a class="breadcrumb-item" href="{{ route('socios.index') }}">Controle</a>
                                 <span class="breadcrumb-item active">Cadastrar novo sócio</span>
                             </nav>
                         </div>
