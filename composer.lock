@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "59920fcbe758ec272427a81ddf3f7450",
+    "content-hash": "78d436c5f6bae9e651abfed1180fa8ba",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -2439,6 +2439,47 @@
             "description": "CssToInlineStyles is a class that enables you to convert HTML-pages/files into HTML-pages/files with inline styles. This is very useful when you're sending emails.",
             "homepage": "https://github.com/tijsverkoyen/CssToInlineStyles",
             "time": "2017-11-27T11:13:29+00:00"
+        },
+        {
+            "name": "vitorccsiqueira/zenvia-php",
+            "version": "v2.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/vitorccs/zenvia-php.git",
+                "reference": "db84b5e48cf37629940874279c822889de735cef"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/vitorccs/zenvia-php/zipball/db84b5e48cf37629940874279c822889de735cef",
+                "reference": "db84b5e48cf37629940874279c822889de735cef",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "php": ">=5.3.0"
+            },
+            "type": "project",
+            "autoload": {
+                "psr-4": {
+                    "Zenvia\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Zenvia",
+                    "email": "contato@zenvia.com"
+                }
+            ],
+            "description": "PHP SDK Zenvia API 2.0",
+            "homepage": "http://zenvia.com",
+            "keywords": [
+                "sms",
+                "zenvia"
+            ],
+            "time": "2018-08-10T19:53:43+00:00"
         },
         {
             "name": "vlucas/phpdotenv",

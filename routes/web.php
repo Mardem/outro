@@ -42,4 +42,8 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
     Route::post('/gerenciamento/relatorio', 'PesquisasController@searchRelatorio')->name('searchRelatorio');
 
     Route::resource('/contato/email', 'EmailController');
+
+    Route::get('sms-unique', 'SMSController@unique')->name('sms.unique');
+    Route::get('sms-multiple', 'SMSController@multiple')->name('sms.multiple');
+    Route::get('sms-received', 'SMSController@received')->name('sms.received');
 });
