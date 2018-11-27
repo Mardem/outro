@@ -47,12 +47,13 @@ class GerenciamentosController extends Controller
      */
     public function store(Request $request)
     {
-
         try {
             $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato)]);
 
             $g = Gerenciamento::create($request->all());
-            novaNotificacao(\Auth::user()->id, $g->id);
+            if($request->situcao == 3) {
+                novaNotificacao(\Auth::user()->id, $g->id);
+            }
 
             return redirect()->route('ocorrencia.show', ['id' => $g])->with("success", "Ocorrência criada com sucesso!");
         } catch (Exception $e) {

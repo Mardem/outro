@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
 use DateTimeZone;
 use Zenvia\Model\Sms;
 use Zenvia\Model\SmsFacade;
@@ -79,6 +78,9 @@ class SMSController extends Controller
         $sms2->setSchedule($schedule2);
 
         array_push($smsList, $sms2);
+
+        dd($smsList);
+
         try {
             //Envia a lista de mensagens para o webservice e retorna uma lista de objetos do tipo SmsResponse com os staus das mensagens enviadas
             $responseList = $smsFacade->sendMultiple($smsList);
@@ -89,6 +91,7 @@ class SMSController extends Controller
         } catch (\Exception $ex) {
             echo "Falha ao fazer o envio das mensagens. Exceção: " . $ex->getMessage() . "\n" . $ex->getTraceAsString();
         }
+
     }
 
     public function received()

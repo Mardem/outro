@@ -92,7 +92,7 @@
             <div class="collapse @yield('showContact')" id="contact">
                 <ul class="nav flex-column sub-menu">
                     <li class="nav-item @yield('activeSMS')">
-                        <a class="nav-link" href="sms.index">SMS</a>
+                        <a class="nav-link" href="{{ route('sms.index') }}">SMS</a>
                     </li>
 
                     <li class="nav-item @yield('activeEmail')">
