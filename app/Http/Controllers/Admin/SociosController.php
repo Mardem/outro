@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Socio;
 use App\User;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Mockery\Exception;
 
 class SociosController extends Controller
@@ -31,7 +31,7 @@ class SociosController extends Controller
         try {
             $o = User::where('category', 2)->get();
             return view('admin.controle.socios.create')->with(['operadores' => $o]);
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Ocorreu um erro ao carregar os dados: ' . $e->getMessage());
         }
     }
@@ -39,7 +39,7 @@ class SociosController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -47,7 +47,7 @@ class SociosController extends Controller
         try {
             Socio::create($request->all());
             return redirect()->route('socios.index')->with("success", "Sócio criado com sucesso!");
-        } catch (Exception $e){
+        } catch (Exception $e) {
             return redirect()->back()->with("error", "Falha ao criar o sócio: " . $e->getMessage());
         }
     }
@@ -55,7 +55,7 @@ class SociosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -73,8 +73,8 @@ class SociosController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -82,7 +82,7 @@ class SociosController extends Controller
         try {
             Socio::find($id)->update($request->all());
             return redirect()->back()->with('success', 'Sócio atualizado com sucesso!');
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possivel alterar este sócio: ' . $e->getMessage());
         }
     }
@@ -90,7 +90,7 @@ class SociosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
@@ -98,7 +98,7 @@ class SociosController extends Controller
         try {
             Socio::find($id)->delete();
             return redirect()->back()->with('success', 'Sócio apagado com sucesso!');
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível remover este sócio: ' . $e->getMessage());
         }
     }

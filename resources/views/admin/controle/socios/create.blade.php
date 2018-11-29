@@ -87,8 +87,17 @@
 
                         <span id='mensagem' class="text-info"></span>
 
+                        <!--<div class="form-group">
+                            <label for="type">Tipo*:</label>
+                            <select name="type" class="form-control" id="type" required>
+                                <option value="0"></option>
+                                <option value="0"></option>
+                                <option value="0"></option>
+                                <option value="0"></option>
+                            </select>
+                        </div> -->
                         <div class="form-group">
-                            <label for="email">CEP:</label>
+                            <label for="cep">CEP:</label>
                             <input type="text" class="form-control pula" id="cep" maxlength="12" name="cep" placeholder="Informe o CEP">
                         </div>
 

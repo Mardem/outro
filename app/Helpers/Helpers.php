@@ -16,7 +16,7 @@ if (!function_exists('novaNotificacao')) {
     {
         $not = new \App\Models\Notification; # Salva a notificação
         $not->user_id = $usuario; # Usuário para que será enviado a notificação
-        $not->occurrence_id = $ocorrencia; # O que será enviado
+        $not->gerenciamento_id = $ocorrencia; # O que será enviado
         $not->save();
     }
 }
@@ -31,6 +31,19 @@ if (!function_exists('dataHoraBRparaENG')) {
     {
         $data = str_replace("/", "-", $dataParaFormatar);
         return date('Y-m-d', strtotime($data));
+    }
+}
+
+if (!function_exists('dateTimeToBR')) {
+
+    /**
+     * @param $dataParaFormatar
+     * @return string
+     */
+    function dateTimeToBR($dataParaFormatar)
+    {
+        $data = str_replace("-", "/", $dataParaFormatar);
+        return date('d/m/y', strtotime($data));
     }
 }
 

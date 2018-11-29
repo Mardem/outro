@@ -3,7 +3,7 @@ function notificacoes(nome = "", data = "") {
         timeout: "20000",
         title: 'Lembrete para',
         titleColor: '#FFC300',
-        message: 'entrar em contato com ' + nome + ' às ' + data,
+        message: 'entrar em contato com ' + nome + ' em ' + data,
         backgroundColor: '#BF0A0A',
         messageColor: '#fff',
         progressBarColor: '#FFC300',

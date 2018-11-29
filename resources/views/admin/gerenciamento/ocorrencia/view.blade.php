@@ -37,17 +37,8 @@
                             <label for="socio_id">Sócio*:</label>
                             <select id="socio_id" name="socio_id" class="form-control" required>
 
-                                @php
-                                    $s = \App\Models\Socio::find($ocorrencia->socio_id);
-                                @endphp
                                 <option disabled>Selecionado:</option>
-                                <option value="{{ $ocorrencia->socio_id }}">{{ $s->nome }}</option>
-
-                                <option disabled></option>
-                                <option disabled>Outros operadores:</option>
-                                @foreach($socios as $socio)
-                                    <option value="{{ $socio->id }}">{{ $socio->nome }}</option>
-                                @endforeach
+                                <option value="{{ $ocorrencia->socio_id }}">{{ $ocorrencia->socio->nome }}</option>
 
                             </select>
                         </div>

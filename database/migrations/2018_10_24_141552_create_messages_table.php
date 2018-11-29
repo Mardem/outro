@@ -15,7 +15,11 @@ class CreateMessagesTable extends Migration
     {
         Schema::create('messages', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('ocorrencia_id')->nullable();
+            $table->integer('ocorrencia_id')->unsigned();
+            $table->foreign('ocorrencia_id')
+                ->references('id')
+                ->on('gerenciamentos')
+                ->onDelete('cascade');
             $table->string('mensagem');
             $table->string('observacao');
 

@@ -15,7 +15,7 @@
                             <div class="float-right">
                                 <p class="mb-0 text-right">Mensagens</p>
                                 <div class="fluid-container">
-                                    <h3 class="font-weight-medium text-right mb-0">300</h3>
+                                    <h3 class="font-weight-medium text-right mb-0">{{ $mensagens }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -33,14 +33,14 @@
                                 <i class="ti-headphone text-warning icon-lg"></i>
                             </div>
                             <div class="float-right">
-                                <p class="mb-0 text-right">Atendimentos</p>
+                                <p class="mb-0 text-right">Ocorrências</p>
                                 <div class="fluid-container">
-                                    <h3 class="font-weight-medium text-right mb-0">3455</h3>
+                                    <h3 class="font-weight-medium text-right mb-0">{{ $ocorrencias }}</h3>
                                 </div>
                             </div>
                         </div>
                         <p class="text-muted mt-3 mb-0">
-                            <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> total de atendimentos
+                            <i class="mdi mdi-bookmark-outline mr-1" aria-hidden="true"></i> total de ocorrências
                         </p>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                             <div class="float-right">
                                 <p class="mb-0 text-right">Funcionários</p>
                                 <div class="fluid-container">
-                                    <h3 class="font-weight-medium text-right mb-0">246</h3>
+                                    <h3 class="font-weight-medium text-right mb-0">{{ $usuarios }}</h3>
                                 </div>
                             </div>
                         </div>
@@ -112,26 +112,12 @@
 
 
 @section('scripts')
-    @if(\Auth::user()->category == 2)
-        <script src="{{ asset('admin/vendors/iziToast/iziToast.min.js') }}"></script>
-        <script src="{{ asset('js/notificacoes.js') }}"></script>
+    <script src="{{ asset('admin/vendors/iziToast/iziToast.min.js') }}"></script>
+    <script src="{{ asset('js/notificacoes.js') }}"></script>
 
-        <script>
-            @php
-                try {
-                $i = 0;
-                while($i <= ($notifications[0]->get('qntd') - 1)) {
-
-            @endphp
-            notificacoes("{{ $notifications[$i]->get('nome') }}", "{{ $notifications[$i]->get('data_formatada') }}");
-            @php
-                $i++;
-                    }
-                } catch (\Exception $e) {
-
-                }
-            @endphp
-        </script>
-
-    @endif
+    <script>
+        @foreach($notifications as $notification)
+            notificacoes("{{ $notification->user->name }}", "{{ dateTimeToBR($notification->gerenciamento->data_hora) }}");
+        @endforeach
+    </script>
 @endsection

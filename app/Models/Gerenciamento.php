@@ -12,4 +12,17 @@ class Gerenciamento extends Model
         'id',
         'dataContato'
     ];
+
+    protected $hidden = ['socio_id', 'situacao', 'data_hora', 'deleted_at', 'created_at', 'updated_at'];
+
+    public function socio()
+    {
+        return $this->belongsTo(Socio::class);
+    }
+
+    public function set($value)
+    {
+        $this->attributes['title'] = strtoupper($value);
+    }
+
 }

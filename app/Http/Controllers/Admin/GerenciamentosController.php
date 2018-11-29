@@ -47,11 +47,11 @@ class GerenciamentosController extends Controller
      */
     public function store(Request $request)
     {
-        try {
-            $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato)]);
 
+        try {
+            $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato), "data_ocorrencia" => dataHoraBRparaENG($request->data_ocorrencia)]);
             $g = Gerenciamento::create($request->all());
-            if($request->situcao == 3) {
+            if ($request->situacao == 3) {
                 novaNotificacao(\Auth::user()->id, $g->id);
             }
 
@@ -90,14 +90,15 @@ class GerenciamentosController extends Controller
     public function update(Request $request, $id)
     {
 
-        try {
-            $data = explode('/', $request->dataContato);
-            $year = explode(' ', $data[2]); # [0] => Ano [1] => Horas
-            $date = $year[0] . '-' . $data[1] . '-' . $data[0] . " " . $year[1];
-            $request->merge(["data_hora" => $date]);
+        /*
+         * Função atualiza os dados e atualiza o novo campo com a data formatada
+         * para inglês que vem em português da view
+         * */
 
-            if($request->situacao == 1) {
-                Notification::where('occurrence_id', $id)->update(['status' => 1]);
+        try {
+            $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato)]);
+            if ($request->situacao == 1) {
+                Notification::where('gerenciamento_id', $id)->update(['status' => 1]);
             }
 
             Gerenciamento::find($id)->update($request->all());

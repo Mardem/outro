@@ -24,7 +24,6 @@
 <!-- End plugin js for this page-->
 <!-- inject:js -->
 <script src="{{ asset('js/off-canvas.js') }}"></script>
-<script src="{{ asset('js/misc.js') }}"></script>
 <!-- endinject -->
 <!-- Custom js for this page-->
 <script src="{{ asset('js/dashboard.js') }}"></script>

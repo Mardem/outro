@@ -31,7 +31,7 @@
 
                     </div>
                 </div>
-                <a href="#" class="btn btn-success">Novo chamado</a>
+                <a href="{{ route('ocorrencia.index') }}" class="btn btn-success">Nova ocorrência</a>
             </div>
         </li>
         <li class="nav-item @yield('dashActive')">
@@ -48,12 +48,12 @@
             </a>
             <div class="collapse @yield('showControle')" id="controle">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item @yield('activeSocios')">
-                        <a class="nav-link" href="{{ route('socios.index') }}">Sócios</a>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('activeSocios')" href="{{ route('socios.index') }}">Sócios</a>
                     </li>
                     @can('admin')
-                        <li class="nav-item @yield('activeUsuarios')">
-                            <a class="nav-link" href="{{ route('usuario.index') }}">Usuários</a>
+                        <li class="nav-item">
+                            <a class="nav-link @yield('activeUsuarios')" href="{{ route('usuario.index') }}">Usuários</a>
                         </li>
                     @endcan
                 </ul>
@@ -69,13 +69,13 @@
             </a>
             <div class="collapse @yield('showGerenciamento')" id="ocorrencia">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item @yield('activeOcorrencia')">
-                        <a class="nav-link" href="{{ route('ocorrencia.index') }}">Gerenciamento</a>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('activeOcorrencia')" href="{{ route('ocorrencia.index') }}">Gerenciamento</a>
                     </li>
 
                     @can('admin')
-                        <li class="nav-item @yield('activeRelatorio')">
-                            <a class="nav-link" href="{{ route('relatorio.index') }}">Relatório Geral</a>
+                        <li class="nav-item">
+                            <a class="nav-link @yield('activeRelatorio')" href="{{ route('relatorio.index') }}">Relatório Geral</a>
                         </li>
                     @endcan
                 </ul>
@@ -91,12 +91,12 @@
             </a>
             <div class="collapse @yield('showContact')" id="contact">
                 <ul class="nav flex-column sub-menu">
-                    <li class="nav-item @yield('activeSMS')">
-                        <a class="nav-link" href="{{ route('sms.index') }}">SMS</a>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('activeSMS')" href="{{ route('sms.index') }}">SMS</a>
                     </li>
 
-                    <li class="nav-item @yield('activeEmail')">
-                        <a class="nav-link" href="email.index">Email</a>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('activeEmail')" href="email.index">Email</a>
                     </li>
                 </ul>
             </div>

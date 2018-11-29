@@ -75,14 +75,8 @@
                             </thead>
                             <tbody>
                             @foreach($ocorrencias as $ocorrencia)
-                                @php
-                                    try {
-                                        $socio = \App\Models\Socio::where('id', $ocorrencia->socio_id)->first();
-                                    } catch (\Exception $e) {
-                                }
-                                @endphp
                                 <tr>
-                                    <td>{{ $socio->nome }}</td>
+                                    <td>{{ $ocorrencia->socio->nome }}</td>
                                     <td>{{ $ocorrencia->data_ocorrencia }}</td>
                                     <td>{{ $ocorrencia->titulo }}</td>
                                 </tr>

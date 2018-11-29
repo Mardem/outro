@@ -39,62 +39,11 @@
                         Veja, edite e apague os sócios do sistema.
                     </p>
 
-                    @component('layouts.components.pesquisa')
-                        <input type="hidden" name="tipo" value="1">
-                    @endcomponent
-
-                    <div class="table-responsive">
-                        <table class="table table-hover">
-                            <thead>
-                            <tr>
-                                <th>Código</th>
-                                <th>Nome</th>
-                                <th>Situação</th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                                @foreach($socios as $socio)
-                                    <tr>
-                                        <td>{{ $socio->id }}</td>
-                                        <td>{{ $socio->nome }}</td>
-                                        <td>
-                                            @if($socio->situacao == 0)
-                                                <b class="text-success">Ativo</b>
-                                                @else
-                                                <b class="text-danger">Inativo</b>
-                                            @endif
-                                        </td>
-                                        <td>
-                                            <div class="btn-group dropdown">
-                                                <button type="button" class="btn btn-success dropdown-toggle btn-sm"
-                                                        data-toggle="dropdown" aria-haspopup="true"
-                                                        aria-expanded="false">
-                                                    Administrar
-                                                </button>
-                                                <div class="dropdown-menu">
-
-                                                    <a class="dropdown-item"
-                                                       href="{{ route('socios.show', ['id' => $socio->id]) }}"><i
-                                                                class="ti-eye"></i> Ver</a>
-
-                                                    <div class="dropdown-divider"></div>
-
-                                                    <form action="{{ route('socios.destroy', ['id' => $socio->id]) }}" method="post">
-                                                        @method('DELETE')
-                                                        @csrf
-                                                        <button class="btn btn-link text-danger" type="submit">
-                                                            <i class="ti-trash"></i>Apagar
-                                                        </button>
-                                                    </form>
-
-                                                </div>
-                                            </div>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                            </tbody>
-                        </table>
-                    </div>
+                    <table id="tabelaSocios" class="table table-striped table-bordered"></table>
+                    <form method="post" class="hidden" action="" id="deleteData">
+                        @csrf
+                        @method('DELETE')
+                    </form>
                 </div>
             </div>
         </div>
@@ -102,24 +51,64 @@
 
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('admin/vendors/dataTable/css/jquery.dataTables.css') }}">
+@endsection
+
 @section('scripts')
+    @routes
+    <script src="{{ asset('admin/vendors/dataTable/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('admin/vendors/dataTable/js/dataTables.bootstrap4.min.js') }}"></script>
     <script>
-        var options = {
-            url: "{{ route('jsonSocios') }}",
-            getValue: "nome",
 
-            list: {
-                match: {
-                    enabled: true
+        $(document).ready(function () {
+            let table = $('#tabelaSocios').DataTable({
+                ajax: {
+                    url: '{{ route('jsonSocios') }}',
+                    dataSrc: ""
+                },
+                responsive: true,
+                fixedHeader: true,
+                stateSave: true,
+                columns: [
+                    {data: 'id', title: 'Código'},
+                    {data: 'nome', title: 'Nome'},
+                    {
+                        data: 'situacao',
+                        title: 'Situação',
+                        "render": function (data) {
+                            if (data == 0) {
+                                return "<b class='text-success'>Ativo</b>";
+                            } else {
+                                return "<b class='text-danger'>Inativo</b>";
+                            }
+                        }
+                    },
+                    {
+                        data: null,
+                        title: 'Ações',
+                        createdCell: function (td) {
+                            $(td).html("<a href='javascript:void(0);' class='btn btn-outline-primary btn-sm'>Ver</a> <a href='javascript:void(0);' class='btn btn-outline-danger btn-sm'>Apagar</a>");
+                        }
+                    }
+                ],
+                drawCallback: function () {
+                    $('a').unbind('click');
+                    $('#tabelaSocios>tbody>tr>td:last-child>a:first-child').click(function () {
+                        let tr = $(this).closest('tr');
+                        let row = table.row(tr).data();
+                        window.location = route('socios.show', row.id).url();
+                    });
+                    $('#tabelaSocios>tbody>tr>td:last-child>a:last-child').click(function () {
+                        let tr = $(this).closest('tr');
+                        let row = table.row(tr).data();
+                        $('#deleteData').attr('action', route('socios.destroy', row.id).url()).submit();
+                    });
+                },
+                "language": {
+                    url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
                 }
-            }
-        };
-
-        $("#pesquisa").easyAutocomplete(options);
-
-        // Envia a pesquisa
-        $('#sendSearch').on("click", function () {
-            $('#form-search').submit();
+            });
         });
     </script>
 @endsection

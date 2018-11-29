@@ -30,6 +30,18 @@ class CreateSociosTable extends Migration
             $table->string('cidade')->nullable();
             $table->string('uf')->nullable();
 
+            // Telefones do dump -> Não são usadas no sistema
+            $table->string('fone1')->nullable();
+            $table->string('fone2')->nullable();
+            $table->string('fone3')->nullable();
+            $table->string('fone4')->nullable();
+            $table->string('fone5')->nullable();
+            $table->string('fone6')->nullable();
+            $table->string('fone7')->nullable();
+            $table->string('fone8')->nullable();
+            $table->string('fone9')->nullable();
+            $table->string('fone10')->nullable();
+            $table->string('type')->nullable();
             $table->boolean('situacao')->default(0);
             $table->softDeletes();
 
