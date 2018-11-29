@@ -3,6 +3,8 @@
 @section('showContato', 'show')
 @section('activeEmail', 'active')
 @section('content')
+
+    <br>
     <form action="{{ route('email.store') }}" method="post" id="form-send">
         @csrf
 

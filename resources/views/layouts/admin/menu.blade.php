@@ -96,7 +96,7 @@
                     </li>
 
                     <li class="nav-item">
-                        <a class="nav-link @yield('activeEmail')" href="email.index">Email</a>
+                        <a class="nav-link @yield('activeEmail')" href="{{ route('email.create') }}">Email</a>
                     </li>
                 </ul>
             </div>

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\Socio;
-use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\Socio;
+use Illuminate\Http\Request;
+use PHPMailer\PHPMailer\PHPMailer;
 
 
 class EmailController extends Controller
@@ -18,7 +17,7 @@ class EmailController extends Controller
      */
     public function index()
     {
-
+        return redirect()->route('email.create');
     }
 
     /**
@@ -35,7 +34,7 @@ class EmailController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -49,7 +48,6 @@ class EmailController extends Controller
         //$email_c = $data[0];
         //$emails = array('davi.junior07@gmail.com','matheus@basicsistemas.com.br');
 
-        $arquivo = $request->arquivo;
 
         //die();
         $mail = new PHPMailer(true);
@@ -57,20 +55,19 @@ class EmailController extends Controller
             //Server settings
             //$mail->SMTPDebug = 2;
             $mail->isSMTP();
-            $mail->Host = 'smtp-mail.outlook.com';
+            $mail->Host = env("MAIL_HOST");
             $mail->SMTPAuth = true;
-            $mail->Username = 'davi_juniordf@hotmail.com';
-            $mail->Password = 'Yagamykira';
+            $mail->Username = env("MAIL_USERNAME");
+            $mail->Password = env("MAIL_PASSWORD");
             $mail->SMTPSecure = 'tls';
+            $mail->CharSet = 'UTF-8';
             $mail->Port = 587;
 
             //Recipients
-            $mail->setFrom('davi_juniordf@hotmail.com', 'Davi');
+            $mail->setFrom(env("MAIL_USERNAME"), "Solução - Acessoria de Cobrança");
 
             //Destinatários
             $emails = $request->data;
-            //$data = explode(',', $emails);
-            //$email_c = $data[0];
             foreach ($emails as &$email) {
                 $mail->addAddress($email);
             }
@@ -78,11 +75,31 @@ class EmailController extends Controller
             //Content
             $mail->isHTML(true);
             $mail->Subject = $request->titulo;
-            $mail->Body    = $request->mensagem;
+
+            $message = "<table cellpadding=\"0\" cellspacing=\"0\" border=\"0\" class=\"m_-2619326644986470801comment_body\"
+           style=\"background-clip:padding-box;border-collapse:collapse;border-color:#e6e6e6;border-radius:0 0 3px 3px;border-style:solid;border-width:2px;width:100%;    border-top-color: red;box-shadow: 1px 1px 10px #e4e2e2;\">
+        <tbody>
+        <tr>
+            <td class=\"m_-2619326644986470801comment_body_td m_-2619326644986470801content-td\" style=\"background-clip:padding-box;background-color:white;border-radius:0 0 3px 3px;color:#525252;font-family:'Helvetica Neue',Arial,sans-serif;font-size:15px;line-height:22px;overflow:hidden;padding:40px 40px 30px\" bgcolor=\"white\">
+
+
+                <h1 style=\"text-align: center;font-weight: 100;color: #464646;\">Solução Acessoria</h1>
+                <p>
+                    $request->mensagem
+                </p>
+
+
+
+            </td>
+        </tr>
+        </tbody>
+    </table>";
+
+            $mail->Body = $message;
 
             $mail->send();
             return redirect()->back()->with('success', 'Email enviado com sucesso!');
-        } catch (\Exception $e){
+        } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível enviar este email: ' . $e->getMessage());
         }
     }
@@ -90,7 +107,7 @@ class EmailController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -101,7 +118,7 @@ class EmailController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -112,8 +129,8 @@ class EmailController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \Illuminate\Http\Request $request
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -124,7 +141,7 @@ class EmailController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

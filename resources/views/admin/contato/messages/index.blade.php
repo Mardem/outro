@@ -39,10 +39,6 @@
                         Veja todas as mensagens que foram enviadas.
                     </p>
 
-                    @component('layouts.components.pesquisa')
-                        <input type="hidden" name="tipo" value="1">
-                    @endcomponent
-
                     <div class="table-responsive">
                         <table class="table table-hover">
                             <thead>
@@ -76,26 +72,4 @@
         </div>
     </div>
 
-@endsection
-
-@section('scripts')
-    <script>
-        let options = {
-            url: "{{ route('jsonSocios') }}",
-            getValue: "nome",
-
-            list: {
-                match: {
-                    enabled: true
-                }
-            }
-        };
-
-        $("#pesquisa").easyAutocomplete(options);
-
-        // Envia a pesquisa
-        $('#sendSearch').on("click", function () {
-            $('#form-search').submit();
-        });
-    </script>
 @endsection
