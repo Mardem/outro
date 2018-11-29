@@ -25,11 +25,6 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
     # Pesquisas
     Route::post('/pesquisa', 'PesquisasController@search')->name('search');
 
-    # Retornos Json
-    Route::get('/users-json', 'PesquisasController@user')->name('jsonUsers');
-    Route::get('/socios-json', 'PesquisasController@socio')->name('jsonSocios');
-    Route::get('/ocorrencias-json', 'PesquisasController@gerenciamento')->name('jsonGerenciamento');
-
     Route::group(['middleware' => ['can:admin']], function () {
         Route::resource('/controle/usuario', 'UsuariosController');
         Route::resource('/gerenciamento/relatorio', 'RelatorioController');

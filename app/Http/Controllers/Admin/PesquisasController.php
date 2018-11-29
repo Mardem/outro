@@ -33,9 +33,9 @@ class PesquisasController extends Controller
 
     public function searchRelatorio(Request $request)
     {
-        $s = Socio::all();
         $request->merge(["data_inicio" => dataHoraBRparaENG($request->data_inicio), "data_fim" => dataHoraBRparaENG($request->data_fim)]);
-        $o = Gerenciamento::where('data_ocorrencia', '>=', $request->data_inicio)->orderBy('id', 'desc')->paginate();
-        return view('admin.gerenciamento.relatorio.index')->with(['ocorrencias' => $o, 'socios' => $s]);
+
+        $o = Gerenciamento::whereBetween('data_ocorrencia', [$request->data_inicio, $request->data_fim])->paginate();
+        return view('admin.gerenciamento.relatorio.index')->with(['ocorrencias' => $o]);
     }
 }

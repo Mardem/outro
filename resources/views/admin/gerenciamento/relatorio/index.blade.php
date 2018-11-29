@@ -13,14 +13,14 @@
                             <i class="ti-user text-info icon-lg"></i>
                         </div>
                         <div class="float-right">
-                            <p class="mb-0 text-right">Total de ocorrências</p>
+                            <p class="mb-0 text-right">Resultado das buscas</p>
                             <div class="fluid-container">
                                 <h3 class="font-weight-medium text-right mb-0">{{ $ocorrencias->count() }}</h3>
                             </div>
                         </div>
                     </div>
                     <p class="text-muted mt-3 mb-0">
-                        <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> todas ocorrências cadastrados
+                        <i class="mdi mdi-alert-octagon mr-1" aria-hidden="true"></i> todas ocorrências encontradas
                     </p>
                 </div>
             </div>
@@ -38,13 +38,13 @@
                             <div class="col col-sm-4">
                                 <div class="form-group">
                                     <label for="data_inicio">De:</label>
-                                    <input type="text" class="form-control" id="data_inicio" name="data_inicio" placeholder="Ex: 99/99/9999" required>
+                                    <input type="text" class="form-control date" id="data_inicio" name="data_inicio" placeholder="Ex: 99/99/9999" required>
                                 </div>
                             </div>
                             <div class="col col-sm-4">
                                 <div class="form-group">
                                     <label for="data_fim">Até:</label>
-                                    <input type="text" class="form-control" id="data_fim" name="data_fim" placeholder="Ex: 99/99/9999" required>
+                                    <input type="text" class="form-control date" id="data_fim" name="data_fim" placeholder="Ex: 99/99/9999" required>
                                 </div>
                             </div>
                             <div class="col col-sm-4">
@@ -77,13 +77,19 @@
                             @foreach($ocorrencias as $ocorrencia)
                                 <tr>
                                     <td>{{ $ocorrencia->socio->nome }}</td>
-                                    <td>{{ $ocorrencia->data_ocorrencia }}</td>
+                                    <td>
+                                        @php
+                                            $date = new Date($ocorrencia->data_ocorrencia);
+                                        echo $date->format('d/m/Y');
+                                        @endphp
+                                    </td>
                                     <td>{{ $ocorrencia->titulo }}</td>
                                 </tr>
                             @endforeach
                             </tbody>
                         </table>
                     </div>
+                    {{ $ocorrencias->links() }}
                 </div>
             </div>
         </div>
@@ -110,5 +116,9 @@
 
             window.open(pdf.output("bloburl"));
         }
+        $(".date").inputmask({
+            mask: ["99/99/9999"],
+            keepStatic: true
+        });
     </script>
 @endsection

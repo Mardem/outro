@@ -99,7 +99,7 @@
                         Veja, edite e apague os usuários do sistema.
                     </p>
 
-                    <table id="tabelaUsuarios" class="table table-striped table-bordered"></table>
+                    <table id="tableDataTable" class="table table-striped table-bordered"></table>
                     <form action="" method="post" class="hidden" id="deleteData">
                         @csrf
                         @method('DELETE')
@@ -119,78 +119,51 @@
 @section('scripts')
     @routes
     <script src="{{ asset('admin/vendors/dataTable/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('admin/vendors/dataTable/js/dataTables.bootstrap4.min.js') }}"></script>
+    <script src="{{ asset('js/admin/helper.js') }}"></script>
     <script>
+        let columns = [
+            {data: 'id', title: 'Código'},
+            {data: 'name', title: 'Nome'},
+            {data: 'email', title: 'Login'},
+            {
+                data: 'category',
+                title: 'Perfil',
+                "render": function (data) {
+                    let profile;
 
-        $(document).ready(function () {
-            let table = $('#tabelaUsuarios').DataTable({
-                ajax: {
-                    url: '{{ route('jsonUsers') }}',
-                    dataSrc: ""
-                },
-                responsive: true,
-                fixedHeader: true,
-                stateSave: true,
-                columns: [
-                    {data: 'id', title: 'Código'},
-                    {data: 'name', title: 'Nome'},
-                    {data: 'email', title: 'Login'},
-                    {
-                        data: 'category',
-                        title: 'Perfil',
-                        "render": function (data) {
-                            let profile;
-
-                            switch (data){
-                                case(0):
-                                    profile = "Sócio";
-                                    break;
-                                case(1):
-                                    profile = "Administrador";
-                                    break;
-                                case(2):
-                                    profile = "Operador";
-                                    break;
-                            }
-                            return profile;
-                        }
-                    },
-                    {
-                        data: 'situacao',
-                        title: 'Situação',
-                        "render": function (data) {
-                            if (data == 0) {
-                                return "<b class='text-success'>Ativo</b>";
-                            } else {
-                                return "<b class='text-danger'>Inativo</b>";
-                            }
-                        }
-                    },
-                    {
-                        data: null,
-                        title: 'Ações',
-                        createdCell: function (td, cellData, rowData, row, col) {
-                            $(td).html("<a href='javascript:void(0);' class='btn btn-outline-primary btn-sm'>Ver</a> <a href='javascript:void(0);' class='btn btn-outline-danger btn-sm'>Apagar</a>");
-                        }
+                    switch (data){
+                        case(0):
+                            profile = "Sócio";
+                            break;
+                        case(1):
+                            profile = "Administrador";
+                            break;
+                        case(2):
+                            profile = "Operador";
+                            break;
                     }
-                ],
-                drawCallback: function () {
-                    $('a').unbind('click');
-                    $('#tabelaUsuarios>tbody>tr>td:last-child>a:first-child').click(function () {
-                        let tr = $(this).closest('tr');
-                        let row = table.row(tr).data();
-                        window.location = route('usuario.show', row.id).url();
-                    });
-                    $('#tabelaUsuarios>tbody>tr>td:last-child>a:last-child').click(function () {
-                        let tr = $(this).closest('tr');
-                        let row = table.row(tr).data();
-                        $('#deleteData').attr('action', route('socios.destroy', row.id).url()).submit();
-                    });
-                },
-                "language": {
-                    url: "//cdn.datatables.net/plug-ins/1.10.19/i18n/Portuguese-Brasil.json"
+                    return profile;
                 }
-            });
-        });
+            },
+            {
+                data: 'situacao',
+                title: 'Situação',
+                "render": function (data) {
+                    if (data == 0) {
+                        return "<b class='text-success'>Ativo</b>";
+                    } else {
+                        return "<b class='text-danger'>Inativo</b>";
+                    }
+                }
+            },
+            {
+                data: null,
+                title: 'Ações',
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).html("<a href='javascript:void(0);' class='btn btn-outline-primary btn-sm'>Ver</a> <a href='javascript:void(0);' class='btn btn-outline-danger btn-sm'>Apagar</a>");
+                }
+            }
+        ];
+        jsonDataTables("{{ route('jsonUsers') }}", "{{ env('APP_TOKEN') }}", columns, 'usuario');
     </script>
 @endsection

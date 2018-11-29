@@ -29,5 +29,6 @@
             $('input[name="uf"]').val(data.uf);
             $('input[name="complemento"]').val(data.complemento);
         })
-    })
-})()
+    });
+    
+})();
