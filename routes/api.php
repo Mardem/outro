@@ -16,3 +16,11 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::post('login', 'Admin\Api\AuthController@login')->name('api.login');
+
+Route::group(['middleware' => ['auth:api'], 'namespace' => 'Admin\Api'], function () {
+    Route::get('users', 'ApiController@users')->name('jsonUsers');
+    Route::get('partners', 'ApiController@partners')->name('jsonPartners');
+    Route::get('occurrencies', 'ApiController@occurrencies')->name('jsonOccurrencies');
+});
