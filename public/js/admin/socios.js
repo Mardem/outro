@@ -1,6 +1,8 @@
 (function() {
 
-    $("#telefones").tagsinput('items');
+    $("#telefones").tagsInput({
+        labelClass:"badge badge-success"
+    });
     // Inseri máscara no CEP
     $("#cep").inputmask({
         mask: ["99999-999"],
@@ -30,5 +32,5 @@
             $('input[name="complemento"]').val(data.complemento);
         })
     });
-    
+
 })();

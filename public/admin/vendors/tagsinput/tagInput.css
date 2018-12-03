@@ -1,0 +1,21 @@
+.labelinput, .labelinput:focus { 
+	border: none; 
+	outline: none; 
+}
+
+.tagLabel { 
+	margin: 0 4px 4px 0; 
+	font-size: 100%;
+}
+
+.closelabel { 
+	color: white; 
+}
+div.tagsinput span.tag {
+	color: #fff !important;
+	background-color: #00bc8c !important;
+	border: none !important;
+}
+div.tagsinput span.tag a {
+	color: #fff !important;
+}

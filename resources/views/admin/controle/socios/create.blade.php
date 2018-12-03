@@ -33,26 +33,45 @@
 
                         <div class="form-group">
                             <label for="name">Título*:</label>
-                            <input type="text" class="form-control" id="titulo" name="titulo" placeholder=" Digite o nome do usuário" value="{{ old('titulo') }}" required>
+                            <input type="text" class="form-control" id="titulo" name="titulo"
+                                   placeholder=" Digite o nome do usuário" value="{{ old('titulo') }}" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="tipo">Tipo*:</label>
+                            <select name="tipo" class="form-control" id="tipo">
+                                <option value="Remidos">Remidos</option>
+                                <option value="Gold">Gold</option>
+                                <option value="Plus">Plus</option>
+                                <option value="Vip">Vip</option>
+                                <option value="Vivendas">Vivendas</option>
+                                <option value="Contribuintes">Contribuintes</option>
+                                <option value="Titulos Sênior">Titulos Sênior</option>
+                                <option value="Thermas">Thermas</option>
+                            </select>
                         </div>
 
                         <div class="form-group">
                             <label for="name">Nome*:</label>
-                            <input type="text" class="form-control" id="name" name="nome" placeholder=" Digite o nome do usuário" value="{{ old('name') }}" required>
+                            <input type="text" class="form-control" id="name" name="nome"
+                                   placeholder=" Digite o nome do usuário" value="{{ old('name') }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="rg">RG*:</label>
-                            <input type="text" class="form-control" id="rg" name="rg" placeholder=" Digite o RG" value="{{ old('rg') }}" required>
+                            <input type="text" class="form-control" id="rg" name="rg" placeholder=" Digite o RG"
+                                   value="{{ old('rg') }}" required>
                         </div>
                         <div class="form-group">
                             <label for="cpf">CPF*:</label>
-                            <input type="text" class="form-control" id="cpf" name="cpf_cnpj" placeholder=" Digite o CPF" value="{{ old('cpf') }}" required>
+                            <input type="text" class="form-control" id="cpf" name="cpf_cnpj" placeholder=" Digite o CPF"
+                                   value="{{ old('cpf') }}" required>
                         </div>
 
                         <div class="form-group">
                             <label for="email">Email:</label>
-                            <input type="email" id="email" name="email" class="form-control" placeholder="socio@dominio.com" value="{{ old('email') }}">
+                            <input type="email" id="email" name="email" class="form-control"
+                                   placeholder="socio@dominio.com" value="{{ old('email') }}">
                         </div>
 
                         <div class="form-group">
@@ -98,17 +117,20 @@
                         </div> -->
                         <div class="form-group">
                             <label for="cep">CEP:</label>
-                            <input type="text" class="form-control pula" id="cep" maxlength="12" name="cep" placeholder="Informe o CEP">
+                            <input type="text" class="form-control pula" id="cep" maxlength="12" name="cep"
+                                   placeholder="Informe o CEP">
                         </div>
 
                         <div class="form-group">
                             <label for="endereco">Endereço:</label>
-                            <input type="text" class="form-control" id="endereco" name="endereco" placeholder=" Endereço">
+                            <input type="text" class="form-control" id="endereco" name="endereco"
+                                   placeholder=" Endereço">
                         </div>
 
                         <div class="form-group">
                             <label for="numero">Número:</label>
-                            <input type="number" min="0" class="form-control" id="numero" name="numero" placeholder=" Número">
+                            <input type="number" min="0" class="form-control" id="numero" name="numero"
+                                   placeholder=" Número">
                         </div>
 
                         <div class="form-group">
@@ -122,7 +144,8 @@
                         </div>
                         <div class="form-group">
                             <label for="complemento">Complemento:</label>
-                            <input type="text" class="form-control" id="complemento" name="complemento" placeholder=" Complemento">
+                            <input type="text" class="form-control" id="complemento" name="complemento"
+                                   placeholder=" Complemento">
                         </div>
                     </div>
                 </div>
@@ -144,6 +167,10 @@
 
 @endsection
 
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('admin/vendors/tagsinput/tagInput.css') }}">
+@endsection
 @section('scripts')
     <script src="{{ asset('js/admin/socios.js') }}"></script>
+    <script src="{{ asset('admin/vendors/tagsinput/tagInput.js') }}"></script>
 @endsection
