@@ -42,6 +42,11 @@ class CreateSociosTable extends Migration
             $table->string('fone8')->nullable();
             $table->string('fone9')->nullable();
             $table->string('fone10')->nullable();
+            $table->string('fone11')->nullable();
+            $table->string('fone12')->nullable();
+            $table->string('fone13')->nullable();
+            $table->string('fone14')->nullable();
+            $table->string('data_nascimento')->nullable();
             $table->string('type')->nullable();
             $table->boolean('situacao')->default(0);
             $table->softDeletes();

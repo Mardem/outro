@@ -22,7 +22,6 @@
             </div>
         </div>
 
-
         <div class="row">
             <div class="col-sm-6 grid-margin strech-card">
                 <div class="card">
@@ -66,10 +65,17 @@
                             <select id="operador" name="operador_id" class="form-control">
 
                                 @php
-                                    $op = \App\User::find($socio->operador_id);
+                                        $op = \App\User::find($socio->operador_id);
                                 @endphp
                                 <option disabled>Selecionado:</option>
-                                <option value="{{ $socio->operador_id }}">{{ $op->name }}</option>
+                                <option value="{{ $socio->operador_id }}">@php
+                                        try {
+                                            echo $op->name;
+                                        } catch (\Exception $e) {
+                                            echo "Operador não existe!";
+                                        }
+                                    @endphp
+                                </option>
 
                                 <option disabled></option>
                                 <option disabled>Outros operadores:</option>

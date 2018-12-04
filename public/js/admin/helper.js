@@ -4,7 +4,7 @@ function jsonDataTables(url, token, columns = [], resourceRoute) {
             url: url,
             dataSrc: "",
             headers: {
-                Authorization: token
+                Authorization: "Bearer" + token
             }
         },
         responsive: true,
