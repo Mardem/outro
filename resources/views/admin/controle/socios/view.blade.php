@@ -67,7 +67,7 @@
                         <div class="form-group">
                             <label for="rg">RG:</label>
                             <input type="text" class="form-control" id="rg" name="rg" placeholder=" Digite o RG"
-                                   value="{{ $socio->rg }}" required>
+                                   value="{{ $socio->rg }}">
                         </div>
                         <div class="form-group">
                             <label for="cpf">CPF*:</label>
@@ -86,10 +86,10 @@
                             <select id="operador" name="operador_id" class="form-control">
 
                                 @php
-                                        $op = \App\User::find($socio->operador_id);
+                                        $op = \App\User::find($socio->user_id);
                                 @endphp
                                 <option disabled>Selecionado:</option>
-                                <option value="{{ $socio->operador_id }}">@php
+                                <option value="{{ $socio->user_id }}">@php
                                         try {
                                             echo $op->name;
                                         } catch (\Exception $e) {
@@ -117,7 +117,7 @@
                         <div class="form-group">
                             <label for="valor">Valor:</label>
                             <input type="text" class="form-control" onkeyup="moeda(this);" id="valor" name="valor" placeholder=" Digite o valor"
-                                   value="{{ $socio->valor }}" required>
+                                   value="{{ $socio->valor }}">
                         </div>
 
                     </div>

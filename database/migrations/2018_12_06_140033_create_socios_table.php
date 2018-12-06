@@ -22,7 +22,7 @@ class CreateSociosTable extends Migration
             $table->string('rg')->nullable();
             $table->string('email')->nullable();
 
-            $table->integer('user_id');
+            $table->integer('operador_id');
 
 
             $table->string('telefone')->nullable();

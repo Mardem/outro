@@ -63,7 +63,7 @@
                         <div class="form-group">
                             <label for="rg">RG*:</label>
                             <input type="text" class="form-control" id="rg" name="rg" placeholder=" Digite o RG"
-                                   value="{{ old('rg') }}" required>
+                                   value="{{ old('rg') }}">
                         </div>
                         <div class="form-group">
                             <label for="cpf">CPF*:</label>

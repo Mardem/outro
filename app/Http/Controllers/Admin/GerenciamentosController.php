@@ -20,8 +20,16 @@ class GerenciamentosController extends Controller
      */
     public function index()
     {
-        $s = Socio::all();
-        $o = Gerenciamento::orderBy('id', 'desc')->paginate();
+        #if(Auth::user()->category == 1)
+        if(User::where('category', 1))
+        {
+            $s = Socio::all();
+            $o = Gerenciamento::orderBy('id', 'desc')->paginate();
+        }else{
+            $s = Socio::where('operador_id', \Auth::user()->id)->get();
+            $o = Gerenciamento::where('socio_id', $s->id)->orderBy('id', 'desc')->paginate();
+        }
+
         return view('admin.gerenciamento.ocorrencia.index')->with(['ocorrencias' => $o, 'socios' => $s]);
     }
 
@@ -51,7 +59,8 @@ class GerenciamentosController extends Controller
     {
 
         try {
-            $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato), "data_ocorrencia" => dataHoraBRparaENG($request->data_ocorrencia)]);
+            $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato),
+                "data_ocorrencia" => dataHoraBRparaENG($request->data_ocorrencia)]);
             $g = Gerenciamento::create($request->all());
             if ($request->situacao == 3) {
                 novaNotificacao(\Auth::user()->id, $g->id);
