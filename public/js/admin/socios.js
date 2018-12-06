@@ -12,20 +12,6 @@
         mask: ["999.999.999-99"],
         keepStatic: true
     });
-
-    //$("#valor").maskMoney({
-    //    prefix: "",
-    //    decimal: ".",
-    //    thousands: ""
-    //});
-    //$('#valor').inputmask("decimal", {
-    //    radixPoint: ".",
-    //    groupSeparator: ".",
-    //    autoGroup: true,
-    //    oncleared: function () { self.Value(''); }
-    //});
-    $('#valor').inputmask("#.###,##", {reverse: true});
-
     $('input[name="cep"]').blur(function(e) {
         let cep = $('input[name="cep"]').val() || '';
 

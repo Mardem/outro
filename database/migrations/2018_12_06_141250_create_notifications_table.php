@@ -18,14 +18,12 @@ class CreateNotificationsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')
                 ->references('id')
-                ->on('users')
-                ->onDelete('cascade');
+                ->on('users');
 
             $table->integer('gerenciamento_id')->unsigned();
             $table->foreign('gerenciamento_id')
                 ->references('id')
-                ->on('gerenciamentos')
-                ->onDelete('cascade');
+                ->on('gerenciamentos');
 
             $table->string('status')->default(0);
             $table->timestamps();

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateMessagesTable extends Migration
+class CrateMessagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,8 +18,7 @@ class CreateMessagesTable extends Migration
             $table->integer('ocorrencia_id')->unsigned();
             $table->foreign('ocorrencia_id')
                 ->references('id')
-                ->on('gerenciamentos')
-                ->onDelete('cascade');
+                ->on('gerenciamentos');
             $table->string('mensagem');
             $table->string('observacao');
 

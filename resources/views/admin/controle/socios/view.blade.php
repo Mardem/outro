@@ -116,7 +116,7 @@
 
                         <div class="form-group">
                             <label for="valor">Valor:</label>
-                            <input type="text" class="form-control" id="valor" name="valor" placeholder=" Digite o valor"
+                            <input type="text" class="form-control" onkeyup="moeda(this);" id="valor" name="valor" placeholder=" Digite o valor"
                                    value="{{ $socio->valor }}" required>
                         </div>
 
@@ -171,6 +171,7 @@
             </div>
         </div>
 
+        @can('admin')
         <div class="row">
             <div class="col-sm-12 grid-margin strech-card">
                 <div class="card">
@@ -180,6 +181,7 @@
                 </div>
             </div>
         </div>
+        @endcan
 
     </form>
     <div class="row">
@@ -317,4 +319,16 @@
 
 @section('scripts')
     <script src="{{ asset('js/admin/socios.js') }}"></script>
+    <script>
+        function moeda(z){
+            v = z.value;
+            v=v.replace(/\D/g,"") // permite digitar apenas numero
+            v=v.replace(/(\d{1})(\d{14})$/,"$1.$2") // coloca ponto antes dos ultimos digitos
+            v=v.replace(/(\d{1})(\d{11})$/,"$1.$2") // coloca ponto antes dos ultimos 11 digitos
+            v=v.replace(/(\d{1})(\d{8})$/,"$1.$2") // coloca ponto antes dos ultimos 8 digitos
+            v=v.replace(/(\d{1})(\d{5})$/,"$1.$2") // coloca ponto antes dos ultimos 5 digitos
+            v=v.replace(/(\d{1})(\d{1,2})$/,"$1.$2") // coloca virgula antes dos ultimos 2 digitos
+            z.value = v;
+        }
+    </script>
 @endsection

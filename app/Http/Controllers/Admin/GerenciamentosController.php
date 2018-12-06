@@ -7,6 +7,7 @@ use App\Models\Gerenciamento;
 use App\Models\Message;
 use App\Models\Notification;
 use App\Models\Socio;
+use App\User;
 use Illuminate\Http\Request;
 use Mockery\Exception;
 
@@ -31,8 +32,9 @@ class GerenciamentosController extends Controller
      */
     public function create()
     {
+
         try {
-            $s = Socio::all();
+            $s = Socio::where('operador_id', \Auth::user()->id)->get();
             return view('admin.gerenciamento.ocorrencia.create')->with(['socios' => $s]);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Ocorreu um erro ao carregar os dados: ' . $e->getMessage());

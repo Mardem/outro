@@ -21,7 +21,10 @@ class CreateSociosTable extends Migration
             $table->string('cpf_cnpj');
             $table->string('rg')->nullable();
             $table->string('email')->nullable();
-            $table->string('operador_id')->nullable();
+
+            $table->integer('user_id');
+
+
             $table->string('telefone')->nullable();
             $table->string('endereco')->nullable();
             $table->integer('numero')->nullable();

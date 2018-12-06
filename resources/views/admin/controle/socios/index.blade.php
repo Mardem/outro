@@ -4,6 +4,7 @@
 @section('activeSocios', 'active')
 @section('content')
 
+    @can('admin')
     <div class="row">
         <div class="col-sm-6 offset-sm-3 offset-md-3 grid-margin stretch-card">
             <div class="card card-statistics">
@@ -26,14 +27,17 @@
             </div>
         </div>
     </div>
+    @endcan
 
     <div class="row">
         <div class="col-sm-12 grid-margin strech-card">
             <div class="card">
                 <div class="card-body">
+                    @can('admin')
                     <span style="float: right;">
                         <a href="{{ route('socios.create') }}" class="btn btn-outline-primary">Novo sócio</a>
                     </span>
+                    @endcan
                     <h4 class="card-title">Sócios</h4>
                     <p class="card-description">
                         Veja, edite e apague os sócios do sistema.
