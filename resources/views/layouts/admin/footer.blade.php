@@ -11,7 +11,7 @@
 <script src="{{ asset('js/jquery.inputmask.bundle.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 
-<script src="{{ asset('js/jquery.easy-autocomplete.min.js') }}"></script>
+<script src="{{ asset('js/jquery.autocomplete.min.js') }}"></script>
 <script src="{{ asset('js/jQuery.print.min.js') }}"></script>
 <script src="{{ asset('js/datepicker.min.js') }}"></script>
 <script src="{{ asset('js/datepicker.pt-BR.js') }}"></script>
