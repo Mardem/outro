@@ -267,6 +267,7 @@
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('js/admin/datepicker/foundation-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/notificacoes.js') }}"></script>
     <script>
 
