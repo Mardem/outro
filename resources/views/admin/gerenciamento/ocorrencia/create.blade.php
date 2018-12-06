@@ -42,14 +42,14 @@
                             </select>
                         </div>
 
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label>Data Ocorrência*</label>
                             <input type="text" class="form-control" name="data_ocorrencia" id="data_ocorrencia"
                                    placeholder="" required=""
                                    oninvalid="this.setCustomValidity('Campo obrigatório!')"
                                    data-toggle="datepicker"
                                    oninput="setCustomValidity('')" autocomplete="off">
-                        </div>
+                        </div>-->
 
                     </div>
                 </div>

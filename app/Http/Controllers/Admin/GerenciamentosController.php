@@ -10,6 +10,7 @@ use App\Models\Socio;
 use App\User;
 use Illuminate\Http\Request;
 use Mockery\Exception;
+use Jenssegers\Date\Date;
 
 class GerenciamentosController extends Controller
 {
@@ -20,16 +21,8 @@ class GerenciamentosController extends Controller
      */
     public function index()
     {
-        #if(Auth::user()->category == 1)
-        if(User::where('category', 1))
-        {
-            $s = Socio::all();
-            $o = Gerenciamento::orderBy('id', 'desc')->paginate();
-        }else{
-            $s = Socio::where('operador_id', \Auth::user()->id)->get();
-            $o = Gerenciamento::where('socio_id', $s->id)->orderBy('id', 'desc')->paginate();
-        }
-
+        $s = Socio::all();
+        $o = Gerenciamento::orderBy('id', 'desc')->paginate();
         return view('admin.gerenciamento.ocorrencia.index')->with(['ocorrencias' => $o, 'socios' => $s]);
     }
 
@@ -42,7 +35,14 @@ class GerenciamentosController extends Controller
     {
 
         try {
-            $s = Socio::where('operador_id', \Auth::user()->id)->get();
+
+            if(\Auth::user()->category == 1)
+            {
+                $s = Socio::all();
+            }elseif(\Auth::user()->category == 2)
+            {
+                $s = Socio::where('operador_id', \Auth::user()->id)->get();
+            }
             return view('admin.gerenciamento.ocorrencia.create')->with(['socios' => $s]);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Ocorreu um erro ao carregar os dados: ' . $e->getMessage());
@@ -57,10 +57,11 @@ class GerenciamentosController extends Controller
      */
     public function store(Request $request)
     {
+        $request->request->add(['data_ocorrencia' => Date::now()->format('Y-m-d')]);
 
         try {
-            $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato),
-                "data_ocorrencia" => dataHoraBRparaENG($request->data_ocorrencia)]);
+            $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato)]);
+
             $g = Gerenciamento::create($request->all());
             if ($request->situacao == 3) {
                 novaNotificacao(\Auth::user()->id, $g->id);
@@ -105,7 +106,6 @@ class GerenciamentosController extends Controller
          * Função atualiza os dados e atualiza o novo campo com a data formatada
          * para inglês que vem em português da view
          * */
-        $request->request->add(['data_ocorrencia' => dataHoraBRparaENG($request->data_ocorrencia)]);
 
         try {
             $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato)]);

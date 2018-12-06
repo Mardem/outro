@@ -59,8 +59,9 @@
                             @endphp
                             <div class="form-group">
                                 <label for="data_ocorrencia">Data Ocorrência*:</label>
-                                <input type="text" class="form-control" id="data_ocorrencia" name="data_ocorrencia"
+                                <input type="text" class="form-control" id="data_ocorrencia" disabled
                                        value="{{ $ocDate->format('d/m/Y') }}" autocomplete="off" 1>
+
                             </div>
 
                         </div>
