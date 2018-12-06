@@ -75,7 +75,7 @@
 
                     @can('admin')
                         <li class="nav-item">
-                            <a class="nav-link @yield('activeRelatorio')" href="{{ route('relatorio.index') }}">Relatório Geral</a>
+                            <a class="nav-link @yield('activeRelatorio')" href="{{ route('relatorio.index') }}">Relatório</a>
                         </li>
                     @endcan
                 </ul>

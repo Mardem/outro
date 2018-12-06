@@ -19,7 +19,7 @@ $(document).ready(function () {
         closeIcon:'X'
     });
 
-    $('#data_ocorrencia').fdatepicker({
+    $('#data_ocorrencias').fdatepicker({
         format: 'dd/mm/yyyy',
         disableDblClickSelection: true,
         language: 'pt-br',
@@ -36,5 +36,12 @@ $(document).ready(function () {
         else if (situacao != 'Agendado') {
             $('#data_hora').hide();
         }
+    });
+
+    document.querySelector('#printOccurrence').addEventListener("click", function () {
+        $.print("#print", {
+            globalStyles: true,
+            title: "teste"
+        });
     });
 });

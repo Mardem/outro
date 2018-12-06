@@ -109,6 +109,10 @@
 @endsection
 
 @section('scripts')
-    <script src="{{ asset('js/admin/datepicker/foundation-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/admin/ocorrencia.min.js') }}"></script>
+    <script>
+        $('#data_ocorrencia').datepicker({
+            language: 'pt-BR'
+        });
+    </script>
 @endsection

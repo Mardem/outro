@@ -156,6 +156,40 @@
 
     </form>
 
+    <div class="row">
+        <div class="col-sm-12 grid-margin strech-car">
+            <div class="card">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Data da última ocorrência</th>
+                                <th>Título</th>
+                                <th>Ações</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                @foreach($socio->gerenciamentos as $ocorrencia)
+                                    @php
+                                        $date = new Date($ocorrencia->data_ocorrencia);
+                                    @endphp
+                                    <tr>
+                                        <td>{{ $date->format('d/m/Y') }}</td>
+                                        <td>{{ $ocorrencia->titulo }}</td>
+                                        <td>
+                                            <a href="{{ route('ocorrencia.') }}">Ver</a>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 
 @endsection
 

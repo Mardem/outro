@@ -94,6 +94,7 @@ class GerenciamentosController extends Controller
          * Função atualiza os dados e atualiza o novo campo com a data formatada
          * para inglês que vem em português da view
          * */
+        $request->request->add(['data_ocorrencia' => dataHoraBRparaENG($request->data_ocorrencia)]);
 
         try {
             $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato)]);

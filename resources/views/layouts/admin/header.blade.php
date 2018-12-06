@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{{ asset('css/admin/easy-autocomplete.themes.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
+    <link rel="stylesheet" href="{{ asset('css/datepicker.min.css') }}">
+
     <link rel="stylesheet" href="{{ asset('css/foundation-datepicker.css') }}">
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('favicon/apple-icon-57x57.png') }}">
     <link rel="apple-touch-icon" sizes="60x60" href="{{ asset('favicon/apple-icon-60x60.png') }}">
@@ -34,6 +36,7 @@
     <meta name="msapplication-TileColor" content="#ffffff">
     <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
+
 
     @yield('styles')
 
