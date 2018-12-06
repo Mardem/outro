@@ -38,16 +38,23 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="tipo">Tipo*:</label>
+                            <label for="tipo">Categoria*:</label>
                             <select name="tipo" class="form-control" id="tipo">
-                                <option value="Remidos">Remidos</option>
+                                <option value="{{ $socio->tipo }}">{{ $socio->tipo }}</option>
+
+                                <option disabled></option>
+                                <option disabled>Outras Categorias:</option>
+                                <option value="Contribuintes">Contribuintes</option>
                                 <option value="Gold">Gold</option>
                                 <option value="Plus">Plus</option>
+                                <option value="Remidos Thermas">Remidos Thermas</option>
+                                <option value="Remidos Itiquira">Remidos Itiquira</option>
+                                <option value="Titulos Sênior">Titulos Sênior</option>
                                 <option value="Vip">Vip</option>
                                 <option value="Vivendas">Vivendas</option>
-                                <option value="Contribuintes">Contribuintes</option>
-                                <option value="Titulos Sênior">Titulos Sênior</option>
-                                <option value="Thermas">Thermas</option>
+                                <option value="Boletos">Boletos</option>
+                                <option value="Cheque">Cheque</option>
+                                <option value="Nota Promissória">Nota Promissória</option>
                             </select>
                         </div>
 
@@ -58,7 +65,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="rg">RG*:</label>
+                            <label for="rg">RG:</label>
                             <input type="text" class="form-control" id="rg" name="rg" placeholder=" Digite o RG"
                                    value="{{ $socio->rg }}" required>
                         </div>
@@ -105,6 +112,12 @@
                             <br>
                             <input type="text" id="telefones" name="telefone" data-role="telefones" value="{{ $socio->telefone }}"> <br>
                             <small>Pressione <code>Tab ↹</code> para adicionar um novo número de telefone.</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="valor">Valor:</label>
+                            <input type="text" class="form-control" id="valor" name="valor" placeholder=" Digite o valor"
+                                   value="{{ $socio->valor }}" required>
                         </div>
 
                     </div>

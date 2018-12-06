@@ -19,7 +19,7 @@ class CreateSociosTable extends Migration
             $table->string('tipo')->nullable();
             $table->string('nome');
             $table->string('cpf_cnpj');
-            $table->string('rg');
+            $table->string('rg')->nullable();
             $table->string('email')->nullable();
             $table->string('operador_id')->nullable();
             $table->string('telefone')->nullable();
@@ -30,6 +30,7 @@ class CreateSociosTable extends Migration
             $table->string('cep')->nullable();
             $table->string('cidade')->nullable();
             $table->string('uf')->nullable();
+            $table->string('valor')->nullable();
 
             // Telefones do dump -> Não são usadas no sistema
             $table->string('fone1')->nullable();
