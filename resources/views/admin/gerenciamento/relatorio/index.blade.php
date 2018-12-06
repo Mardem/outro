@@ -114,6 +114,7 @@
                 }
             });
 
+            pdf.autoPrint({variant: 'non-conform'});
             window.open(pdf.output("bloburl"));
         }
         $(".date").inputmask({
