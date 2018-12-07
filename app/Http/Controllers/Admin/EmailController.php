@@ -40,7 +40,7 @@ class EmailController extends Controller
     public function store(Request $request)
     {
 
-        //dd($request->all());
+        dd($request->all());
 
         //$emails = $request->data;
         //$data = explode(',', $emails);

@@ -7,10 +7,9 @@ use App\Models\Gerenciamento;
 use App\Models\Message;
 use App\Models\Notification;
 use App\Models\Socio;
-use App\User;
 use Illuminate\Http\Request;
-use Mockery\Exception;
 use Jenssegers\Date\Date;
+use Mockery\Exception;
 
 class GerenciamentosController extends Controller
 {
@@ -21,9 +20,12 @@ class GerenciamentosController extends Controller
      */
     public function index()
     {
-        $s = Socio::all();
-        $o = Gerenciamento::orderBy('id', 'desc')->paginate();
-        return view('admin.gerenciamento.ocorrencia.index')->with(['ocorrencias' => $o, 'socios' => $s]);
+        if (\Auth::user()->category == 1) {
+            $o = Gerenciamento::count();
+        } else {
+            $o = Gerenciamento::where('operador_id', \Auth::user()->id)->count();
+        }
+        return view('admin.gerenciamento.ocorrencia.index')->with(['ocorrencias' => $o]);
     }
 
     /**
@@ -36,12 +38,10 @@ class GerenciamentosController extends Controller
 
         try {
 
-            if(\Auth::user()->category == 1)
-            {
+            if (\Auth::user()->category == 1) {
                 $s = Socio::all();
-            }elseif(\Auth::user()->category == 2)
-            {
-                $s = Socio::where('operador_id', \Auth::user()->id)->get();
+            } elseif (\Auth::user()->category == 2) {
+                $s = Socio::where('user_id', \Auth::user()->id)->get();
             }
             return view('admin.gerenciamento.ocorrencia.create')->with(['socios' => $s]);
         } catch (\Exception $e) {
@@ -58,10 +58,8 @@ class GerenciamentosController extends Controller
     public function store(Request $request)
     {
         $request->request->add(['data_ocorrencia' => Date::now()->format('Y-m-d')]);
-
         try {
-            $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato)]);
-
+            $request->merge(["data_hora" => Date::now()->format('Y-m-d H:i:s')]);
             $g = Gerenciamento::create($request->all());
             if ($request->situacao == 3) {
                 novaNotificacao(\Auth::user()->id, $g->id);
@@ -112,7 +110,6 @@ class GerenciamentosController extends Controller
             if ($request->situacao == 1) {
                 Notification::where('gerenciamento_id', $id)->update(['status' => 1]);
             }
-
             Gerenciamento::find($id)->update($request->all());
             return redirect()->back()->with('success', 'Ocorrência atualizada com sucesso!');
         } catch (\Exception $e) {

@@ -1,6 +1,6 @@
 @extends('layouts.admin.main')
 
-@section('showContato', 'show')
+@section('showContact', 'show')
 @section('activeEmail', 'active')
 @section('content')
 
@@ -22,6 +22,20 @@
             </div>
         </div>
 
+        <div class="row mb-3">
+            <div class="col-sm-12">
+                <div class="card">
+                    <div class="card-body">
+                        <h4 class="card-title">Seus sócios</h4>
+                        <div class="card-body" style="padding: 0;">
+                            <div class="table-responsive">
+                                <table id="tableDataTable"></table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
 
         <div class="row">
             <div class="col-sm-12 grid-margin strech-card">
@@ -35,11 +49,16 @@
                         <div class="form-group">
                             <div class="form-group col-md-4">
                                 <label for="socio">Email*:</label>
+
+                                <input type="text" name="data[]" class="form-control" id="emails">
+
+                                {{--
                                 <select multiple="multiple" style="width:90%;" id="testSelect" name="data[]">
                                     @foreach($socios as $socio)
                                         <option value="{{ $socio->email }}">{{ $socio->nome }}</option>
                                     @endforeach
                                 </select>
+                                --}}
                             </div>
                         </div>
 
@@ -79,24 +98,30 @@
 
 
 @endsection
+@section('styles')
+    <link rel="stylesheet" href="{{ asset('admin/vendors/dataTable/css/jquery.dataTables.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/jquery-tagsinput.min.css') }}">
+@endsection
 
 @section('scripts')
+    @routes
+    <script src="{{ asset('js/admin/jquery-tagsinput.js') }}"></script>
+    <script src="{{ asset('js/admin/helper.js') }}"></script>
+
     <script>
-        $(document).ready(function(){
-            //$("#form-send").on("submit", (e) => {
-            //e.preventDefault();
-
-            let data = [];
-
-            data.push($('#testSelect').val());
-
-            //$("#dados").val(data);
-
-            //});
-
-            $('#testSelect').multipleSelect({
-                filter: true
-            });
-        });
+        $('#emails').tagsInput();
+        let columns = [
+            {data: 'id', title: 'Código'},
+            {data: 'nome', title: 'Sócio'},
+            {data: 'email', title: 'Email'},
+            {
+                data: null,
+                title: 'Ações',
+                createdCell: function (td, cellData, rowData, row, col) {
+                    $(td).html("<a href='javascript:void(0);' class='btn btn-outline-primary btn-sm btn-block'>Ver</a>");
+                }
+            }
+        ];
+        jsonDataTables("{{ route('partnersOperator') }}", "{{ \Auth::user()->token  }}", columns, 'socios');
     </script>
 @endsection

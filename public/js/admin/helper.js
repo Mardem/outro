@@ -1,5 +1,26 @@
 function jsonDataTables(url, token, columns = [], resourceRoute) {
     let table = $('#tableDataTable').DataTable({
+        dom: 'Bfrtip',
+        buttons: [
+            {
+                extend: 'print',
+                text: 'Imprimir',
+                exportOptions: {
+                    columns: ':visible'
+                },
+                className: 'btn',
+                messageTop: 'Obs.: Lembrar que, nas compras ou processos passados no cartão deve ser aplicado um cálculo para reajustar o valor baseado nos juros da máquina de cartão.'
+            },
+            {
+                extend: 'colvis',
+                text: "Mostrar ou ocultar colunas",
+                className: 'btn'
+            }
+        ],
+        columnDefs: [ {
+            targets: -1,
+            visible: false
+        } ],
         ajax: {
             url: url,
             dataSrc: "",

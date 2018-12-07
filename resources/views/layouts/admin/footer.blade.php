@@ -11,6 +11,10 @@
 <script src="{{ asset('js/jquery.inputmask.bundle.min.js') }}"></script>
 <script src="{{ asset('js/sweetalert.min.js') }}"></script>
 
+<script src="{{ asset('admin/vendors/dataTable/js/dataTables.bootstrap4.min.js') }}"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.print.min.js"></script>
+<script src="https://cdn.datatables.net/buttons/1.5.2/js/buttons.colVis.min.js"></script>
 <script src="{{ asset('js/jquery.autocomplete.min.js') }}"></script>
 <script src="{{ asset('js/jQuery.print.min.js') }}"></script>
 <script src="{{ asset('js/datepicker.min.js') }}"></script>

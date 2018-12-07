@@ -37,7 +37,28 @@
     <meta name="msapplication-TileImage" content="{{ asset('favicon/ms-icon-144x144.png') }}">
     <meta name="theme-color" content="#ffffff">
 
-
+    <style>
+        .dataTables_wrapper .dataTables_paginate .paginate_button {
+            padding: 0 !important;
+        }
+        .dt-button-collection {
+            margin-top: 14.5px !important;
+        }
+        div.dt-button-collection button.dt-button.active:not(.disabled) {
+            background: #2f528d !important;
+            padding: 3px 10px;
+            border-radius: 33px;
+            color: #fff;
+            border: none;
+        }
+        div.dt-button-collection button.dt-button {
+            background: #babdbf !important;
+            padding: 3px 10px;
+            border-radius: 33px;
+            color: #fff;
+            border: none;
+        }
+    </style>
     @yield('styles')
 
 </head>

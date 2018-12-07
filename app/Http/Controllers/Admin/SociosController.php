@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Gerenciamento;
 use App\Models\Socio;
 use App\User;
 use Illuminate\Http\Request;
@@ -17,7 +18,7 @@ class SociosController extends Controller
      */
     public function index()
     {
-        \Auth::user()->category == 1 ? $s = Socio::orderBy('id', 'desc')->paginate() : $s = Socio::orderBy('id', 'desc')->where('operador_id', \Auth::user()->category)->paginate();
+        \Auth::user()->category == 1 ? $s = Socio::orderBy('id', 'desc')->paginate() : $s = Socio::orderBy('id', 'desc')->where('user_id', \Auth::user()->category)->paginate();
         $total = Socio::all();
         return view('admin.controle.socios.index')->with(['socios' => $s, 'todos' => $total]);
     }
@@ -62,9 +63,11 @@ class SociosController extends Controller
     public function show($id)
     {
         try {
-            $s = Socio::find($id);
             $o = User::where('category', '2')->get();
-            return view('admin.controle.socios.view')->with(['socio' => $s, 'operadores' => $o]);
+            $s = Socio::find($id);
+            $g = $s->gerenciamentos()->paginate();
+
+            return view('admin.controle.socios.view')->with(['socio' => $s, 'operadores' => $o, 'ocorrencias' => $g]);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível econtrar este sócio: ' . $e->getMessage());
         }
@@ -80,8 +83,9 @@ class SociosController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $t = Gerenciamento::where('operador_id', $request->antigo)->where('socio_id', $id)->update(['operador_id' => $request->user_id]);
+        Socio::find($id)->update($request->all());
         try {
-            Socio::find($id)->update($request->all());
             return redirect()->back()->with('success', 'Sócio atualizado com sucesso!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possivel alterar este sócio: ' . $e->getMessage());

@@ -7,6 +7,8 @@
         @csrf
         @method('PUT')
 
+        <input type="hidden" name="antigo" value="{{ $socio->operador_id }}">
+
         <div class="row">
             <div class="col-sm-12 grid-margin-strech-card mb-1">
                 <div class="card">
@@ -83,26 +85,27 @@
 
                         <div class="form-group">
                             <label for="operador">Operador*:</label>
-                            <select id="operador" name="operador_id" class="form-control">
+                            <select id="operador" name="user_id" class="form-control">
 
                                 @php
-                                        $op = \App\User::find($socio->user_id);
+                                    try {
+                                        $opName = $socio->operador->name;
+                                        $opId = $socio->operador->id;
+                                    } catch (\Exception $e) {
+                                        $opName = "Operador não existe!";
+                                    }
                                 @endphp
-                                <option disabled>Selecionado:</option>
-                                <option value="{{ $socio->user_id }}">@php
-                                        try {
-                                            echo $op->name;
-                                        } catch (\Exception $e) {
-                                            echo "Operador não existe!";
-                                        }
-                                    @endphp
-                                </option>
 
-                                <option disabled></option>
-                                <option disabled>Outros operadores:</option>
-                                @foreach($operadores as $operador)
-                                    <option value="{{ $operador->id }}">{{ $operador->name }}</option>
-                                @endforeach
+
+                                <optgroup label="Operador selecionado">
+                                    <option value="{{ $opId }}">{{ $opName }}</option>
+                                </optgroup>
+
+                                <optgroup label="Outros operadores">
+                                    @foreach($operadores as $operador)
+                                        <option value="{{ $operador->id }}">{{ $operador->name }}</option>
+                                    @endforeach
+                                </optgroup>
 
                             </select>
                         </div>
@@ -294,7 +297,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                                @foreach($socio->gerenciamentos as $ocorrencia)
+                                @foreach($ocorrencias as $ocorrencia)
                                     @php
                                         $date = new Date($ocorrencia->data_ocorrencia);
                                     @endphp
@@ -302,13 +305,15 @@
                                         <td>{{ $date->format('d/m/Y') }}</td>
                                         <td>{{ $ocorrencia->titulo }}</td>
                                         <td>
-                                            <a href="{{ route('ocorrencia.') }}">Ver</a>
+                                            <a href="{{ route('ocorrencia.show', ['id' => $ocorrencia->id]) }}" class="btn btn-outline-primary">Ver</a>
                                         </td>
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     </div>
+
+                    {{ $ocorrencias->links() }}
                 </div>
             </div>
         </div>
@@ -317,8 +322,11 @@
 
 @endsection
 
+
 @section('scripts')
     <script src="{{ asset('js/admin/socios.js') }}"></script>
+
+
     <script>
         function moeda(z){
             v = z.value;

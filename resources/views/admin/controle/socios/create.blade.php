@@ -61,7 +61,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label for="rg">RG*:</label>
+                            <label for="rg">RG:</label>
                             <input type="text" class="form-control" id="rg" name="rg" placeholder=" Digite o RG"
                                    value="{{ old('rg') }}">
                         </div>
@@ -79,7 +79,7 @@
 
                         <div class="form-group">
                             <label for="operador">Operador*:</label>
-                            <select id="operador" name="operador_id" class="form-control">
+                            <select id="operador" name="user_id" class="form-control">
 
                                 @foreach($operadores as $operador)
                                     <option value="{{ $operador->id }}">{{ $operador->name }}</option>

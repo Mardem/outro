@@ -23,4 +23,10 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Admin\Api'], functio
     Route::get('users', 'ApiController@users')->name('jsonUsers');
     Route::get('partners', 'ApiController@partners')->name('jsonPartners');
     Route::get('occurrencies', 'ApiController@occurrencies')->name('jsonOccurrencies');
+    Route::get('partners-operator', 'ApiController@partnersOperator')->name('partnersOperator');
+
+    // Resultado para selet 2
+    Route::get('partners-select2', 'ApiController@partnersSelect2')->name('jsonPartners2');
+    Route::get('users-select2', 'ApiController@usersSelect2')->name('jsonUsers2');
+    Route::get('operator-select2', 'ApiController@operatorsSelect')->name('operatorsSelect');
 });

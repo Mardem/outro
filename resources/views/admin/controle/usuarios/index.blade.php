@@ -121,6 +121,14 @@
     <script src="{{ asset('admin/vendors/dataTable/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/admin/helper.js') }}"></script>
     <script>
+        let ver = "<a href='javascript:void(0);' class='btn btn-outline-primary btn-sm'>Ver</a>";
+
+         @if(\Auth::user()->category == 1)
+             let apagar = "<a href='javascript:void(0);' class='btn btn-outline-danger btn-sm'>Apagar</a>";
+         @else
+             let apagar = "";
+         @endif
+
         let columns = [
             {data: 'id', title: 'Código'},
             {data: 'name', title: 'Nome'},
@@ -160,10 +168,10 @@
                 data: null,
                 title: 'Ações',
                 createdCell: function (td, cellData, rowData, row, col) {
-                    $(td).html("<a href='javascript:void(0);' class='btn btn-outline-primary btn-sm'>Ver</a> <a href='javascript:void(0);' class='btn btn-outline-danger btn-sm'>Apagar</a>");
+                    $(td).html(ver + apagar);
                 }
             }
         ];
-        jsonDataTables("{{ route('jsonUsers') }}", "{{ env('APP_TOKEN') }}", columns, 'usuario');
+        jsonDataTables("{{ route('jsonUsers') }}", "{{ \Auth::user()->token }}", columns, 'usuario');
     </script>
 @endsection

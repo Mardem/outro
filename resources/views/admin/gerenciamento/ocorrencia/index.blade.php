@@ -15,7 +15,7 @@
                         <div class="float-right">
                             <p class="mb-0 text-right">Total de ocorrências</p>
                             <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">{{ $ocorrencias->count() }}</h3>
+                                <h3 class="font-weight-medium text-right mb-0">{{ $ocorrencias }}</h3>
                             </div>
                         </div>
                     </div>
@@ -61,6 +61,16 @@
     <script src="{{ asset('js/admin/helper.js') }}"></script>
 
     <script>
+
+        let ver = "<a href='javascript:void(0);' class='btn btn-outline-primary btn-sm'>Ver</a>";
+
+                @if(\Auth::user()->category == 1)
+        let apagar = "<a href='javascript:void(0);' class='btn btn-outline-danger btn-sm'>Apagar</a>";
+                @else
+        let apagar = "";
+                @endif
+
+
         let columns = [
             {data: 'id'},
             {data: 'socio.nome', title: 'Sócio'},
@@ -76,11 +86,11 @@
                 data: null,
                 title: 'Ações',
                 createdCell: function (td, cellData, rowData, row, col) {
-                    $(td).html("<a href='javascript:void(0);' class='btn btn-outline-primary btn-sm'>Ver</a> <a href='javascript:void(0);' class='btn btn-outline-danger btn-sm'>Apagar</a>");
+                    $(td).html(ver + apagar);
                 }
             }
         ];
-        jsonDataTables("{{ route('jsonOccurrencies') }}", "{{ env('APP_TOKEN') }}", columns, 'ocorrencia');
+        jsonDataTables("{{ route('jsonOccurrencies') }}", "{{ \Auth::user()->token }}", columns, 'ocorrencia');
         dataAtualFormatada();
     </script>
 @endsection

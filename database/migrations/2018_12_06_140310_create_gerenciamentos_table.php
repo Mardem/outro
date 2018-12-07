@@ -15,11 +15,12 @@ class CreateGerenciamentosTable extends Migration
     {
         Schema::create('gerenciamentos', function (Blueprint $table) {
             $table->increments('id');
+
             $table->integer('socio_id')->unsigned();
             $table->foreign('socio_id')
                 ->references('id')
-                ->on('socios')
-                ->onDelete('cascade');
+                ->on('socios');
+            $table->integer('operador_id')->nullable();
             $table->string('data_ocorrencia')->nullable();
             $table->string('titulo')->nullable();
             $table->string('situacao')->nullable();

@@ -18,9 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('test', function() {
+    return \App\Models\Socio::find(1);
+})->name('testAPI');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/home', 'AdminController@index')->name('admin');
+    Route::get('/token', 'AdminController@token')->name('token');
+    Route::post('/update-token', 'AdminController@updateToken')->name('updateToken');
 
     # Pesquisas
     Route::post('/pesquisa', 'PesquisasController@search')->name('search');

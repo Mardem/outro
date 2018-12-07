@@ -257,8 +257,7 @@
                             @endforeach
                             </tbody>
                         </table>
-
-
+                        {{ $mensagens->links() }}
                     </div>
                 </div>
             </div>

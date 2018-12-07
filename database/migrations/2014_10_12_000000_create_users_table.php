@@ -22,8 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('cpf')->nullable();
             $table->integer('category')->default(0);
             $table->string('situacao')->default(0);
-            $table->softDeletes();
             $table->boolean('activated')->nullable();
+            $table->longText('token')->nullable();
+            $table->softDeletes();
             $table->rememberToken();
             $table->timestamps();
         });

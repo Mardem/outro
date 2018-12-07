@@ -22,8 +22,8 @@ class CreateSociosTable extends Migration
             $table->string('rg')->nullable();
             $table->string('email')->nullable();
 
-            $table->integer('operador_id');
-
+            $table->integer('user_id')->unsigned();
+            $table->foreign('user_id')->references('id')->on('users');
 
             $table->string('telefone')->nullable();
             $table->string('endereco')->nullable();

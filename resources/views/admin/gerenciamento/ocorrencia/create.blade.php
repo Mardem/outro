@@ -3,6 +3,9 @@
 @section('showGerenciamento', 'show')
 @section('activeOcorrencia', 'active')
 @section('content')
+
+    <input type="hidden" id="userIDSelect">
+
     <form action="{{ route('ocorrencia.store') }}" method="post" id="form-send">
         @csrf
 
@@ -32,13 +35,16 @@
                         </p>
 
                         <div class="form-group">
-                            <label for="socio">Sócio*:</label>
-                            <select id="socio" name="socio_id" class="form-control">
+                            <label for="socios">Sócio*:</label>
+                            <select id="socios" name="socio_id" required>
+                                <option disabled>Selecione o sócio</option>
+                            </select>
+                        </div>
 
-                                @foreach($socios as $socio)
-                                    <option value="{{ $socio->id }}">{{ $socio->nome }}</option>
-                                @endforeach
-
+                        <div class="form-group">
+                            <label for="operador">Operador*:</label>
+                            <select id="operador" name="operador_id" required>
+                                <option disabled>Selecione o operador</option>
                             </select>
                         </div>
 
@@ -83,7 +89,8 @@
                         <div class="form-group" id="data_hora" style="display: none;">
 
                             <label for="data_hora">Data do Contato*</label>
-                            <input type="text" class="span2 form-control" id="dpn" name="dataContato" autocomplete="off">
+                            <input type="text" class="span2 form-control" id="dpn" name="dataContato"
+                                   autocomplete="off">
                         </div>
 
 
@@ -104,16 +111,75 @@
         </div>
 
     </form>
+@endsection
 
-
+@section('styles')
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet"/>
+    <style>
+        .select2-container {
+            width: 100% !important;
+        }
+    </style>
 @endsection
 
 @section('scripts')
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="{{ asset('js/admin/datepicker/foundation-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/admin/ocorrencia.min.js') }}"></script>
     <script>
-        $('#data_ocorrencia').datepicker({
-            language: 'pt-BR'
+        $(document).ready(function () {
+            $('#data_ocorrencia').datepicker({
+                language: 'pt-BR'
+            });
+
+            $('#socios').select2({
+                ajax: {
+                    headers: {
+                        "Authorization": "Bearer {{ \Auth::user()->token }}",
+                        "Content-Type": "application/json",
+                    },
+                    url: '{{ route('jsonPartners2') }}',
+                    data: function (params) {
+                        return {
+                            socio: params.term
+                        }
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data.map(function (socio) {
+                                return {id: socio.id, text: socio.nome, user_id: socio.user_id}
+                            })
+                        }
+                    }
+                }
+            }).on('select2:select', function (e) {
+                var data = e.params.data;
+                $('#userIDSelect').val(data.user_id);
+            });
+
+            $('#operador').select2({
+                ajax: {
+                    headers: {
+                        "Authorization": "Bearer {{ \Auth::user()->token }}",
+                        "Content-Type": "application/json",
+                    },
+                    url: '{{ route('operatorsSelect') }}',
+                    data: function (params) {
+                        return {
+                            socio: $('#userIDSelect').val(),
+                            user: params.term
+                        }
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data.map(function (user) {
+                                return {id: user.id, text: user.name}
+                            })
+                        }
+                    }
+                }
+            });
+
         });
     </script>
 @endsection
