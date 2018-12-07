@@ -19,10 +19,4 @@ class Gerenciamento extends Model
     {
         return $this->belongsTo(Socio::class);
     }
-
-    public function set($value)
-    {
-        $this->attributes['title'] = strtoupper($value);
-    }
-
 }

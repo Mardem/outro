@@ -153,7 +153,7 @@
                     }
                 }
             }).on('select2:select', function (e) {
-                var data = e.params.data;
+                let data = e.params.data;
                 $('#userIDSelect').val(data.user_id);
             });
 

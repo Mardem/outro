@@ -7,7 +7,7 @@
         @csrf
         @method('PUT')
 
-        <input type="hidden" name="antigo" value="{{ $socio->operador_id }}">
+        <input type="hidden" name="antigo" value="{{ $socio->user_id }}">
 
         <div class="row">
             <div class="col-sm-12 grid-margin-strech-card mb-1">

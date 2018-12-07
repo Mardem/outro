@@ -35,15 +35,8 @@ class GerenciamentosController extends Controller
      */
     public function create()
     {
-
         try {
-
-            if (\Auth::user()->category == 1) {
-                $s = Socio::all();
-            } elseif (\Auth::user()->category == 2) {
-                $s = Socio::where('user_id', \Auth::user()->id)->get();
-            }
-            return view('admin.gerenciamento.ocorrencia.create')->with(['socios' => $s]);
+            return view('admin.gerenciamento.ocorrencia.create');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Ocorreu um erro ao carregar os dados: ' . $e->getMessage());
         }

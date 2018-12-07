@@ -60,6 +60,7 @@ class User extends Authenticatable implements JWTSubject
             'email' => $this->email
         ];
     }
+    
 }
 
 class RedefinirSenha extends ResetPassword

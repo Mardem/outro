@@ -42,8 +42,8 @@ class ApiController extends Controller
 
     public function partnersSelect2(Request $request)
     {
-        if (!empty($request->get('socio'))) {
-            return Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->get();
+        if (\Auth::user()->category != 1 || !empty($request->get('socio'))) {
+            return Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->where('user_id', \Auth::user())->get();
         }
         return Socio::all();
     }
