@@ -30,7 +30,7 @@ if (!function_exists('dataHoraBRparaENG')) {
     function dataHoraBRparaENG($dataParaFormatar)
     {
         $data = str_replace("/", "-", $dataParaFormatar);
-        return date('Y-m-d', strtotime($data));
+        return date('Y-m-d H:i:s', strtotime($data));
     }
 }
 
