@@ -26,7 +26,6 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Admin\Api'], functio
     Route::get('partners-operator', 'ApiController@partnersOperator')->name('partnersOperator');
 
     // Resultado para select 2
-    Route::get('partners-select2', 'ApiController@partnersSelect2')->name('jsonPartners2');
 
     Route::get('users-select2', 'ApiController@usersSelect2')->name('jsonUsers2');
     Route::get('operator-select2', 'ApiController@operatorsSelect')->name('operatorsSelect');

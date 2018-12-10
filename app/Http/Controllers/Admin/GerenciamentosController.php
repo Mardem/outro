@@ -50,9 +50,12 @@ class GerenciamentosController extends Controller
      */
     public function store(Request $request)
     {
-        $request->request->add(['data_ocorrencia' => Date::now()->format('Y-m-d')]);
         try {
-            $request->merge(["data_hora" => Date::now()->format('Y-m-d H:i:s')]);
+            $request->request->add(['data_ocorrencia' => Date::now()->format('Y-m-d')]);
+            $request->request->add(['data_hora' => Date::now()->format('Y-m-d H:i:s')]);
+            $socio = Socio::find($request->socio_id);
+            $request->request->all(['operador_id' => $socio->operador->id]);
+
             $g = Gerenciamento::create($request->all());
             if ($request->situacao == 3) {
                 novaNotificacao(\Auth::user()->id, $g->id);

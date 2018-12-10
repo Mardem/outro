@@ -83,32 +83,35 @@
                                    placeholder="socio@dominio.com" value="{{ $socio->email }}">
                         </div>
 
-                        <div class="form-group">
-                            <label for="operador">Operador*:</label>
-                            <select id="operador" name="user_id" class="form-control">
+                        @if(\Auth::user()->category == 1)
+                            <div class="form-group">
+                                <label for="operador">Operador*:</label>
+                                <select id="operador" name="user_id" class="form-control">
 
-                                @php
-                                    try {
-                                        $opName = $socio->operador->name;
-                                        $opId = $socio->operador->id;
-                                    } catch (\Exception $e) {
-                                        $opName = "Operador não existe!";
-                                    }
-                                @endphp
+                                    @php
+                                        try {
+                                            $opName = $socio->operador->name;
+                                            $opId = $socio->operador->id;
+                                        } catch (\Exception $e) {
+                                            $opName = "Operador não existe!";
+                                        }
+                                    @endphp
 
 
-                                <optgroup label="Operador selecionado">
-                                    <option value="{{ $opId }}">{{ $opName }}</option>
-                                </optgroup>
+                                    <optgroup label="Operador selecionado">
+                                        <option value="{{ $opId }}">{{ $opName }}</option>
+                                    </optgroup>
 
-                                <optgroup label="Outros operadores">
-                                    @foreach($operadores as $operador)
-                                        <option value="{{ $operador->id }}">{{ $operador->name }}</option>
-                                    @endforeach
-                                </optgroup>
+                                    <optgroup label="Outros operadores">
+                                        @foreach($operadores as $operador)
+                                            <option value="{{ $operador->id }}">{{ $operador->name }}</option>
+                                        @endforeach
+                                    </optgroup>
 
-                            </select>
-                        </div>
+                                </select>
+                            </div>
+                            @else
+                        @endif
 
                         <div class="form-group">
                             <label for="telefones">Telefones:</label>

@@ -19,13 +19,13 @@ class ApiController extends Controller
         return User::all();
     }
 
-    public function partners()
+    public function partners(Request $request)
     {
         // Retorno para sócio
         if (\Auth::user()->category == 1) {
-            $data = Socio::all();
+            $data = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->get();
         } else {
-            $data = Socio::where('user_id', \Auth::user()->id)->get();
+            $data = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->where('user_id', \Auth::user()->id)->get();
         }
 
         return $data;
@@ -38,14 +38,6 @@ class ApiController extends Controller
             return User::where('name', 'LIKE', "%{$request->get('user')}%")->where('category', 2)->get();
         }
         return User::where('category', 2)->get();
-    }
-
-    public function partnersSelect2(Request $request)
-    {
-        if (\Auth::user()->category != 1 || !empty($request->get('socio'))) {
-            return Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->where('user_id', \Auth::user())->get();
-        }
-        return Socio::all();
     }
 
     public function operatorsSelect(Request $request)

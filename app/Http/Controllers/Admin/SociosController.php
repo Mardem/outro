@@ -101,8 +101,11 @@ class SociosController extends Controller
     public function destroy($id)
     {
         try {
-            Socio::find($id)->delete();
-            return redirect()->back()->with('success', 'Sócio apagado com sucesso!');
+            if(\Auth::user()->category == 1) {
+                Socio::find($id)->delete();
+                return redirect()->back()->with('success', 'Sócio apagado com sucesso!');
+            }
+            return redirect()->back()->with('error', 'Você não pode executar esta ação');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível remover este sócio: ' . $e->getMessage());
         }

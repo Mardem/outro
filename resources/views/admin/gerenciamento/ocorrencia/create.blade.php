@@ -41,6 +41,8 @@
                             </select>
                         </div>
 
+
+                        <!--
                         <div class="form-group">
                             <label for="operador">Operador*:</label>
                             <select id="operador" name="operador_id" required>
@@ -48,7 +50,7 @@
                             </select>
                         </div>
 
-                        <!--<div class="form-group">
+                        <div class="form-group">
                             <label>Data Ocorrência*</label>
                             <input type="text" class="form-control" name="data_ocorrencia" id="data_ocorrencia"
                                    placeholder="" required=""
@@ -138,7 +140,7 @@
                         "Authorization": "Bearer {{ \Auth::user()->token }}",
                         "Content-Type": "application/json",
                     },
-                    url: '{{ route('jsonPartners2') }}',
+                    url: '{{ route('jsonPartners') }}',
                     data: function (params) {
                         return {
                             socio: params.term
@@ -156,30 +158,6 @@
                 let data = e.params.data;
                 $('#userIDSelect').val(data.user_id);
             });
-
-            $('#operador').select2({
-                ajax: {
-                    headers: {
-                        "Authorization": "Bearer {{ \Auth::user()->token }}",
-                        "Content-Type": "application/json",
-                    },
-                    url: '{{ route('operatorsSelect') }}',
-                    data: function (params) {
-                        return {
-                            socio: $('#userIDSelect').val(),
-                            user: params.term
-                        }
-                    },
-                    processResults: function (data) {
-                        return {
-                            results: data.map(function (user) {
-                                return {id: user.id, text: user.name}
-                            })
-                        }
-                    }
-                }
-            });
-
         });
     </script>
 @endsection
