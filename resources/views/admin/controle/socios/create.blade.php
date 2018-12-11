@@ -34,7 +34,7 @@
                         <div class="form-group">
                             <label for="name">Título*:</label>
                             <input type="text" class="form-control" id="titulo" name="titulo"
-                                   placeholder=" Digite o nome do usuário" value="{{ old('titulo') }}" required>
+                                   placeholder=" Digite o título do usuário" value="{{ old('titulo') }}" required>
                         </div>
 
                         <div class="form-group">

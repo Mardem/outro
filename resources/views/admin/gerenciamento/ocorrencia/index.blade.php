@@ -67,7 +67,7 @@
                 @if(\Auth::user()->category == 1)
         let apagar = "<a href='javascript:void(0);' class='btn btn-outline-danger btn-sm'>Apagar</a>";
                 @else
-        let apagar = "";
+        let apagar = "<a href='javascript:void(0);' class='btn btn-outline-danger btn-sm' style='display: none;'></a>";
                 @endif
 
 

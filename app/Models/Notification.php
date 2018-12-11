@@ -16,6 +16,11 @@ class Notification extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function socio()
+    {
+        return $this->belongsTo(Socio::class);
+    }
+
     public function gerenciamento()
     {
         return $this->belongsTo(Gerenciamento::class);

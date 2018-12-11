@@ -97,7 +97,7 @@
 
     <script>
         @foreach($notifications as $notification)
-            notificacoes("{{ $notification->user->name }}", "{{ dateTimeToBR($notification->gerenciamento->data_hora) }}");
+        notificacoes("{{ $notification->socio->nome }}", "{{ $notification->gerenciamento->data_hora }}");
         @endforeach
     </script>
 @endsection

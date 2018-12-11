@@ -56,10 +56,9 @@ class GerenciamentosController extends Controller
             $request->request->add(['data_ocorrencia' => Date::now()->format('Y-m-d')]);
             $request->request->add(['data_hora' => dataHoraBRparaENG($request->data_hora)]);
             $request->request->add(['operador_id' => $socio->operador->id]);
-
             $g = Gerenciamento::create($request->all());
             if ($request->situacao == 3) {
-                novaNotificacao(\Auth::user()->id, $g->id);
+                novaNotificacao(\Auth::user()->id, $g->id, $request->socio_id);
             }
 
             return redirect()->route('ocorrencia.show', ['id' => $g])->with("success", "Ocorrência criada com sucesso!");

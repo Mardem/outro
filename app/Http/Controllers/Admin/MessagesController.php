@@ -38,6 +38,8 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
+        $data = preg_replace("/\D+/", "", $request->phone); // remove qualquer caracter não numérico
+        $request->request->add(['phone' => $data]);
         if ($request->type == 0) {
 
             $direct = directSMS($request->phone, $request->message);

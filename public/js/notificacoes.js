@@ -3,7 +3,7 @@ function notificacoes(nome = "", data = "") {
         timeout: "20000",
         title: 'Lembrete para',
         titleColor: '#FFC300',
-        message: 'entrar em contato com ' + nome + ' em ' + data,
+        message: 'entrar em contato com ' + nome + ' em ' + convertDateToBR(data),
         backgroundColor: '#BF0A0A',
         messageColor: '#fff',
         progressBarColor: '#FFC300',
@@ -22,4 +22,8 @@ function mostrar() {
     else if (s != 3) {
         document.getElementById("data_hora").style.display = 'none';
     }
+}
+
+function convertDateToBR(data){
+    return moment(data).format('DD/M/YYYY \\à\\s h:mm:ss ');
 }

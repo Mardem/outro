@@ -24,6 +24,10 @@ class CreateNotificationsTable extends Migration
             $table->foreign('gerenciamento_id')
                 ->references('id')
                 ->on('gerenciamentos');
+            $table->integer('socio_id')->unsigned();
+            $table->foreign('socio_id')
+                ->references('id')
+                ->on('socios');
 
             $table->string('status')->default(0);
             $table->timestamps();
