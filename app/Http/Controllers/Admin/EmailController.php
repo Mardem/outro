@@ -39,17 +39,6 @@ class EmailController extends Controller
      */
     public function store(Request $request)
     {
-
-        dd($request->all());
-
-        //$emails = $request->data;
-        //$data = explode(',', $emails);
-        //print_r($data);
-        //$email_c = $data[0];
-        //$emails = array('davi.junior07@gmail.com','matheus@basicsistemas.com.br');
-
-
-        //die();
         $mail = new PHPMailer(true);
         try {
             //Server settings
@@ -57,14 +46,14 @@ class EmailController extends Controller
             $mail->isSMTP();
             $mail->Host = env("MAIL_HOST");
             $mail->SMTPAuth = true;
-            $mail->Username = env("MAIL_USERNAME");
-            $mail->Password = env("MAIL_PASSWORD");
+            $mail->Username = env("MAIL_SEND_MAIL");
+            $mail->Password = env("MAIL_SEND_PASSWORD");
             $mail->SMTPSecure = 'tls';
             $mail->CharSet = 'UTF-8';
             $mail->Port = 587;
 
             //Recipients
-            $mail->setFrom(env("MAIL_USERNAME"), "Solução - Acessoria de Cobrança");
+            $mail->setFrom(env("MAIL_SEND_MAIL"), "Solução - Acessoria de Cobrança");
 
             //Destinatários
             $emails = $request->data;
