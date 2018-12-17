@@ -14,7 +14,14 @@ class Gerenciamento extends Model
         'dataContato'
     ];
 
-    protected $hidden = ['socio_id', 'situacao', 'data_hora', 'deleted_at', 'created_at', 'updated_at'];
+    protected $hidden = [
+        'socio_id',
+        'situacao',
+        'data_hora',
+        'deleted_at',
+        'created_at',
+        'updated_at'
+    ];
 
     public function socio()
     {
