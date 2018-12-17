@@ -38,10 +38,7 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-        $data = preg_replace("/\D+/", "", $request->phone); // remove qualquer caracter não numérico
-        $request->request->add(['phone' => $data]);
         if ($request->type == 0) {
-
             $direct = directSMS($request->phone, $request->message);
             if ($direct['code'] == 10 && $direct['status'] != true) {
                 return redirect()->back()->with('error', 'Limite da conta foi atingido - Entre em contato com o suporte da Zenvia.');
@@ -55,9 +52,9 @@ class MessagesController extends Controller
             $multiple = multipeSMS($fones, $request->message);
 
             if ($multiple[0] == 10) {
-                return redirect()->back()->with('error', 'Limite da conta foi atingido - Entre em contato com o suporte da Zenvia.');
-            } else {
                 return redirect()->back()->with('success', 'Mensagens enviadas com sucesso!');
+            } else {
+                return redirect()->back()->with('error', 'Limite da conta foi atingido - Entre em contato com o suporte da Zenvia.');
             }
         }
     }
