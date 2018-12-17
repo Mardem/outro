@@ -40,6 +40,7 @@ class EmailController extends Controller
     public function store(Request $request)
     {
         $mail = new PHPMailer(true);
+
         try {
             //Server settings
             //$mail->SMTPDebug = 2;
@@ -56,7 +57,7 @@ class EmailController extends Controller
             $mail->setFrom(env("MAIL_SEND_MAIL"), "Solução - Acessoria de Cobrança");
 
             //Destinatários
-            $emails = $request->data;
+            $emails = explode(";",  $request->data[0]);
             foreach ($emails as &$email) {
                 $mail->addAddress($email);
             }
