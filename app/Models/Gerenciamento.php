@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Jenssegers\Date\Date;
 
 class Gerenciamento extends Model
 {
@@ -18,5 +19,11 @@ class Gerenciamento extends Model
     public function socio()
     {
         return $this->belongsTo(Socio::class);
+    }
+
+    public function getDataHoraFormatedAttribute()
+    {
+        $date = new Date($this->attributes['data_hora']);
+        return $date->format('d/m/Y H:i:s');
     }
 }
