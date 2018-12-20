@@ -73,6 +73,9 @@
         @endif
         let columns = [
             {data: 'id', title: 'Código'},
+            {data: 'cpf_cnpj', title: 'CPF'},
+            {data: 'titulo', title: 'Título'},
+            {data: 'operador.name', title: 'Operador'},
             {data: 'nome', title: 'Nome'},
             {
                 data: 'situacao',

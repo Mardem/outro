@@ -23,9 +23,9 @@ class ApiController extends Controller
     {
         // Retorno para sócio
         if (\Auth::user()->category == 1) {
-            $data = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->get();
+            $data = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->with('operador')->get();
         } else {
-            $data = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->where('user_id', \Auth::user()->id)->get();
+            $data = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->with('operador')->where('user_id', \Auth::user()->id)->get();
         }
 
         return $data;
@@ -70,9 +70,9 @@ class ApiController extends Controller
         #\Auth::user()->category == 1 ? $data = Socio::all() : $data = Socio::where('user_id', \Auth::user()->cat)->get();
 
         if (\Auth::user()->category == 1) {
-            $data = Socio::all();
+            $data = Socio::with('operador')->all();
         } else {
-            $data = Socio::where('user_id', \Auth::user()->id)->get();
+            $data = Socio::where('user_id', \Auth::user()->id)->with('operador')->get();
         }
 
         return $data;
