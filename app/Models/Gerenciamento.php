@@ -28,8 +28,9 @@ class Gerenciamento extends Model
         return $this->belongsTo(Socio::class);
     }
 
-    public function getDataHoraFormatedAttribute()
+    public function getDateTimeNotifyAttribute()
     {
+        # Teste
         $date = new Date($this->attributes['data_hora']);
         return $date->format('d/m/Y H:i:s');
     }

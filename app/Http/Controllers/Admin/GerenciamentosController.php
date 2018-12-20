@@ -123,7 +123,9 @@ class GerenciamentosController extends Controller
     {
         try {
             Message::where('ocorrencia_id', $id)->delete();
-            Gerenciamento::find($id)->delete();
+            $g = Gerenciamento::find($id);
+            Notification::where('gerenciamento_id', $g->id)->first()->delete();
+            $g->delete();
             return redirect()->back()->with('success', 'Ocorrência apagada com sucesso!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível remover esta ocorrência: ' . $e->getMessage());

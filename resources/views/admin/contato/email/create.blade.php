@@ -73,7 +73,7 @@
                         <div class="form-group">
                             <div class="form-group col-md-12">
                                 <label for="mensagem">Mensagem*</label>
-                                <textarea class="form-control" id="mensagem" name="mensagem"
+                                <textarea class="form-control" id="mensagem" style="resize: none;" name="mensagem"
                                           placeholder="Digite a mensagem!" required></textarea>
                             </div>
                         </div>

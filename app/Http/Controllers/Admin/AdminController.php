@@ -13,12 +13,11 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
     use AuthenticatesUsers;
+
     public function index()
     {
-        if(\Auth::user()->token != null) {
-
+        if (\Auth::user()->token != null) {
             $n = Notification::where('user_id', \Auth::user()->id)->where('status', 0)->get();
-
             $mensagens = Sms::count();
             $ocorrencias = Gerenciamento::count();
             $usuarios = User::count();
@@ -29,7 +28,7 @@ class AdminController extends Controller
 
     public function token()
     {
-        if(\Auth::user()->token != null) {
+        if (\Auth::user()->token != null) {
             return redirect()->route('admin');
         }
         return view('admin.token');
