@@ -35,29 +35,16 @@
                         </p>
 
                         <div class="form-group">
-                            <label for="socios">Sócio*:</label>
-                            <select id="socios" name="socio_id" required>
-                                <option disabled>Selecione o sócio</option>
-                            </select>
+                            @if($request->has('id') && $request->has('name'))
+                                <label for="socios" style="font-size: 20px">Sócio selecionado <b>{{ $request->name }}</b></label>
+                                <input type="hidden" id="socios" name="socio_id" value="{{ $request->socio }}">
+                            @else
+                                <label for="socios">Sócio*:</label>
+                                <select id="socios" name="socio_id" required>
+                                    <option disabled>Selecione o sócio</option>
+                                </select>
+                            @endif
                         </div>
-
-
-                        <!--
-                        <div class="form-group">
-                            <label for="operador">Operador*:</label>
-                            <select id="operador" name="operador_id" required>
-                                <option disabled>Selecione o operador</option>
-                            </select>
-                        </div>
-
-                        <div class="form-group">
-                            <label>Data Ocorrência*</label>
-                            <input type="text" class="form-control" name="data_ocorrencia" id="data_ocorrencia"
-                                   placeholder="" required=""
-                                   oninvalid="this.setCustomValidity('Campo obrigatório!')"
-                                   data-toggle="datepicker"
-                                   oninput="setCustomValidity('')" autocomplete="off">
-                        </div>-->
 
                     </div>
                 </div>

@@ -5,13 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="ea4ace32-905a-4510-8ca1-9a310e994889" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/storage/logs/laravel-2018-11-07.log" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/Api/ApiController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/Api/ApiController.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/controle/socios/index.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/controle/socios/index.blade.php" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/home.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/home.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/app/Http/Controllers/Admin/GerenciamentosController.php" afterPath="$PROJECT_DIR$/app/Http/Controllers/Admin/GerenciamentosController.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/controle/socios/view.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/controle/socios/view.blade.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/resources/views/admin/gerenciamento/ocorrencia/create.blade.php" afterPath="$PROJECT_DIR$/resources/views/admin/gerenciamento/ocorrencia/create.blade.php" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/cache/data/44/d1/44d142505dd1a3b497197e2f459d2aec779e9ed6" afterPath="$PROJECT_DIR$/storage/framework/cache/data/44/d1/44d142505dd1a3b497197e2f459d2aec779e9ed6" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/1dde439b0748903fd953f95dde6d69d75418590c.php" afterPath="$PROJECT_DIR$/storage/framework/views/1dde439b0748903fd953f95dde6d69d75418590c.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/0e6d19b9c826de9d062eadbd99c3c21df6caf6a4.php" afterPath="$PROJECT_DIR$/storage/framework/views/0e6d19b9c826de9d062eadbd99c3c21df6caf6a4.php" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/storage/framework/views/a7ce8f22c1c7daa9eeb8945c6c2b07288d175feb.php" afterPath="$PROJECT_DIR$/storage/framework/views/a7ce8f22c1c7daa9eeb8945c6c2b07288d175feb.php" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -46,11 +46,47 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="true">
+      <file leaf-file-name="ApiController.php" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/Api/ApiController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="254">
               <caret line="27" column="95" lean-forward="false" selection-start-line="27" selection-start-column="95" selection-end-line="27" selection-end-column="95" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="view.blade.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/controle/socios/view.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="28" column="96" lean-forward="false" selection-start-line="28" selection-start-column="96" selection-end-line="28" selection-end-column="96" />
+              <folding>
+                <marker date="1545318034220" expanded="true" signature="5064:5407" ph="..." />
+                <marker date="1545318034220" expanded="true" signature="5069:5262" ph="..." />
+                <marker date="1545318034220" expanded="true" signature="5287:5406" ph="..." />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="create.blade.php" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/resources/views/admin/gerenciamento/ocorrencia/create.blade.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="305">
+              <caret line="38" column="74" lean-forward="false" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
+              <folding>
+                <element signature="e#1497#1520#0#HTML" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GerenciamentosController.php" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/GerenciamentosController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="38" column="81" lean-forward="false" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
               <folding />
             </state>
           </provider>
@@ -136,12 +172,9 @@
         <option value="$PROJECT_DIR$/resources/views/admin/controle/usuarios/index.blade.php" />
         <option value="$PROJECT_DIR$/app/User.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/SociosController.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/controle/socios/view.blade.php" />
         <option value="$PROJECT_DIR$/routes/api.php" />
-        <option value="$PROJECT_DIR$/resources/views/admin/gerenciamento/ocorrencia/create.blade.php" />
         <option value="$PROJECT_DIR$/database/migrations/2018_12_06_141250_create_notifications_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/selected/2018_12_06_141250_create_notifications_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/GerenciamentosController.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/gerenciamento/ocorrencia/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/controle/socios/create.blade.php" />
         <option value="$PROJECT_DIR$/test.php" />
@@ -160,6 +193,9 @@
         <option value="$PROJECT_DIR$/database/migrations/2018_12_06_140033_create_socios_table.php" />
         <option value="$PROJECT_DIR$/resources/views/admin/controle/socios/index.blade.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/Api/ApiController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/Admin/GerenciamentosController.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/controle/socios/view.blade.php" />
+        <option value="$PROJECT_DIR$/resources/views/admin/gerenciamento/ocorrencia/create.blade.php" />
       </list>
     </option>
   </component>
@@ -214,13 +250,37 @@
             <path>
               <item name="solucao-codigo-fonte" type="b2602c69:ProjectViewProjectNode" />
               <item name="solucao-codigo-fonte" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
             <path>
               <item name="solucao-codigo-fonte" type="b2602c69:ProjectViewProjectNode" />
               <item name="solucao-codigo-fonte" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="database" type="2a2b976b:PhpTreeStructureProvider$1" />
-              <item name="migrations" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="solucao-codigo-fonte" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solucao-codigo-fonte" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="solucao-codigo-fonte" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solucao-codigo-fonte" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="gerenciamento" type="2a2b976b:PhpTreeStructureProvider$1" />
+            </path>
+            <path>
+              <item name="solucao-codigo-fonte" type="b2602c69:ProjectViewProjectNode" />
+              <item name="solucao-codigo-fonte" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="resources" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="views" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="admin" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="gerenciamento" type="2a2b976b:PhpTreeStructureProvider$1" />
+              <item name="ocorrencia" type="2a2b976b:PhpTreeStructureProvider$1" />
             </path>
           </expand>
           <select />
@@ -234,7 +294,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../deploy/solucao-codigo-fonte" />
     <property name="nodejs_interpreter_path" value="C:/Program Files/nodejs/node" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL&#10;Sqlite (Xerial)" />
-    <property name="SearchEverywhereHistoryKey" value="notifica&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/notificacoes.js&#10;Gerencia&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Models/Gerenciamento.php&#10;footer.&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/layouts/admin/footer.blade.php&#10;helper&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/helper.js&#10;web.php&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/routes/web.php&#10;gere&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/GerenciamentosController.php&#10;ocorrencia/create&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/admin/gerenciamento/ocorrencia/create.blade.php&#10;socio/inde&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/admin/controle/socios/index.blade.php&#10;api&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/routes/api.php&#10;Socios&#9;null&#9;null&#10;Socio&#9;FILE&#9;das://table:/e9a82535/fdd84ced-aae6-4dc9-8126-63f41aebe31e/solucao.socios&#10;socio&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/SociosController.php&#10;view&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/admin/gerenciamento/ocorrencia/view.blade.php&#10;socio/c&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/admin/controle/socios/create.blade.php&#10;Admin&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/AdminController.php&#10;Home&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/HomeController.php&#10;header&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/layouts/admin/header.blade.php&#10;footer&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/layouts/admin/footer.blade.php&#10;HomeC&#9;null&#9;null&#10;help&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/helper.js&#10;sms.js&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/sms.js&#10;oco&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/ocorrencia.js&#10;web&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/routes/web.php&#10;he&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/helper.js&#10;Hel&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/helper.js&#10;SociosC&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/SociosController.php&#10;socios.js&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/socios.js&#10;menu&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/layouts/admin/menu.blade.php&#10;Pesquisa&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/PesquisasController.php&#10;zigg&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/assets/js/ziggy.js&#10;Help&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Helpers/Helpers.php&#10;History&#9;ACTION&#9;Vcs.ShowTabbedFileHistory&#10;socios&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/socios.js&#10;Me&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/Partials/MessagersController.php&#10;Helper&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Helpers/Helpers.php&#10;ocorr&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/ocorrencia.js&#10;style.css&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/css/admin/style.css&#10;Helpers&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/vendor/barryvdh/laravel-debugbar/src/helpers.php&#10;HomeCon&#9;null&#9;null&#10;login-st&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/css/login-style.css&#10;login&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/css/login.css&#10;web.&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/routes/web.php" />
+    <property name="SearchEverywhereHistoryKey" value="Gerenciamento&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/GerenciamentosController.php&#10;notifica&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/notificacoes.js&#10;Gerencia&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Models/Gerenciamento.php&#10;footer.&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/layouts/admin/footer.blade.php&#10;helper&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/helper.js&#10;web.php&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/routes/web.php&#10;gere&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/GerenciamentosController.php&#10;ocorrencia/create&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/admin/gerenciamento/ocorrencia/create.blade.php&#10;socio/inde&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/admin/controle/socios/index.blade.php&#10;api&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/routes/api.php&#10;Socios&#9;null&#9;null&#10;Socio&#9;FILE&#9;das://table:/e9a82535/fdd84ced-aae6-4dc9-8126-63f41aebe31e/solucao.socios&#10;socio&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/SociosController.php&#10;view&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/admin/gerenciamento/ocorrencia/view.blade.php&#10;socio/c&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/admin/controle/socios/create.blade.php&#10;Admin&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/AdminController.php&#10;Home&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/HomeController.php&#10;header&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/layouts/admin/header.blade.php&#10;footer&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/layouts/admin/footer.blade.php&#10;HomeC&#9;null&#9;null&#10;help&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/helper.js&#10;sms.js&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/sms.js&#10;oco&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/ocorrencia.js&#10;web&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/routes/web.php&#10;he&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/helper.js&#10;Hel&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/helper.js&#10;SociosC&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/SociosController.php&#10;socios.js&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/socios.js&#10;menu&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/views/layouts/admin/menu.blade.php&#10;Pesquisa&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/PesquisasController.php&#10;zigg&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/resources/assets/js/ziggy.js&#10;Help&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Helpers/Helpers.php&#10;History&#9;ACTION&#9;Vcs.ShowTabbedFileHistory&#10;socios&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/socios.js&#10;Me&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Http/Controllers/Admin/Partials/MessagersController.php&#10;Helper&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/app/Helpers/Helpers.php&#10;ocorr&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/js/admin/ocorrencia.js&#10;style.css&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/css/admin/style.css&#10;Helpers&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/vendor/barryvdh/laravel-debugbar/src/helpers.php&#10;HomeCon&#9;null&#9;null&#10;login-st&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/css/login-style.css&#10;login&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/public/css/login.css&#10;web.&#9;FILE&#9;file://C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/routes/web.php" />
     <property name="add_unversioned_files" value="$PROJECT_DIR$/.env&#10;C:/Users/Marden/Desktop/Basic/projetos/web/solucao-codigo-fonte/vendor/laravel/framework/src/Illuminate/Notifications/resources/views/email.blade.php" />
     <property name="JavaScriptPreferStrict" value="false" />
     <property name="JavaScriptWeakerCompletionTypeGuess" value="true" />
@@ -353,12 +413,12 @@
       <workItem from="1545153656047" duration="704000" />
       <workItem from="1545229066652" duration="130000" />
       <workItem from="1545247416770" duration="753000" />
-      <workItem from="1545310362154" duration="4003000" />
+      <workItem from="1545310362154" duration="4904000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="268870000" />
+    <option name="totallyTimeSpent" value="269771000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -375,12 +435,12 @@
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="DB Browser" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="DB Execution Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="npm" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="true" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289689" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.41080198" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23676248" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23676248" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32980332" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
@@ -445,13 +505,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/gerenciamento/ocorrencia/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="433">
-          <caret line="93" column="98" lean-forward="false" selection-start-line="93" selection-start-column="98" selection-end-line="93" selection-end-column="98" />
-        </state>
-      </provider>
-    </entry>
     <entry file="das://table:/e9a82535/fdd84ced-aae6-4dc9-8126-63f41aebe31e/solucao.notifications">
       <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
         <state>
@@ -470,13 +523,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="288">
           <caret line="32" column="33" lean-forward="true" selection-start-line="32" selection-start-column="33" selection-end-line="32" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/GerenciamentosController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="57" column="76" lean-forward="false" selection-start-line="57" selection-start-column="76" selection-end-line="57" selection-end-column="76" />
         </state>
       </provider>
     </entry>
@@ -683,13 +729,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/admin/controle/socios/view.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="111" column="34" lean-forward="false" selection-start-line="111" selection-start-column="34" selection-end-line="111" selection-end-column="34" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/admin/controle/usuarios/index.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="304">
@@ -785,6 +824,36 @@
         <state relative-caret-position="254">
           <caret line="27" column="95" lean-forward="false" selection-start-line="27" selection-start-column="95" selection-end-line="27" selection-end-column="95" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/Admin/GerenciamentosController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="38" column="81" lean-forward="false" selection-start-line="38" selection-start-column="81" selection-end-line="38" selection-end-column="81" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/controle/socios/view.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="28" column="96" lean-forward="false" selection-start-line="28" selection-start-column="96" selection-end-line="28" selection-end-column="96" />
+          <folding>
+            <marker date="1545318034220" expanded="true" signature="5064:5407" ph="..." />
+            <marker date="1545318034220" expanded="true" signature="5069:5262" ph="..." />
+            <marker date="1545318034220" expanded="true" signature="5287:5406" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/admin/gerenciamento/ocorrencia/create.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="38" column="74" lean-forward="false" selection-start-line="38" selection-start-column="74" selection-end-line="38" selection-end-column="74" />
+          <folding>
+            <element signature="e#1497#1520#0#HTML" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

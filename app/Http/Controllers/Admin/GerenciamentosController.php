@@ -33,10 +33,10 @@ class GerenciamentosController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
         try {
-            return view('admin.gerenciamento.ocorrencia.create');
+            return view('admin.gerenciamento.ocorrencia.create', compact('request'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Ocorreu um erro ao carregar os dados: ' . $e->getMessage());
         }

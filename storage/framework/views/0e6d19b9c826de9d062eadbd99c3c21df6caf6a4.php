@@ -23,9 +23,20 @@
         </div>
 
         <div class="row">
+            <div class="col-sm-12" align="center">
+                <a href="<?php echo e(route('ocorrencia.create', ['id' => $socio->id, 'name' => $socio->nome])); ?>" class="btn btn-outline-primary mb-3 mt-3">Nova ocorrência</a>
+            </div>
+        </div>
+
+        <div class="row">
+
+
             <div class="col-sm-6 grid-margin strech-card">
+
                 <div class="card">
                     <div class="card-body">
+
+
                         <h4 class="card-title">Dados pessoais</h4>
                         <p class="card-description">
                             Preencha os campos com dados pessoais do sócio
