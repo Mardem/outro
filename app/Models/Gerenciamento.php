@@ -34,4 +34,10 @@ class Gerenciamento extends Model
         $date = new Date($this->attributes['data_hora']);
         return $date->format('d/m/Y H:i:s');
     }
+
+    public function getDataOcorrenciaFormatedAttribute()
+    {
+        $date = new Date($this->attributes['data_ocorrencia']);
+        return $date->format('d/m/Y');
+    }
 }

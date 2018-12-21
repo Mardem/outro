@@ -52,13 +52,15 @@
                                 </select>
                             </div>
 
-                            <?php
-                               $ocDate = new Date($ocorrencia->data_ocorrencia);
-                            ?>
+                            <div class="form-group">
+                                <label for="">Responsável*</label>
+                                <h5><?php echo e($operador->name); ?></h5>
+                            </div>
+
                             <div class="form-group">
                                 <label for="data_ocorrencia">Data Ocorrência*:</label>
                                 <input type="text" class="form-control" id="data_ocorrencia" disabled
-                                       value="<?php echo e($ocDate->format('d/m/Y')); ?>" autocomplete="off" 1>
+                                       value="<?php echo e($ocorrencia->data_ocorrencia_formated); ?>" autocomplete="off" 1>
 
                             </div>
 

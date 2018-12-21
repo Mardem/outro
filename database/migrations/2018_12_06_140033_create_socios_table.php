@@ -33,6 +33,7 @@ class CreateSociosTable extends Migration
             $table->string('cep')->nullable();
             $table->string('cidade')->nullable();
             $table->string('uf')->nullable();
+            $table->date('designado')->nullable();
             $table->string('valor')->nullable();
 
             // Telefones do dump -> Não são usadas no sistema

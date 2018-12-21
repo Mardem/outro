@@ -7,6 +7,7 @@ use App\Models\Gerenciamento;
 use App\Models\Message;
 use App\Models\Notification;
 use App\Models\Socio;
+use App\User;
 use Illuminate\Http\Request;
 use Jenssegers\Date\Date;
 use Mockery\Exception;
@@ -78,8 +79,10 @@ class GerenciamentosController extends Controller
         try {
             $s = Socio::all();
             $o = Gerenciamento::find($id);
+            $operador = User::find($o->operador_id);
+
             $m = Message::where('ocorrencia_id', $id)->paginate();
-            return view('admin.gerenciamento.ocorrencia.view')->with(['ocorrencia' => $o, 'socios' => $s, 'mensagens' => $m]);
+            return view('admin.gerenciamento.ocorrencia.view')->with(['ocorrencia' => $o, 'operador' => $operador, 'socios' => $s, 'mensagens' => $m]);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível econtrar esta ocorrência: ' . $e->getMessage());
         }

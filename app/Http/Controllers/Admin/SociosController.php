@@ -47,6 +47,7 @@ class SociosController extends Controller
     public function store(Request $request)
     {
         try {
+            $request->request->add(['designado' => now()->format('Y-m-d')]);
             Socio::create($request->all());
             return redirect()->route('socios.index')->with("success", "Sócio criado com sucesso!");
         } catch (Exception $e) {
@@ -83,7 +84,10 @@ class SociosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $t = Gerenciamento::where('operador_id', $request->antigo)->where('socio_id', $id)->update(['operador_id' => $request->user_id]);
+        // Verifica a existência de mudanças no operador, caso haja ele atualiza todos as ocorrências (Gerenciamentos)
+        Gerenciamento::where('operador_id', $request->antigo)->where('socio_id', $id)->update(['operador_id' => $request->user_id]);
+
+
         Socio::find($id)->update($request->all());
         try {
             return redirect()->back()->with('success', 'Sócio atualizado com sucesso!');
@@ -101,7 +105,7 @@ class SociosController extends Controller
     public function destroy($id)
     {
         try {
-            if(\Auth::user()->category == 1) {
+            if (\Auth::user()->category == 1) {
                 Socio::find($id)->delete();
                 return redirect()->back()->with('success', 'Sócio apagado com sucesso!');
             }

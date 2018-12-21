@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Observers\AtualizarDesignacao;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
+use App\Models\Socio;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -14,6 +16,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
+        Socio::observe(AtualizarDesignacao::class);
+
         Schema::defaultStringLength(191);
     }
 

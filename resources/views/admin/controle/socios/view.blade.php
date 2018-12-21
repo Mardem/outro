@@ -183,6 +183,12 @@
                             <input type="text" class="form-control" id="complemento" name="complemento"
                                    placeholder=" Complemento" value="{{ $socio->complemento }}">
                         </div>
+
+                        <div class="form-group" align="center">
+                            <label for="">Data de Designação para o operador ocorreu em:</label>
+                            <h5>{{ $socio->data_designacao_formated }}</h5>
+                        </div>
+
                     </div>
                 </div>
             </div>

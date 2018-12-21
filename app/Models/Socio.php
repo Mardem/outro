@@ -5,6 +5,7 @@ namespace App\Models;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Jenssegers\Date\Date;
 
 class Socio extends Model
 {
@@ -23,6 +24,7 @@ class Socio extends Model
         'complemento',
         'bairro',
         'cep',
+        'designado',
         'cidade',
         'uf',
         'user_id',
@@ -37,5 +39,11 @@ class Socio extends Model
     public function operador()
     {
         return $this->belongsTo(User::class, 'user_id');
+    }
+
+    public function getDataDesignacaoFormatedAttribute()
+    {
+        $date = new Date($this->attributes['designado']);
+        return $date->format('d/m/Y');
     }
 }

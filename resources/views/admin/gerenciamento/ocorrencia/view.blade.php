@@ -54,13 +54,15 @@
                                 </select>
                             </div>
 
-                            @php
-                               $ocDate = new Date($ocorrencia->data_ocorrencia);
-                            @endphp
+                            <div class="form-group">
+                                <label for="">Responsável*</label>
+                                <h5>{{ $operador->name }}</h5>
+                            </div>
+
                             <div class="form-group">
                                 <label for="data_ocorrencia">Data Ocorrência*:</label>
                                 <input type="text" class="form-control" id="data_ocorrencia" disabled
-                                       value="{{ $ocDate->format('d/m/Y') }}" autocomplete="off" 1>
+                                       value="{{ $ocorrencia->data_ocorrencia_formated }}" autocomplete="off" 1>
 
                             </div>
 
