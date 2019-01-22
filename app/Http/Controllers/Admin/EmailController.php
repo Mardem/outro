@@ -54,7 +54,7 @@ class EmailController extends Controller
             $mail->Port = 587;
 
             //Recipients
-            $mail->setFrom(env("MAIL_SEND_MAIL"), "Solução - Acessoria de Cobrança");
+            $mail->setFrom(env("MAIL_SEND_MAIL"), "Solução - Assessoria de Cobrança");
 
             //Destinatários
             $emails = explode(";",  $request->data[0]);

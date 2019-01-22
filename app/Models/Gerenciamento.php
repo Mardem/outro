@@ -40,4 +40,9 @@ class Gerenciamento extends Model
         $date = new Date($this->attributes['data_ocorrencia']);
         return $date->format('d/m/Y');
     }
+
+    public function getTitleAttribute($value)
+    {
+        return str_limit($value, 69, '...');
+    }
 }

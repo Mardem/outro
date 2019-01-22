@@ -95,7 +95,7 @@
 
     <script>
         <?php $__currentLoopData = $notifications; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $notification): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-        notificacoes("<?php echo e($notification->socio->nome); ?>", "<?php echo e($notification->gerenciamento->data_hora_formated); ?>");
+        notificacoes("<?php echo e($notification->socio->nome); ?>", "<?php echo e($notification->gerenciamento->date_time_notify); ?>");
         <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
     </script>
 <?php $__env->stopSection(); ?>

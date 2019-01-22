@@ -19,8 +19,8 @@ class SociosController extends Controller
     public function index()
     {
         \Auth::user()->category == 1 ? $s = Socio::orderBy('id', 'desc')->paginate() : $s = Socio::orderBy('id', 'desc')->where('user_id', \Auth::user()->category)->paginate();
-        $total = Socio::all();
-        return view('admin.controle.socios.index')->with(['socios' => $s, 'todos' => $total]);
+        $total = Socio::count();
+        return view('admin.controle.socios.index')->with(['socios' => $s, 'total' => $total]);
     }
 
     /**
@@ -87,7 +87,6 @@ class SociosController extends Controller
         // Verifica a existência de mudanças no operador, caso haja ele atualiza todos as ocorrências (Gerenciamentos)
         Gerenciamento::where('operador_id', $request->antigo)->where('socio_id', $id)->update(['operador_id' => $request->user_id]);
 
-
         Socio::find($id)->update($request->all());
         try {
             return redirect()->back()->with('success', 'Sócio atualizado com sucesso!');
@@ -113,5 +112,12 @@ class SociosController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível remover este sócio: ' . $e->getMessage());
         }
+    }
+
+    public function searchPartner(Request $request)
+    {
+        $result = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->with('operador')->paginate();
+        $total = Socio::count();
+        return view('admin.controle.socios.index')->with(['socios' => $result, 'total' => $total]);
     }
 }

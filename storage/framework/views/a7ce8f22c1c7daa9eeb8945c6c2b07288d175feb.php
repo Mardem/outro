@@ -35,7 +35,7 @@
                         <div class="form-group">
                             <?php if($request->has('id') && $request->has('name')): ?>
                                 <label for="socios" style="font-size: 20px">Sócio selecionado <b><?php echo e($request->name); ?></b></label>
-                                <input type="hidden" id="socios" name="socio_id" value="<?php echo e($request->socio); ?>">
+                                <input type="hidden" id="socios" name="socio_id" value="<?php echo e($request->id); ?>">
                             <?php else: ?>
                                 <label for="socios">Sócio*:</label>
                                 <select id="socios" name="socio_id" required>

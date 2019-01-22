@@ -51,6 +51,7 @@ class GerenciamentosController extends Controller
      */
     public function store(Request $request)
     {
+
         try {
             $socio = Socio::find($request->socio_id);
 

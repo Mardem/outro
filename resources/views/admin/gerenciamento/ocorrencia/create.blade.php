@@ -37,7 +37,7 @@
                         <div class="form-group">
                             @if($request->has('id') && $request->has('name'))
                                 <label for="socios" style="font-size: 20px">Sócio selecionado <b>{{ $request->name }}</b></label>
-                                <input type="hidden" id="socios" name="socio_id" value="{{ $request->socio }}">
+                                <input type="hidden" id="socios" name="socio_id" value="{{ $request->id }}">
                             @else
                                 <label for="socios">Sócio*:</label>
                                 <select id="socios" name="socio_id" required>

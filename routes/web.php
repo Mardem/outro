@@ -18,9 +18,6 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-Route::get('test', function() {
-    return \App\Models\Socio::find(1);
-})->name('testAPI');
 
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('/home', 'AdminController@index')->name('admin');
@@ -36,6 +33,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
     });
 
     Route::resource('/controle/socios', 'SociosController');
+    Route::post('/controle/socios/pesquisa', 'SociosController@searchPartner')->name('searchPartner');
 
     Route::resource('/gerenciamento/ocorrencia', 'GerenciamentosController');
     Route::resource('gerenciamento/mensagem', 'Partials\MessagersController');

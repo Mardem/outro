@@ -10,6 +10,9 @@ use Jenssegers\Date\Date;
 class Socio extends Model
 {
     use SoftDeletes;
+
+    protected $appends = ['data_designacao_formated'];
+
     protected $fillable = [
         'titulo',
         'tipo',
@@ -43,7 +46,20 @@ class Socio extends Model
 
     public function getDataDesignacaoFormatedAttribute()
     {
+        if (empty($this->attributes['designado'])) {
+            return "<i class='text-danger'>Não registrado</i>";
+        }
+
         $date = new Date($this->attributes['designado']);
         return $date->format('d/m/Y');
+    }
+
+    public function getSituacaoFormatedAttribute()
+    {
+        if($this->attributes['situacao'] == 0) {
+            return "<b class='text-success'>Ativo</b>";
+        } else {
+            return "<b class='text-danger'>Inativo</b>";
+        }
     }
 }
