@@ -16,8 +16,12 @@ class AdminController extends Controller
 
     public function index()
     {
+        $n = Notification::where('user_id', \Auth::user()->id)
+            ->where('status', 0)
+            ->whereDate('day_contact', now())
+            ->get();
+
         if (\Auth::user()->token != null) {
-            $n = Notification::where('user_id', \Auth::user()->id)->where('status', 0)->get();
             $mensagens = Sms::count();
             $ocorrencias = Gerenciamento::count();
             $usuarios = User::count();

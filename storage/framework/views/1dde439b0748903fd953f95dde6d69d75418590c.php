@@ -59,7 +59,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php $__currentLoopData = $socios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $socio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
+                            <?php $__empty_1 = true; $__currentLoopData = $socios; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $socio): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); $__empty_1 = false; ?>
                                 <tr>
                                     <td><?php echo e($socio->nome); ?></td>
                                     <td><?php echo e($socio->cpf_cnpj); ?></td>
@@ -84,7 +84,11 @@
                                         <?php endif; ?>
                                     </td>
                                 </tr>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
+                                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); if ($__empty_1): ?>
+                                <p style="text-align: center">
+                                    Nenhum dado registrado.
+                                </p>
+                            <?php endif; ?>
                             </tbody>
                         </table>
                     </div>

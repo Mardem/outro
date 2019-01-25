@@ -7,20 +7,6 @@ use Jenssegers\Date\Date;
 use Zenvia\Model\Sms;
 use Zenvia\Model\SmsFacade;
 
-if (!function_exists('novaNotificacao')) {
-    /**
-     * @param $usuario
-     * @param $ocorrencia
-     */
-    function novaNotificacao($usuario, $ocorrencia, $socio)
-    {
-        $not = new \App\Models\Notification; # Salva a notificação
-        $not->user_id = $usuario; # Usuário para que será enviado a notificação
-        $not->gerenciamento_id = $ocorrencia; # O que será enviado
-        $not->socio_id = $socio;
-        $not->save();
-    }
-}
 
 if (!function_exists('dataHoraBRparaENG')) {
 

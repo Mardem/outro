@@ -96,8 +96,9 @@
     <script src="{{ asset('js/notificacoes.js') }}"></script>
 
     <script>
-        @foreach($notifications as $notification)
+        @forelse($notifications as $notification)
         notificacoes("{{ $notification->socio->nome }}", "{{ $notification->gerenciamento->date_time_notify }}");
-        @endforeach
+        @empty
+        @endforelse
     </script>
 @endsection

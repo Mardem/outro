@@ -113,10 +113,9 @@
 
 
                             @php
-                                $resultDate;
                                 try {
                                     $date = new Date($ocorrencia->data_hora);
-                                    $resultDate = $date->format('d/m/Y H:m:s');
+                                    $resultDate = $date->format('d/m/Y H:i:s');
                                 } catch (\Exception $e) {
                                     $resultDate = $ocorrencia->data_hora;
                                 }

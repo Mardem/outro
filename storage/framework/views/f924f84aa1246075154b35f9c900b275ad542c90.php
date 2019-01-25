@@ -41,11 +41,14 @@
                                 <option value="Contribuintes">Contribuintes</option>
                                 <option value="Gold">Gold</option>
                                 <option value="Plus">Plus</option>
+                                <option value="Remido Cancelado">Remido Cancelado</option>
+                                <option value="Remido Clube">Remido Clube</option>
                                 <option value="Remidos Thermas">Remidos Thermas</option>
                                 <option value="Remidos Itiquira">Remidos Itiquira</option>
                                 <option value="Titulos Sênior">Titulos Sênior</option>
                                 <option value="Vip">Vip</option>
                                 <option value="Vivendas">Vivendas</option>
+                                <option value="Vivendas Clube">Vivendas Clube</option>
                                 <option value="Boletos">Boletos</option>
                                 <option value="Cheque">Cheque</option>
                                 <option value="Nota Promissória">Nota Promissória</option>

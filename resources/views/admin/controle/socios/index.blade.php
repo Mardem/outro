@@ -61,7 +61,7 @@
                             </tr>
                             </thead>
                             <tbody>
-                            @foreach($socios as $socio)
+                            @forelse($socios as $socio)
                                 <tr>
                                     <td>{{ $socio->nome }}</td>
                                     <td>{{ $socio->cpf_cnpj }}</td>
@@ -85,7 +85,11 @@
                                         @endif
                                     </td>
                                 </tr>
-                            @endforeach
+                                @empty
+                                <p style="text-align: center">
+                                    Nenhum dado registrado.
+                                </p>
+                            @endforelse
                             </tbody>
                         </table>
                     </div>

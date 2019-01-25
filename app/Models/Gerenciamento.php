@@ -9,10 +9,6 @@ use Jenssegers\Date\Date;
 class Gerenciamento extends Model
 {
     use SoftDeletes;
-    protected $guarded = [
-        'id',
-        'dataContato'
-    ];
 
     protected $hidden = [
         'socio_id',
@@ -21,6 +17,14 @@ class Gerenciamento extends Model
         'deleted_at',
         'created_at',
         'updated_at'
+    ];
+    protected $fillable = [
+        'socio_id',
+        'operador_id',
+        'data_ocorrencia',
+        'titulo',
+        'situacao',
+        'data_hora',
     ];
 
     public function socio()
