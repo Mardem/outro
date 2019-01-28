@@ -34,6 +34,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
 
     Route::resource('/controle/socios', 'SociosController');
     Route::post('/controle/socios/pesquisa', 'SociosController@searchPartner')->name('searchPartner');
+    Route::put('/controle/socios/observacao/{socio}', 'SociosController@observation')->name('saveObservation');
 
     Route::resource('/gerenciamento/ocorrencia', 'GerenciamentosController');
     Route::resource('gerenciamento/mensagem', 'Partials\MessagersController');

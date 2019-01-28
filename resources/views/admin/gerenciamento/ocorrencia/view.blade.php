@@ -181,15 +181,6 @@
                                               placeholder="Digite a mensagem!" required></textarea>
                                 </div>
                             </div>
-
-                            <div class="form-row">
-                                <div class="form-group col-md-12">
-                                    <label for="observacao">Observação*</label>
-                                    <textarea class="form-control" id="observacao" name="observacao"
-                                              placeholder="Digite uma observação!" required></textarea>
-                                </div>
-                            </div>
-
                         </div>
 
                         <div class="modal-footer">
@@ -218,15 +209,15 @@
                             <thead class="bg-light">
                             <tr>
                                 <th scope="col" class="border-0">Mensagens</th>
-                                <th scope="col" class="border-0">Observação</th>
+                                <th scope="col" class="border-0">Responsável</th>
                                 <th></th>
                             </tr>
                             </thead>
                             <tbody>
                             @foreach($mensagens as $mensagem)
                                 <tr>
-                                    <td>{{ $mensagem->mensagem }}</td>
-                                    <td>{{ $mensagem->observacao }}</td>
+                                    <td>{{ str_limit($mensagem->mensagem, 50) }}</td>
+                                    <td>{{ $mensagem->responsavel }}</td>
                                     <td class="no-print">
                                         <div class="btn-group dropdown">
                                             <button type="button" class="btn btn-success dropdown-toggle btn-sm"

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\UpdateSocioObs;
 use App\Models\Gerenciamento;
 use App\Models\Socio;
 use App\User;
@@ -122,5 +123,16 @@ class SociosController extends Controller
             ->paginate();
         $total = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->count();
         return view('admin.controle.socios.index')->with(['socios' => $result, 'total' => $total]);
+    }
+
+    public function observation(UpdateSocioObs $obs, Socio $socio)
+    {
+        try {
+            $socio->update($obs->all());
+            return redirect()->back()->with('success', 'Observação atualizado com sucesso.');
+        } catch (\Exception $e) {
+            session()->flash('error', $e->getMessage());
+            return redirect()->back()->withInput();
+        }
     }
 }

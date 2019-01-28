@@ -58,13 +58,6 @@
                             Preencha os campos com os dados do contato
                         </p>
 
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="tipo">Título*:</label>
-                                <input type="text" class="form-control" id="titulo" name="titulo"
-                                       placeholder="Digite o título!" required>
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <label for="situacao">Situação*:</label>

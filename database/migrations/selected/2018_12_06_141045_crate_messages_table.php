@@ -19,7 +19,7 @@ class CrateMessagesTable extends Migration
             $table->foreign('ocorrencia_id')
                 ->references('id')
                 ->on('gerenciamentos');
-            $table->mediumText('mensagem');
+            $table->string('mensagem');
             $table->string('responsavel');
             $table->softDeletes();
             $table->timestamps();

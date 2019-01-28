@@ -39,16 +39,6 @@
                             <label for="mensagem">Mensagem*</label>
                             <textarea class="form-control" id="mensagem" name="mensagem"
                                       placeholder="Digite a mensagem!" required>{{ $mensagem->mensagem }}</textarea>
-
-                        </div>
-
-                        <div class="form-group">
-                            <div class="form-group">
-                                <label for="observacao">Observação*</label>
-                                <textarea class="form-control" id="observacao" name="observacao"
-                                          placeholder="Digite uma observação!"
-                                          required>{{ $mensagem->observacao }}</textarea>
-                            </div>
                         </div>
                     </div>
                 </div>

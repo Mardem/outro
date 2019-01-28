@@ -9,35 +9,10 @@ use Illuminate\Http\Request;
 
 class MessagersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         try {
+            $request->request->add(['responsavel' => \Auth::user()->name]);
             Message::create($request->all());
             return redirect()->back()->with("success", "Mensagem criada com sucesso!");
         } catch (\Exception $e) {
@@ -60,17 +35,6 @@ class MessagersController extends Controller
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível econtrar esta mensagem: ' . $e->getMessage());
         }
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-
     }
 
     /**

@@ -32,6 +32,7 @@ class Socio extends Model
         'uf',
         'user_id',
         'valor',
+        'observacao'
     ];
 
     public function gerenciamentos()
