@@ -13,10 +13,6 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
 Route::post('login', 'Admin\Api\AuthController@login')->name('api.login');
 
 Route::group(['middleware' => ['auth:api'], 'namespace' => 'Admin\Api'], function () {
@@ -26,7 +22,6 @@ Route::group(['middleware' => ['auth:api'], 'namespace' => 'Admin\Api'], functio
     Route::get('partners-operator', 'ApiController@partnersOperator')->name('partnersOperator');
 
     // Resultado para select 2
-
     Route::get('users-select2', 'ApiController@usersSelect2')->name('jsonUsers2');
     Route::get('operator-select2', 'ApiController@operatorsSelect')->name('operatorsSelect');
 });

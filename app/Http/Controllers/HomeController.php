@@ -22,6 +22,11 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    public function home()
+    {
+        return redirect()->route('login');
+    }
     public function index()
     {
         if(Auth::user()->category == 1 || Auth::user()->category == 2) {
