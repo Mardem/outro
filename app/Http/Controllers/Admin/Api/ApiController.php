@@ -70,7 +70,7 @@ class ApiController extends Controller
         #\Auth::user()->category == 1 ? $data = Socio::all() : $data = Socio::where('user_id', \Auth::user()->cat)->get();
 
         if (\Auth::user()->category == 1) {
-            $data = Socio::with('operador')->all();
+            $data = Socio::with('operador')->get();
         } else {
             $data = Socio::where('user_id', \Auth::user()->id)->with('operador')->get();
         }

@@ -5,6 +5,7 @@
 <!-- container-scroller -->
 
 <!-- plugins:js -->
+
 <script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
 <script src="<?php echo e(asset('admin/vendors/js/vendor.bundle.base.js')); ?>"></script>
 <script src="<?php echo e(asset('admin/vendors/js/vendor.bundle.addons.js')); ?>"></script>

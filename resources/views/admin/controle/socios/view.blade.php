@@ -237,7 +237,7 @@
                             @csrf
                             @method('PUT')
                             <label for="observacao" style="font-weight: bold">Observação</label>
-                            <textarea name="observacao" style="resize: none" placeholder=" Digite sua observação" id="observacao" rows="4" class="form-control">{{ old('observacao') == null ? $socio->observacao : old('observacao') }}</textarea>
+                            <textarea name="observacao" placeholder=" Digite sua observação" id="observacao" rows="4" class="form-control">{{ $socio->observacao }}</textarea>
                             <button class="btn btn-success mt-1">Salvar</button>
                         </form>
                     </div>
@@ -390,8 +390,7 @@
 @section('scripts')
 
     <script src="{{ asset('js/admin/socios.js') }}"></script>
-    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-    <script src="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.js"></script>
+        <script src="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.js"></script>
     <script>
         function moeda(z) {
             v = z.value;
@@ -405,21 +404,7 @@
         }
     </script>
 
-    @if(\Auth::user()->category == 1)
-        <script>
-            let trip = new Trip([
-                {
-                    sel: $('#expose'),
-                    content: "Controle do sócio",
-                    position: "n",
-                    expose: true
-                },
-            ], {
-                delay: -1
-            });
-            $(document).ready(function () {
-                trip.start();
-            });
-        </script>
+    @if(\Auth::user()->category == 2)
+        <script src="{{ asset('js/admin/trip.js') }}"></script>
     @endif
 @endsection

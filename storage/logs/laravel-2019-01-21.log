@@ -1,2 +1,0 @@
-[2019-01-21 22:46:52] local.ERROR: SQLSTATE[HY000] [2002] Nenhuma conexão pôde ser feita porque a máquina de destino as recusou ativamente.
- (SQL: select * from `users` where `email` = mardenmc22@gmail.com and `users`.`deleted_at` is null limit 1)  

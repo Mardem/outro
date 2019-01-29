@@ -77,10 +77,11 @@ class GerenciamentosController extends Controller
         try {
             $s = Socio::all();
             $o = Gerenciamento::find($id);
+            $not = Notification::where('gerenciamento_id', $o->id)->first();
             $operador = User::find($o->operador_id);
 
             $m = Message::where('ocorrencia_id', $id)->paginate();
-            return view('admin.gerenciamento.ocorrencia.view')->with(['ocorrencia' => $o, 'operador' => $operador, 'socios' => $s, 'mensagens' => $m]);
+            return view('admin.gerenciamento.ocorrencia.view')->with(['ocorrencia' => $o, 'notification' => $not, 'operador' => $operador, 'socios' => $s, 'mensagens' => $m]);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível econtrar esta ocorrência: ' . $e->getMessage());
         }
@@ -130,6 +131,17 @@ class GerenciamentosController extends Controller
             return redirect()->back()->with('success', 'Ocorrência apagada com sucesso!');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível remover esta ocorrência: ' . $e->getMessage());
+        }
+    }
+
+    public function updateNotification(Request $request, Notification $notification)
+    {
+        try {
+            $request->request->add(["day_contact" => dataHoraBRparaENG($request->dataContato)]);
+            $notification->update($request->all());
+            return redirect()->back()->with('success', 'Notificação atualizada com sucesso!');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', $e->getMessage());
         }
     }
 }

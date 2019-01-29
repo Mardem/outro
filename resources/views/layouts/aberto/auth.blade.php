@@ -45,7 +45,7 @@
         <div class="form-holder">
             <div class="form-content">
                 <div class="form-items">
-                    <h3>Solução - Acessoria de Cobrança</h3>
+                    <h3>Solução - Assessoria de Cobrança</h3>
                     <p>@yield('subdescription', 'Faça o seu login para acessar a parte interna do sistema')</p>
                     <div class="page-links">
                         @yield('pageLinks')

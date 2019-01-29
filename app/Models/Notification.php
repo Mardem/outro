@@ -4,6 +4,7 @@ namespace App\Models;
 
 use App\User;
 use Illuminate\Database\Eloquent\Model;
+use Jenssegers\Date\Date;
 
 class Notification extends Model
 {
@@ -27,5 +28,16 @@ class Notification extends Model
     public function gerenciamento()
     {
         return $this->belongsTo(Gerenciamento::class);
+    }
+
+    public function getDayContactFormatedAttribute()
+    {
+        $contact = $this->attributes['day_contact'];
+        if($contact != null) {
+            $date = new Date($contact);
+
+            return $date->format('d/m/Y H:i:s');
+        }
+        return null;
     }
 }

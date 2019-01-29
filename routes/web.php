@@ -32,15 +32,21 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
         Route::resource('/gerenciamento/relatorio', 'RelatorioController');
     });
 
-    Route::resource('/controle/socios', 'SociosController');
-    Route::post('/controle/socios/pesquisa', 'SociosController@searchPartner')->name('searchPartner');
-    Route::put('/controle/socios/observacao/{socio}', 'SociosController@observation')->name('saveObservation');
+    Route::group(['prefix' => 'controle'], function() {
+        Route::resource('/socios', 'SociosController');
+        Route::post('/socios/pesquisa', 'SociosController@searchPartner')->name('searchPartner');
+        Route::put('/socios/observacao/{socio}', 'SociosController@observation')->name('saveObservation');
+    });
 
-    Route::resource('/gerenciamento/ocorrencia', 'GerenciamentosController');
-    Route::resource('gerenciamento/mensagem', 'Partials\MessagersController');
+    Route::group(['prefix' => 'gerenciamento'], function () {
+        Route::resource('/ocorrencia', 'GerenciamentosController');
+        Route::resource('mensagem', 'Partials\MessagersController');
+        Route::post('/relatorio', 'PesquisasController@searchRelatorio')->name('searchRelatorio');
+        Route::put('/update-notification/{notification}', 'GerenciamentosController@updateNotification')->name('updateNotification');
+    });
 
-    Route::post('/gerenciamento/relatorio', 'PesquisasController@searchRelatorio')->name('searchRelatorio');
-
-    Route::resource('/contato/email', 'EmailController');
-    Route::resource('/contato/sms', 'MessagesController');
+    Route::group(['prefix' => 'contato'], function () {
+        Route::resource('/email', 'EmailController');
+        Route::resource('/sms', 'MessagesController');
+    });
 });

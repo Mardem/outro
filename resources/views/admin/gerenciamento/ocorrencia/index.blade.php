@@ -56,7 +56,7 @@
 @endsection
 
 @section('scripts')
-    @routes
+    <script src="{{ asset('js/ziggy.js') }}"></script>
     <script src="{{ asset('admin/vendors/dataTable/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/admin/helper.js') }}"></script>
 
@@ -81,7 +81,6 @@
                     return convertDateToBR(data);
                 }
             },
-            {data: 'titulo', title: 'Título'},
             {
                 data: null,
                 title: 'Ações',
@@ -91,6 +90,5 @@
             }
         ];
         jsonDataTables("{{ route('jsonOccurrencies') }}", "{{ \Auth::user()->token }}", columns, 'ocorrencia');
-        dataAtualFormatada();
     </script>
 @endsection
