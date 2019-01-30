@@ -117,6 +117,7 @@
 @endsection
 
 @section('scripts')
+    @routes
     <script src="{{ asset('js/ziggy.js') }}"></script>
     <script src="{{ asset('admin/vendors/dataTable/js/dataTables.bootstrap4.min.js') }}"></script>
     <script src="{{ asset('js/admin/helper.js') }}"></script>

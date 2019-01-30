@@ -105,7 +105,7 @@
         </form>
 
 
-        @if($notification->count() > 0)
+        @if($notification != null)
             <form action="{{ route('updateNotification', ['notification' => $notification->getKey()]) }}" method="POST"
                   id="updateNot">
                 @csrf

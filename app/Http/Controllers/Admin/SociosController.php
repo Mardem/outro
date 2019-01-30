@@ -120,6 +120,7 @@ class SociosController extends Controller
         $result = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")
             ->with('operador')
             ->orWhere('titulo', 'LIKE', "%{$request->socio}%")
+            ->where('user_id', \Auth::user()->id)
             ->paginate();
         $total = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->count();
         return view('admin.controle.socios.index')->with(['socios' => $result, 'total' => $total]);

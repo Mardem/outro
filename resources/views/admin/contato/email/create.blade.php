@@ -104,6 +104,7 @@
 @endsection
 
 @section('scripts')
+    @routes
     <script src="{{ asset('js/ziggy.js') }}"></script>
     <script src="{{ asset('js/admin/jquery-tagsinput.js') }}"></script>
     <script src="{{ asset('js/admin/helper.js') }}"></script>

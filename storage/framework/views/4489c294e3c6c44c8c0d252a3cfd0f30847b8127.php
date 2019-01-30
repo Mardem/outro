@@ -115,6 +115,7 @@
 <?php $__env->stopSection(); ?>
 
 <?php $__env->startSection('scripts'); ?>
+    <?php echo app('Tightenco\Ziggy\BladeRouteGenerator')->generate(); ?>
     <script src="<?php echo e(asset('js/ziggy.js')); ?>"></script>
     <script src="<?php echo e(asset('admin/vendors/dataTable/js/dataTables.bootstrap4.min.js')); ?>"></script>
     <script src="<?php echo e(asset('js/admin/helper.js')); ?>"></script>
