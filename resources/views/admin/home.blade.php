@@ -97,7 +97,7 @@
 
     <script>
         @forelse($notifications as $notification)
-        notificacoes("{{ $notification->socio->nome }}", "{{ $notification->gerenciamento->date_time_notify }}");
+        notificacoes("{{ $notification->socio->nome }}", "{{ $notification->day_contact_formated }}");
         @empty
         @endforelse
     </script>
