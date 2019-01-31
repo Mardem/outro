@@ -78,9 +78,7 @@ class SMSController extends Controller
         $sms2->setSchedule($schedule2);
 
         array_push($smsList, $sms2);
-
-        dd($smsList);
-
+        
         try {
             //Envia a lista de mensagens para o webservice e retorna uma lista de objetos do tipo SmsResponse com os staus das mensagens enviadas
             $responseList = $smsFacade->sendMultiple($smsList);
