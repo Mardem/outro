@@ -38,7 +38,6 @@ class MessagesController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request->all());
         if ($request->type == 0) {
             $direct = directSMS($request->phone, $request->message);
             if ($direct['code'] == 10 && $direct['status'] != true) {
