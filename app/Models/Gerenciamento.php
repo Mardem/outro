@@ -49,4 +49,13 @@ class Gerenciamento extends Model
     {
         return str_limit($value, 69, '...');
     }
+
+    public function setDataHoraAttribute($data)
+    {
+        if (!is_null($data)) {
+            $this->attributes['data_hora'] = dataHoraBRparaENG($data);
+        }else{
+            now()->format('Y-m-d H:i:s');
+        }
+    }
 }

@@ -56,7 +56,6 @@ class GerenciamentosController extends Controller
 
             $request->request->add(['operador_id' => $socio->operador->id]);
             $request->request->add(['data_ocorrencia' => Date::now()->format('Y-m-d')]);
-            $request->request->add(['data_hora' => dataHoraBRparaENG($request->data_hora)]);
 
             $g = Gerenciamento::create($request->all());
 
@@ -102,9 +101,8 @@ class GerenciamentosController extends Controller
          * Função atualiza os dados e atualiza o novo campo com a data formatada
          * para inglês que vem em português da view
          * */
-
         try {
-            $request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato)]);
+            //$request->merge(["data_hora" => dataHoraBRparaENG($request->dataContato)]);
             if ($request->situacao == 1) {
                 Notification::where('gerenciamento_id', $id)->update(['status' => 1]);
             }
@@ -126,7 +124,7 @@ class GerenciamentosController extends Controller
         try {
             Message::where('ocorrencia_id', $id)->delete();
             $g = Gerenciamento::find($id);
-            Notification::where('gerenciamento_id', $g->id)->first()->delete();
+            Notification::where('gerenciamento_id', $g->id)->delete();
             $g->delete();
             return redirect()->back()->with('success', 'Ocorrência apagada com sucesso!');
         } catch (\Exception $e) {

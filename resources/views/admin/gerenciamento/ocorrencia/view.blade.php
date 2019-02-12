@@ -106,25 +106,27 @@
 
                                 <label for="dpn">Data do Contato*</label>
                                 <input type="text" class="span2 form-control" id="dpn" name="data_hora"
-                                       autocomplete="off">
+                                       value="{{ $ocorrencia->date_time_notify }}" autocomplete="off">
                             </div>
         </form>
 
 
         @if($notification != null)
-            <form action="{{ route('updateNotification', ['notification' => $notification->getKey()]) }}" method="POST"
-                  id="updateNot">
-                @csrf
-                @method('PUT')
-                <div class="form-group">
-                    <label for="dpn">Data/Hora*</label>
-                    <input type="text" class="form-control" id="dpn" name="dataContato"
-                           value="{{ $notification->day_contact_formated }}">
-                </div>
-            </form>
-            <a class="btn btn-success"
-               href="{{ route('updateNotification', ['notification' => $notification->getKey()]) }}"
-               onclick="event.preventDefault();$('#updateNot').submit();">Atualizar notificação</a>
+            <div id="notification">
+                <form action="{{ route('updateNotification', ['notification' => $notification->getKey()]) }}" method="POST"
+                      id="updateNot">
+                    @csrf
+                    @method('PUT')
+                    <div class="form-group">
+                        <label for="dpn">Data/Hora*</label>
+                        <input type="text" class="form-control" id="dpn" name="dataContato"
+                               value="{{ $notification->day_contact_formated }}">
+                    </div>
+                </form>
+                <a class="btn btn-success"
+                   href="{{ route('updateNotification', ['notification' => $notification->getKey()]) }}"
+                   onclick="event.preventDefault();$('#updateNot').submit();">Atualizar notificação</a>
+            </div>
         @endif
 
 
@@ -137,7 +139,7 @@
         <div class="col-sm-12 grid-margin strech-car">
             <div class="card">
                 <div class="card-body">
-                    <button class="btn btn-block btn-outline-success" type="submit" id="atualizar">Atualizar
+                    <button class="btn btn-block btn-outline-success" onclick="event.preventDefault();$('#form-send').submit();">Atualizar
                     </button>
                 </div>
             </div>
@@ -267,6 +269,15 @@
         });
 
         mostrar();
+
+        let notification = '{{ $notification }}';
+        let situacao = $('#situacao').val();
+        if(notification === null && situacao === 3)
+        {
+            $('#data_hora').show();
+        }else{
+            $('#data_hora').hide();
+        }
     </script>
     <script src="{{ asset('js/admin/ocorrencia.js') }}"></script>
 @endsection
