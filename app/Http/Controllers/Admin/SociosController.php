@@ -86,7 +86,9 @@ class SociosController extends Controller
     public function update(Request $request, $id)
     {
         // Verifica a existência de mudanças no operador, caso haja ele atualiza todos as ocorrências (Gerenciamentos)
-        Gerenciamento::where('operador_id', $request->antigo)->where('socio_id', $id)->update(['operador_id' => $request->user_id]);
+        Gerenciamento::where('operador_id', $request->antigo)
+            ->where('socio_id', $id)
+            ->update(['operador_id' => $request->user_id]);
 
         Socio::find($id)->update($request->all());
         try {

@@ -102,6 +102,12 @@
                                     <option value="3">Agendado</option>
                                 </select>
                             </div>
+                            <div class="form-group" id="data_hora" style="display: none;">
+
+                                <label for="dpn">Data do Contato*</label>
+                                <input type="text" class="span2 form-control" id="dpn" name="data_hora"
+                                       autocomplete="off">
+                            </div>
         </form>
 
 
