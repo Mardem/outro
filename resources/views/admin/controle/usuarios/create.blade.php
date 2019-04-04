@@ -39,7 +39,7 @@
 
                         <div class="form-group">
                             <label for="cpf">CPF*:</label>
-                            <input type="text" class="form-control" id="cpf" name="cpf" placeholder=" Digite o CPF" value="{{ old('cpf') }}" required>
+                            <input type="text" class="form-control" id="cpf" name="cpf" placeholder=" Digite o CPF" value="{{ old('cpf') }}" pattern="^\d{3}[\x2E]\d{3}[\x2E]\d{3}[\x2D]\d{2}$" required>
                         </div>
 
                         <div class="form-group">

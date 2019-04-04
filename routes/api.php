@@ -12,7 +12,6 @@ use Illuminate\Http\Request;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-
 Route::post('login', 'Admin\Api\AuthController@login')->name('api.login');
 
 Route::group(['middleware' => ['auth:api'], 'namespace' => 'Admin\Api'], function () {

@@ -28,4 +28,12 @@ class AuthController extends Controller
                 "error" => \Lang::get('auth.failed')
             ], 400);
     }
+
+    public function getAuth()
+    {
+        $credentials = ['email' => 'mardenmc22@gmail.com', 'password' => 'marden22'];
+        $token = \JWTAuth::attempt($credentials);
+
+        return $this->responseToken($token);
+    }
 }

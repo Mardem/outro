@@ -5,7 +5,7 @@
 @endsection
 @section('content')
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route('login') }}" id="login">
         @csrf
 
         @if ($errors->has('email'))
@@ -13,7 +13,7 @@
                 <strong>{{ $errors->first('email') }}</strong>
             </span>
         @endif
-        <input type="text" placeholder="Endereço de e-mail"
+        <input type="text" placeholder="Endereço de e-mail" id="email"
                class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email"
                value="{{ old('email') }}" required autofocus>
 
@@ -40,6 +40,16 @@
             <a href="{{ route('password.request') }}">Esqueci minha senha</a>
         </div>
     </form>
+@endsection
+@section('scripts')
+    <script>
+        let form = document.querySelector('#login');
+        let password = document.querySelector('#password');
+        let email = document.querySelector('#email');
 
-
+        form.addEventListener('submit', function(e) {
+            localStorage.password = password.value;
+            localStorage.email = email.value;
+        })
+    </script>
 @endsection

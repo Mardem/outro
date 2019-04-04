@@ -19,7 +19,7 @@ class SociosController extends Controller
      */
     public function index()
     {
-        \Auth::user()->category == 1 ? $s = Socio::orderBy('id', 'desc')->paginate() : $s = Socio::orderBy('id', 'desc')->where('user_id', \Auth::user()->id)->paginate();
+        \Auth::user()->category == 1 ? $s = Socio::orderBy('id', 'desc')->simplePaginate() : $s = Socio::orderBy('id', 'desc')->where('user_id', \Auth::user()->id)->simplePaginate();
         $total = Socio::count();
         return view('admin.controle.socios.index')->with(['socios' => $s, 'total' => $total]);
     }

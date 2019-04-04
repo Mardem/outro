@@ -36,7 +36,8 @@
 
                         <div class="form-group">
                             @if($request->has('id') && $request->has('name'))
-                                <label for="socios" style="font-size: 20px">Sócio selecionado <b>{{ $request->name }}</b></label>
+                                <label for="socios" style="font-size: 20px">Sócio selecionado
+                                    <b>{{ $request->name }}</b></label>
                                 <input type="hidden" id="socios" name="socio_id" value="{{ $request->id }}">
                             @else
                                 <label for="socios">Sócio*:</label>
@@ -106,6 +107,7 @@
 
 @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="{{ asset('js/admin/datepicker/foundation-datepicker.min.js') }}"></script>
     <script src="{{ asset('js/admin/ocorrencia.min.js') }}"></script>
     <script>
@@ -114,29 +116,39 @@
                 language: 'pt-BR'
             });
 
-            $('#socios').select2({
-                ajax: {
-                    headers: {
-                        "Authorization": "Bearer {{ \Auth::user()->token }}",
-                        "Content-Type": "application/json",
-                    },
-                    url: '{{ route('jsonPartners') }}',
-                    data: function (params) {
-                        return {
-                            socio: params.term
-                        }
-                    },
-                    processResults: function (data) {
-                        return {
-                            results: data.map(function (socio) {
-                                return {id: socio.id, text: socio.nome, user_id: socio.user_id}
-                            })
+            axios.post('{{ route('api.login') }}', {
+                email: localStorage.email,
+                password: localStorage.password
+            }).then(function (response) {
+                // handle success
+                $('#socios').select2({
+                    ajax: {
+                        headers: {
+                            "Authorization": "Bearer " + response.data.token,
+                            "Content-Type": "application/json",
+                        },
+                        url: '{{ route('jsonPartners') }}',
+                        data: function (params) {
+                            return {
+                                socio: params.term
+                            }
+                        },
+                        processResults: function (data) {
+                            return {
+                                results: data.map(function (socio) {
+                                    return {id: socio.id, text: socio.nome, user_id: socio.user_id}
+                                })
+                            }
                         }
                     }
-                }
-            }).on('select2:select', function (e) {
-                let data = e.params.data;
-                $('#userIDSelect').val(data.user_id);
+                }).on('select2:select', function (e) {
+                    let data = e.params.data;
+                    $('#userIDSelect').val(data.user_id);
+                });
+
+            }).catch(function (error) {
+                // handle error
+                console.log(error);
             });
         });
     </script>
