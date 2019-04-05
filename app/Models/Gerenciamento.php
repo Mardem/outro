@@ -58,4 +58,7 @@ class Gerenciamento extends Model
             now()->format('Y-m-d H:i:s');
         }
     }
+
+    // TODO: Criar Query Scopes para os models
+
 }

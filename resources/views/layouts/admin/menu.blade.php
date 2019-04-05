@@ -52,7 +52,7 @@
                         <a class="nav-link @yield('activeSocios')" href="{{ route('socios.index') }}">Sócios</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link @yield('activeImages')" href="{{ route('usuario.index') }}">Imagens</a>
+                        <a class="nav-link @yield('activeImages')" href="{{ route('imagens.index') }}">Imagens</a>
                     </li>
                     @can('admin')
                         <li class="nav-item">

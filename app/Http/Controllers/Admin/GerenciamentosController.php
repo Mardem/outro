@@ -21,6 +21,7 @@ class GerenciamentosController extends Controller
      */
     public function index()
     {
+        // TODO: Melhorar esse código com Query Scope
         if (\Auth::user()->category == 1) {
             $o = Gerenciamento::count();
         } else {
