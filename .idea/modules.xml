@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/../FGS/fgs_codigo_fonte/sistema-web/.idea/sistema-web.iml" filepath="$PROJECT_DIR$/../FGS/fgs_codigo_fonte/sistema-web/.idea/sistema-web.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/solucao-codigo-fonte.iml" filepath="$PROJECT_DIR$/.idea/solucao-codigo-fonte.iml" />
     </modules>
   </component>

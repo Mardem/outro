@@ -38,7 +38,7 @@
                         <p class="card-description">
                             Adicione as imagens neste local
                         </p>
-                        <input type="file" name="images[]" class="form-control" multiple>
+                        <input type="file" id="files" name="images[]" class="form-control" multiple>
                     </div>
                 </div>
             </div>
@@ -65,7 +65,16 @@
             getPartners('{{ route('api.login') }}', '{{ route('jsonPartners') }}');
             let form = document.querySelector('#formImage');
             let btnSumit = document.querySelector('#submit');
-            form.addEventListener('submit', function() {
+            let files = document.querySelector('#files');
+
+            files.addEventListener('change', function (e) {
+                if (this.files[0].size > 20) {
+                    alert("File is too big!");
+                    this.value = "";
+                }
+            });
+
+            form.addEventListener('submit', function () {
                 btnSumit.disabled = true;
                 swal({
                     title: "Okay!",

@@ -107,7 +107,7 @@ class ImagesController extends Controller
         if (empty($partner)) {
             return redirect()->back()->with('error', 'Nenhum sócio encontrado');
         }
-        $image = Image::where('partner_id', $partner->id)->paginate();
-        return $image;
+        $images = Image::where('partner_id', $partner->id)->paginate();
+        return view('admin.controle.imagens.search', compact('images'));
     }
 }

@@ -3,11 +3,11 @@
 namespace App\Providers;
 
 use App\Models\Gerenciamento;
-use App\Models\Image;
 use App\Models\Socio;
 use App\Observers\AtualizarDesignacao;
 use App\Observers\DeleteImageRelation;
 use App\Observers\NovaNotificacao;
+use Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
 
@@ -22,8 +22,6 @@ class AppServiceProvider extends ServiceProvider
     {
         Socio::observe(AtualizarDesignacao::class);
         Gerenciamento::observe(NovaNotificacao::class);
-        Image::observe(DeleteImageRelation::class);
-
         Schema::defaultStringLength(191);
     }
 
@@ -34,6 +32,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        //
+        if ($this->app->environment() !== 'production') {
+            $this->app->register(IdeHelperServiceProvider::class);
+        }
     }
 }
