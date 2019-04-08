@@ -60,29 +60,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="{{ asset('js/admin/helpers/getPartners.js') }}"></script>
+    <script src="{{ asset('js/admin/validateUpload.js') }}"></script>
     <script>
-        $(document).ready(function () {
-            getPartners('{{ route('api.login') }}', '{{ route('jsonPartners') }}');
-            let form = document.querySelector('#formImage');
-            let btnSumit = document.querySelector('#submit');
-            let files = document.querySelector('#files');
 
-            files.addEventListener('change', function (e) {
-                if (this.files[0].size > 20) {
-                    alert("File is too big!");
-                    this.value = "";
-                }
-            });
-
-            form.addEventListener('submit', function () {
-                btnSumit.disabled = true;
-                swal({
-                    title: "Okay!",
-                    text: "Aguarde enquanto suas imagens são enviadas.",
-                    icon: "success"
-                });
-
-            });
-        });
+        getPartners('{{ route('api.login') }}', '{{ route('jsonPartners') }}');
     </script>
 @endsection
