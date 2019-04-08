@@ -37,7 +37,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
         Route::post('/socios/pesquisa', 'SociosController@searchPartner')->name('searchPartner');
         Route::put('/socios/observacao/{socio}', 'SociosController@observation')->name('saveObservation');
         Route::resource('/imagens', 'ImagesController');
-
+        Route::get('/search-images', 'ImagesController@search')->name('imagens.search');
     });
 
     Route::group(['prefix' => 'gerenciamento'], function () {

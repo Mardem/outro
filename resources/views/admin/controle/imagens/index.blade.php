@@ -13,9 +13,8 @@
                             <i class="ti-image text-info icon-lg"></i>
                         </div>
                         <div class="float-right">
-                            <p class="mb-0 text-right">Imagens cadastradas</p>
                             <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">30</h3>
+                                <h3 class="font-weight-medium text-right mb-0">Imagens <br>cadastradas</h3>
                             </div>
                         </div>
                     </div>
@@ -31,6 +30,13 @@
         <div class="col-sm-12 grid-margin strech-card">
             <div class="card">
                 <div class="card-body">
+
+                    <form action="{{ route('imagens.search') }}" method="get" class="form-inline mt-2 mb-4">
+                        <input type="text" name="search" class="form-control w-25 mr-1"
+                               placeholder=" Digite a sua busca">
+                        <button class="btn btn-primary">Pesquisar</button>
+                    </form>
+
                     <span class="float-right">
                         <a href="{{ route('imagens.create') }}" class="btn btn-outline-primary">Nova imagem</a>
                     </span>
@@ -38,8 +44,7 @@
                     <p class="card-description">
                         Veja e apague os imagens do sistema.
                     </p>
-
-                    <table class="table table-striped table-bordered">
+                    <table class="table table-striped">
                         <thead class="text-center">
                         <tr>
                             <td>Sócio</td>
@@ -62,7 +67,13 @@
                                             <div class="dropdown-divider mb-0"></div>
                                             <a class="dropdown-item text-primary p-2" href="{{ route('imagens.show', $image->getKey()) }}">Ver</a>
                                             <div class="dropdown-divider mb-0 mt-0"></div>
-                                            <a class="dropdown-item text-danger p-2" href="#">Apagar</a>
+
+                                            <form action="{{ route('imagens.destroy', $image->getKey()) }}"
+                                                  method="post">
+                                                @method('DELETE')
+                                                @csrf
+                                                <button class="dropdown-item text-danger p-2" href="#">Apagar</button>
+                                            </form>
                                         </div>
                                     </div>
                                 </td>
@@ -70,6 +81,9 @@
                         @endforeach
                         </tbody>
                     </table>
+
+                    {{ $images->links() }}
+
                 </div>
             </div>
         </div>
