@@ -37,9 +37,6 @@
                         <button class="btn btn-primary">Pesquisar</button>
                     </form>
 
-                    <span class="float-right">
-                        <a href="{{ route('imagens.create') }}" class="btn btn-outline-primary">Nova imagem</a>
-                    </span>
                     <h4 class="card-title">Imagens</h4>
                     <p class="card-description">
                         Veja e apague os imagens do sistema.
@@ -55,6 +52,7 @@
                         <tbody class="text-center">
                         @foreach($images as $image)
                             <tr>
+                                <td>{{ $image->id }}</td>
                                 <td>{{ $image->partner->nome }}</td>
                                 <td>{{ $image->date_formated }}</td>
                                 <td>

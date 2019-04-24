@@ -24,7 +24,7 @@ class ImagesController extends Controller
      */
     public function index()
     {
-        $images = Image::simplePaginate();
+        $images = Image::orderByDesc('id')->simplePaginate();
         return view('admin.controle.imagens.index', compact('images'));
     }
 
@@ -35,8 +35,7 @@ class ImagesController extends Controller
      */
     public function create()
     {
-        $partners = Socio::all();
-        return view('admin.controle.imagens.create', compact('partners'));
+        return view('admin.controle.imagens.create');
     }
 
     /**

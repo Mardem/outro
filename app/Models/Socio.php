@@ -6,6 +6,7 @@ use App\User;
 use Eloquent;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Scope;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Carbon;
@@ -161,5 +162,13 @@ class Socio extends Model
         } else {
             return "<b class='text-danger'>Inativo</b>";
         }
+    }
+
+    public function scopeAdmin($query, $user)
+    {
+        if($user->category === User::CATEGORY['ADMINISTRATOR'])
+            return $query->orderBy('id', 'desc');
+
+        return $query->orderBy('id', 'desc')->where('user_id', $user->id);
     }
 }

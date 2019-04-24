@@ -35,9 +35,6 @@
                         <button class="btn btn-primary">Pesquisar</button>
                     </form>
 
-                    <span class="float-right">
-                        <a href="<?php echo e(route('imagens.create')); ?>" class="btn btn-outline-primary">Nova imagem</a>
-                    </span>
                     <h4 class="card-title">Imagens</h4>
                     <p class="card-description">
                         Veja e apague os imagens do sistema.
@@ -53,6 +50,7 @@
                         <tbody class="text-center">
                         <?php $__currentLoopData = $images; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $image): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <tr>
+                                <td><?php echo e($image->id); ?></td>
                                 <td><?php echo e($image->partner->nome); ?></td>
                                 <td><?php echo e($image->date_formated); ?></td>
                                 <td>

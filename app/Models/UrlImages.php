@@ -39,35 +39,15 @@ class UrlImages extends Model
 
 
     // Acessors
-    public function getThumbnailDropboxAttribute() // thumbnail_dropbox
-    {
-        $dropbox = $this->connectDropbox();
-        //Available sizes: 'thumb', 'small', 'medium', 'large', 'huge'
-        $size = 'large'; //Default size
-
-        //Available formats: 'jpeg', 'png'
-        $format = 'jpeg'; //Default format
-
-        $file = $dropbox->getThumbnail($this->attributes['file'], $size, $format);
-
-        //Get File Contents
-        $contents = $file->getContents();
-        $name = str_random(9);
-        file_put_contents(public_path() . "/images/thumbnails/" . $name . ".jpg", $contents);
-
-        $path = "/images/thumbnails/" . $name . ".jpg";
-        return $path;
-    }
-
     public function getLinkDropboxAttribute() // link_dropbox
     {
         $dropbox = $this->connectDropbox();
         $temporaryLink = $dropbox->getTemporaryLink($this->attributes['file']);
 
-//Get File Metadata
+        //Get File Metadata
         $file = $temporaryLink->getMetadata();
 
-//Get Link
+        //Get Link
         return $temporaryLink->getLink();
     }
 

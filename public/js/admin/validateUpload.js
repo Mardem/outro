@@ -10,7 +10,7 @@ $(document).ready(function () {
             data += this.files[i].size;
         }
 
-        if (data > 625000) {
+        if (data > 6250000) {
 
             swal({
                 title: "Ops...",

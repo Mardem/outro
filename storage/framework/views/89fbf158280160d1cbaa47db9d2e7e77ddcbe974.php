@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title><?php echo e(env('APP_NAME')); ?></title>
+    <title><?php echo e(env('APP_NAME', 'Solução - Assessoria de Cobrança')); ?></title>
     <link rel="stylesheet" href="<?php echo e(asset('admin/vendors/iconfonts/mdi/css/materialdesignicons.min.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('admin/vendors/css/vendor.bundle.base.css')); ?>">
     <link rel="stylesheet" href="<?php echo e(asset('admin/vendors/css/vendor.bundle.addons.css')); ?>">
