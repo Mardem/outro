@@ -22,16 +22,6 @@ trait SoftDeletes
     }
 
     /**
-     * Initialize the soft deleting trait for an instance.
-     *
-     * @return void
-     */
-    public function initializeSoftDeletes()
-    {
-        $this->dates[] = $this->getDeletedAtColumn();
-    }
-
-    /**
      * Force a hard delete on a soft deleted model.
      *
      * @return bool|null
@@ -59,7 +49,7 @@ trait SoftDeletes
         if ($this->forceDeleting) {
             $this->exists = false;
 
-            return $this->setKeysForSaveQuery($this->newModelQuery())->forceDelete();
+            return $this->newModelQuery()->where($this->getKeyName(), $this->getKey())->forceDelete();
         }
 
         return $this->runSoftDelete();
@@ -72,7 +62,7 @@ trait SoftDeletes
      */
     protected function runSoftDelete()
     {
-        $query = $this->setKeysForSaveQuery($this->newModelQuery());
+        $query = $this->newModelQuery()->where($this->getKeyName(), $this->getKey());
 
         $time = $this->freshTimestamp();
 
