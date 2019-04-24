@@ -52,7 +52,6 @@
                         <tbody class="text-center">
                         @foreach($images as $image)
                             <tr>
-                                <td>{{ $image->id }}</td>
                                 <td>{{ $image->partner->nome }}</td>
                                 <td>{{ $image->date_formated }}</td>
                                 <td>
