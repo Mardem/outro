@@ -92,7 +92,7 @@
                             </tbody>
                         </table>
                     </div>
-                    <?php echo e($socios->links()); ?>
+                        <?php echo e($socios->links()); ?>
 
                 </div>
             </div>

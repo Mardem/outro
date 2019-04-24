@@ -17,7 +17,6 @@
                         @foreach($urls as $url)
                             <div class="col-sm-3">
                                 <div class="card">
-{{--                                    <img class="card-img-top" src="{{ $url->thumbnail_dropbox }}" alt="Card image cap">--}}
                                     <div class="card-body">
                                         <p class="card-text">
                                             Imagem inserida em {{ $url->date_created_formated }}

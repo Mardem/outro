@@ -27,7 +27,8 @@
                             <div class="cad-title">
                                 <nav class="breadcrumb" style="margin: 0">
                                     <a class="breadcrumb-item" href="{{ route('socios.index') }}">Controle</a>
-                                    <span class="breadcrumb-item active">Visualizando sócio <b>{{ $socio->nome }}</b></span>
+                                    <span
+                                        class="breadcrumb-item active">Visualizando sócio <b>{{ $socio->nome }}</b></span>
                                 </nav>
                             </div>
                         </div>
@@ -39,6 +40,9 @@
                 <div class="col-sm-12" align="center">
                     <a href="{{ route('ocorrencia.create', ['id' => $socio->id, 'name' => $socio->nome]) }}"
                        class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Nova ocorrência</a>
+
+                    <a href="{{ route('imagens.create', ['partner_id' => $socio->id]) }}"
+                       class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Adicionar imagem</a>
                 </div>
             </div>
 
@@ -99,7 +103,8 @@
                             </div>
                             <div class="form-group">
                                 <label for="cpf">CPF*:</label>
-                                <input type="text" class="form-control" id="cpf" name="cpf_cnpj" placeholder=" Digite o CPF"
+                                <input type="text" class="form-control" id="cpf" name="cpf_cnpj"
+                                       placeholder=" Digite o CPF"
                                        value="{{ $socio->cpf_cnpj }}" required>
                             </div>
 
@@ -237,7 +242,8 @@
                             @csrf
                             @method('PUT')
                             <label for="observacao" style="font-weight: bold">Observação</label>
-                            <textarea name="observacao" placeholder=" Digite sua observação" id="observacao" rows="4" class="form-control">{{ $socio->observacao }}</textarea>
+                            <textarea name="observacao" placeholder=" Digite sua observação" id="observacao" rows="4"
+                                      class="form-control">{{ $socio->observacao }}</textarea>
                             <button class="btn btn-success mt-1">Salvar</button>
                         </form>
                     </div>
@@ -315,28 +321,33 @@
 
                             <div class="col-md-3">
                                 <label for="fone10">Fone 10:</label>
-                                <input type="text" class="form-control" id="fone10" value="{{ $socio->fone10 }}" disabled>
+                                <input type="text" class="form-control" id="fone10" value="{{ $socio->fone10 }}"
+                                       disabled>
                             </div>
                         </div>
 
                         <div class="row clearfix">
                             <div class="col-md-3">
                                 <label for="fone11">Fone 11:</label>
-                                <input type="text" class="form-control" id="fone11" value="{{ $socio->fone11 }}" disabled>
+                                <input type="text" class="form-control" id="fone11" value="{{ $socio->fone11 }}"
+                                       disabled>
                             </div>
                             <div class="col-md-3">
                                 <label for="fone12">Fone 12:</label>
-                                <input type="text" class="form-control" id="fone12" value="{{ $socio->fone12 }}" disabled>
+                                <input type="text" class="form-control" id="fone12" value="{{ $socio->fone12 }}"
+                                       disabled>
                             </div>
 
                             <div class="col-md-3">
                                 <label for="fone13">Fone 13:</label>
-                                <input type="text" class="form-control" id="fone13" value="{{ $socio->fone13 }}" disabled>
+                                <input type="text" class="form-control" id="fone13" value="{{ $socio->fone13 }}"
+                                       disabled>
                             </div>
 
                             <div class="col-md-3">
                                 <label for="fone14">Fone 14:</label>
-                                <input type="text" class="form-control" id="fone14" value="{{ $socio->fone14 }}" disabled>
+                                <input type="text" class="form-control" id="fone14" value="{{ $socio->fone14 }}"
+                                       disabled>
                             </div>
                         </div>
                     </div>
@@ -390,7 +401,7 @@
 @section('scripts')
 
     <script src="{{ asset('js/admin/socios.js') }}"></script>
-        <script src="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.js"></script>
+    <script src="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.js"></script>
     <script>
         function moeda(z) {
             v = z.value;

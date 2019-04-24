@@ -11,25 +11,7 @@
 
     <form action="{{ route('imagens.store') }}" enctype="multipart/form-data" id="formImage" method="post">
         @csrf
-        <div class="row">
-            <div class="col-sm-12 grid-margin strech-card">
-                <div class="card">
-                    <div class="card-body">
-                        <h4 class="card-title">Vínculo</h4>
-                        <p class="card-description">
-                            Preencha os campos obrigatórios
-                        </p>
-
-                        <div class="form-group">
-                            <label for="partner_id">Sócio*:</label>
-                            <select name="partner_id" id="partner_id" class="form-control" required>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-
+        <input name="partner_id" id="partner_id" class="form-control" value="{{ request()->get('partner_id')}}" type="hidden">
         <div class="row">
             <div class="col-sm-12 grid-margin strech-card">
                 <div class="card">
@@ -61,8 +43,4 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="{{ asset('js/admin/helpers/getPartners.js') }}"></script>
     <script src="{{ asset('js/admin/validateUpload.js') }}"></script>
-    <script>
-
-        getPartners('{{ route('api.login') }}', '{{ route('jsonPartners') }}');
-    </script>
 @endsection

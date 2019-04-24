@@ -8,6 +8,9 @@ use App\Models\Gerenciamento;
 use App\Models\Socio;
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Input;
 use Mockery\Exception;
 
 class SociosController extends Controller
@@ -19,9 +22,11 @@ class SociosController extends Controller
      */
     public function index()
     {
-        \Auth::user()->category == 1 ? $s = Socio::orderBy('id', 'desc')->simplePaginate() : $s = Socio::orderBy('id', 'desc')->where('user_id', \Auth::user()->id)->simplePaginate();
+        $data = Cache::remember('socios', 0, function() {
+            return Socio::simplePaginate();
+        });
         $total = Socio::count();
-        return view('admin.controle.socios.index')->with(['socios' => $s, 'total' => $total]);
+        return view('admin.controle.socios.index')->with(['socios' => $data, 'total' => $total]);
     }
 
     /**

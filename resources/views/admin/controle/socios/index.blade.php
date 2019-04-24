@@ -93,7 +93,7 @@
                             </tbody>
                         </table>
                     </div>
-                    {{ $socios->links() }}
+                        {{ $socios->links() }}
                 </div>
             </div>
         </div>

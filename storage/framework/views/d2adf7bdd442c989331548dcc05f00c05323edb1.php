@@ -15,7 +15,6 @@
                         <?php $__currentLoopData = $urls; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $url): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                             <div class="col-sm-3">
                                 <div class="card">
-
                                     <div class="card-body">
                                         <p class="card-text">
                                             Imagem inserida em <?php echo e($url->date_created_formated); ?>
@@ -32,4 +31,5 @@
         </div>
     </div>
 <?php $__env->stopSection(); ?>
+
 <?php echo $__env->make('layouts.admin.main', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
