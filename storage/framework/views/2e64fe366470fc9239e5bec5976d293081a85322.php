@@ -40,9 +40,8 @@
                     <p class="card-description">
                         Veja, edite e apague os sócios do sistema.
                     </p>
-                    <form action="<?php echo e(route('searchPartner')); ?>" method="post" class="form-inline mt-2 mb-4">
-                        <?php echo csrf_field(); ?>
-                        <input type="text" name="socio" class="form-control w-25 mr-1" placeholder=" Digite a sua busca">
+                    <form action="<?php echo e(route('searchPartner')); ?>" method="get" class="form-inline mt-2 mb-4">
+                        <input type="text" name="socio" class="form-control w-25 mr-1" placeholder=" Digite a sua busca" required>
                         <button class="btn btn-primary">Pesquisar</button>
                     </form>
                     <div class="table-responsive">

@@ -122,20 +122,6 @@ class SociosController extends Controller
         }
     }
 
-    public function searchPartner(Request $request)
-    {
-        $user = \Auth::user()->id;
-
-        $result = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")
-            ->with('operador')
-            ->admin(\Auth::user())
-            ->orWhere('titulo', 'LIKE', "%{$request->socio}%")
-            ->paginate();
-
-        $total = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->admin(\Auth::user())->count();
-        return view('admin.controle.socios.index')->with(['socios' => $result, 'total' => $total]);
-    }
-
     public function observation(UpdateSocioObs $obs, Socio $socio)
     {
         try {
