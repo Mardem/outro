@@ -23,9 +23,9 @@ class SociosController extends Controller
     public function index()
     {
         $data = Cache::remember('socios', 0, function() {
-            return Socio::simplePaginate();
+            return Socio::admin(\Auth::user())->simplePaginate();
         });
-        $total = Socio::count();
+        $total = Socio::admin(\Auth::user())->count();
         return view('admin.controle.socios.index')->with(['socios' => $data, 'total' => $total]);
     }
 
@@ -122,23 +122,11 @@ class SociosController extends Controller
         }
     }
 
-    public function searchPartner(Request $request)
-    {
-        $user = \Auth::user()->id;
-        $result = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")
-            ->with('operador')
-            ->where('user_id', $user)
-            ->orWhere('titulo', 'LIKE', "%{$request->socio}%")
-            ->paginate();
-        $total = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->count();
-        return view('admin.controle.socios.index')->with(['socios' => $result, 'total' => $total]);
-    }
-
     public function observation(UpdateSocioObs $obs, Socio $socio)
     {
         try {
             $socio->update($obs->all());
-            return redirect()->back()->with('success', 'Observação atualizado com sucesso.');
+            return redirect()->back()->with('success', 'Observação atualizada com sucesso.');
         } catch (\Exception $e) {
             session()->flash('error', $e->getMessage());
             return redirect()->back()->withInput();
