@@ -52,10 +52,11 @@
                     <li class="nav-item">
                         <a class="nav-link <?php echo $__env->yieldContent('activeSocios'); ?>" href="<?php echo e(route('socios.index')); ?>">Sócios</a>
                     </li>
+
+                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin')): ?>
                     <li class="nav-item">
                         <a class="nav-link <?php echo $__env->yieldContent('activeImages'); ?>" href="<?php echo e(route('imagens.index')); ?>">Imagens</a>
                     </li>
-                    <?php if (app(\Illuminate\Contracts\Auth\Access\Gate::class)->check('admin')): ?>
                         <li class="nav-item">
                             <a class="nav-link <?php echo $__env->yieldContent('activeUsuarios'); ?>" href="<?php echo e(route('usuario.index')); ?>">Usuários</a>
                         </li>
