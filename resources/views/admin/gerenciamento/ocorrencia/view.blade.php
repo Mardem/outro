@@ -94,12 +94,11 @@
                                         <option value="0">Sócio</option>
                                     @endif
 
-                                    <option disabled></option>
-                                    <option disabled>Outras opções</option>
-
-                                    <option value="1">Resolvido</option>
-                                    <option value="2">Não Resolvido</option>
-                                    <option value="3">Agendado</option>
+                                    <optgroup label="Outras opções">
+                                        <option value="1">Resolvido</option>
+                                        <option value="2">Não Resolvido</option>
+                                        <option value="3">Agendado</option>
+                                    </optgroup>
                                 </select>
                             </div>
                             <div class="form-group" id="data_hora" style="display: none;">
