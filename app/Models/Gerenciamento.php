@@ -85,6 +85,7 @@ class Gerenciamento extends Model
         return $date->format('d/m/Y');
     }
 
+
     public function getTitleAttribute($value)
     {
         return str_limit($value, 69, '...');
@@ -100,5 +101,11 @@ class Gerenciamento extends Model
     }
 
     // TODO: Criar Query Scopes para os models
+    public function scopeProfile($query, $profile)
+    {
+        if($profile == 1)
+            return $query;
 
+        return $query->where('operador_id', \Auth::user()->id)->count();
+    }
 }

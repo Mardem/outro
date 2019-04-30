@@ -15,7 +15,7 @@
                         <div class="float-right">
                             <p class="mb-0 text-right">Total de ocorrências</p>
                             <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">{{ $ocorrencias }}</h3>
+                                <h3 class="font-weight-medium text-right mb-0">{{ $ocorrencias->total() }}</h3>
                             </div>
                         </div>
                     </div>
@@ -38,58 +38,36 @@
                     <p class="card-description">
                         Veja, edite e apague as ocorrências do sistema.
                     </p>
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>Sócio</th>
+                            <th>Data da última ocorrência</th>
+                            <th>Ações</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        @foreach($ocorrencias as $ocorrencia)
+                            <tr>
+                                <td>{{ $ocorrencia->socio->nome }}</td>
+                                <td>{{ $ocorrencia->data_ocorrencia_formated }}</td>
+                                <td>
+                                    <a href="{{ route('ocorrencia.show', $ocorrencia->id) }}" class="btn btn-primary btn-sm">Ver</a>
+                                    <form action="{{ route('ocorrencia.destroy', $ocorrencia->id) }}" method="POST" style="display: initial">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button class="btn btn-danger btn-sm" type="submit">Apagar</button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
 
-                    <table id="tableDataTable" class="table table-striped table-bordered"></table>
-                    <form action="" method="post" class="hidden" id="deleteData">
-                        @csrf
-                        @method('DELETE')
-                    </form>
+                    {{ $ocorrencias->links() }}
                 </div>
             </div>
         </div>
     </div>
 
-@endsection
-
-@section('styles')
-    <link rel="stylesheet" href="{{ asset('admin/vendors/dataTable/css/jquery.dataTables.css') }}">
-@endsection
-
-@section('scripts')
-    @routes
-    <script src="{{ asset('js/ziggy.js') }}"></script>
-    <script src="{{ asset('admin/vendors/dataTable/js/dataTables.bootstrap4.min.js') }}"></script>
-    <script src="{{ asset('js/admin/helper.js') }}"></script>
-
-    <script>
-
-        let ver = "<a href='javascript:void(0);' class='btn btn-outline-primary btn-sm'>Ver</a>";
-
-                @if(\Auth::user()->category == 1)
-        let apagar = "<a href='javascript:void(0);' class='btn btn-outline-danger btn-sm'>Apagar</a>";
-                @else
-        let apagar = "<a href='javascript:void(0);' class='btn btn-outline-danger btn-sm' style='display: none;'></a>";
-                @endif
-
-
-        let columns = [
-            {data: 'id'},
-            {data: 'socio.nome', title: 'Sócio'},
-            {
-                data: 'data_ocorrencia',
-                title: 'Data da Última Ocorrência',
-                "render": function (data) {
-                    return convertDateToBR(data);
-                }
-            },
-            {
-                data: null,
-                title: 'Ações',
-                createdCell: function (td, cellData, rowData, row, col) {
-                    $(td).html(ver + apagar);
-                }
-            }
-        ];
-        jsonDataTables("{{ route('jsonOccurrencies') }}", "{{ \Auth::user()->token }}", columns, 'ocorrencia');
-    </script>
 @endsection

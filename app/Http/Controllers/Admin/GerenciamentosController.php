@@ -21,13 +21,8 @@ class GerenciamentosController extends Controller
      */
     public function index()
     {
-        // TODO: Melhorar esse código com Query Scope
-        if (\Auth::user()->category == 1) {
-            $o = Gerenciamento::count();
-        } else {
-            $o = Gerenciamento::where('operador_id', \Auth::user()->id)->count();
-        }
-        return view('admin.gerenciamento.ocorrencia.index')->with(['ocorrencias' => $o]);
+        $ocorrencias = Gerenciamento::profile(\Auth::user()->category)->paginate();
+        return view('admin.gerenciamento.ocorrencia.index', compact('ocorrencias'));
     }
 
     /**
@@ -60,7 +55,7 @@ class GerenciamentosController extends Controller
 
             $g = Gerenciamento::create($request->all());
 
-            return redirect()->route('ocorrencia.show', ['id' => $g])->with("success", "Ocorrência criada com sucesso!");
+            return redirect()->route('ocorrencia.show', ['id' => $g->id])->with("success", "Ocorrência criada com sucesso!");
         } catch (Exception $e) {
             return redirect()->back()->with("error", "Falha ao criar a ocorrência: " . $e->getMessage());
         }
@@ -75,13 +70,12 @@ class GerenciamentosController extends Controller
     public function show($id)
     {
         try {
-            $s = Socio::all();
             $o = Gerenciamento::find($id);
             $not = Notification::where('gerenciamento_id', $o->id)->first();
             $operador = User::find($o->operador_id);
 
             $m = Message::where('ocorrencia_id', $id)->paginate();
-            return view('admin.gerenciamento.ocorrencia.view')->with(['ocorrencia' => $o, 'notification' => $not, 'operador' => $operador, 'socios' => $s, 'mensagens' => $m]);
+            return view('admin.gerenciamento.ocorrencia.view')->with(['ocorrencia' => $o, 'notification' => $not, 'operador' => $operador, 'mensagens' => $m]);
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível econtrar esta ocorrência: ' . $e->getMessage());
         }
