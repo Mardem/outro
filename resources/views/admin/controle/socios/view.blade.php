@@ -234,22 +234,24 @@
 
         </form>
 
-        <div class="row">
-            <div class="col-sm-12 grid-margin strech-card">
-                <div class="card">
-                    <div class="card-body" id="observation">
-                        <form action="{{ route('saveObservation', [$socio->getKey()]) }}" method="post">
-                            @csrf
-                            @method('PUT')
-                            <label for="observacao" style="font-weight: bold">Observação</label>
-                            <textarea name="observacao" placeholder=" Digite sua observação" id="observacao" rows="4"
-                                      class="form-control">{{ $socio->observacao }}</textarea>
-                            <button class="btn btn-success mt-1">Salvar</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
+		@can('admin')
+			<div class="row">
+				<div class="col-sm-12 grid-margin strech-card">
+					<div class="card">
+						<div class="card-body" id="observation">
+							<form action="{{ route('saveObservation', [$socio->getKey()]) }}" method="post">
+								@csrf
+								@method('PUT')
+								<label for="observacao" style="font-weight: bold">Observação</label>
+								<textarea name="observacao" placeholder=" Digite sua observação" id="observacao" rows="4"
+										  class="form-control">{{ $socio->observacao }}</textarea>
+								<button class="btn btn-success mt-1">Salvar</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		@endcan
 
         <div class="row">
             <div class="col-sm-12 grid-margin strech-card">
