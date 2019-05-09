@@ -113,6 +113,12 @@ class User extends Authenticatable implements JWTSubject
         ];
     }
 
+    # ---------------- Scopes ----------------
+    public function scopeOperator($query)
+    {
+        return $query->where('category', '=', self::CATEGORY['OPERATOR']);
+    }
+
 }
 
 class RedefinirSenha extends ResetPassword

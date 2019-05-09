@@ -213,19 +213,11 @@
                                        placeholder=" Complemento" value="{{ $socio->complemento }}">
                             </div>
 
-                            <div class="form-group" align="center">
+                            <div class="form-group text-center">
                                 <label for="">Data de Designação para o operador ocorreu em:</label>
                                 <h5>{{ $socio->data_designacao_formated }}</h5>
                             </div>
-
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            @can('admin')
-                <div class="row">
-                    <div class="col-sm-12 grid-margin strech-card">
                         <div class="card">
                             <div class="card-body">
                                 <button class="btn btn-block btn-outline-success" type="submit" id="salvar">Atualizar
@@ -235,11 +227,39 @@
                         </div>
                     </div>
                 </div>
-            @endcan
+            </div>
         </form>
-
         <div class="row">
-            <div class="col-sm-12 grid-margin strech-card">
+
+            <div class="col-sm-6 grid-margin strech-card">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="form-group">
+                            <form action="{{ route('direct.partner-change-status', $socio->id) }}" method="post">
+                                @csrf
+                                <label for="situacao">Situação</label>
+                                <select name="situacao" id="situacao" class="form-control">
+                                    <optgroup label="Situação atual">
+                                        <option value="{{ $socio->situacao }}">{!! $socio->situacao_formated !!}</option>
+                                    </optgroup>
+                                    <optgroup label="Outras situações">
+                                        <option value="0">Ativo</option>
+                                        <option value="1">Inativo</option>
+                                    </optgroup>
+                                </select>
+                                <button class="btn btn-outline-success mt-2">Mudar</button>
+                            </form>
+                        </div>
+
+                        <div class="form-group text-center">
+                            <label for="">Situação atual</label>
+                            <h5>{!! $socio->situacao_formated !!}</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-6 grid-margin strech-card">
                 <div class="card">
                     <div class="card-body" id="observation">
 
@@ -269,6 +289,9 @@
                 </div>
             </div>
         </div>
+
+
+
 
 
         <div class="row">
@@ -416,9 +439,7 @@
     <link rel="stylesheet" type="text/css" href="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.css"/>
 @endsection
 @section('scripts')
-
     <script src="{{ asset('js/admin/socios.js') }}"></script>
-    <script src="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.js"></script>
     <script>
         function moeda(z) {
             v = z.value;
@@ -433,6 +454,7 @@
     </script>
 
     @if(\Auth::user()->category == 2)
+        <script src="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.js"></script>
         <script src="{{ asset('js/admin/trip.js') }}"></script>
     @endif
 @endsection

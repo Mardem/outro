@@ -135,6 +135,8 @@ class Socio extends Model
         'observacao'
     ];
 
+    # ---------------- Relacionamentos ----------------
+
     public function gerenciamentos()
     {
         return $this->hasMany(Gerenciamento::class);
@@ -145,7 +147,9 @@ class Socio extends Model
         return $this->belongsTo(User::class, 'user_id');
     }
 
-    public function getDataDesignacaoFormatedAttribute()
+    # ---------------- Accessor ----------------
+
+    public function getDataDesignacaoFormatedAttribute() // data_designacao_formated
     {
         if (empty($this->attributes['designado'])) {
             return "<i class='text-danger'>Não registrado</i>";
@@ -155,7 +159,7 @@ class Socio extends Model
         return $date->format('d/m/Y');
     }
 
-    public function getSituacaoFormatedAttribute()
+    public function getSituacaoFormatedAttribute() // situacao_formated
     {
         if($this->attributes['situacao'] == 0) {
             return "<b class='text-success'>Ativo</b>";
@@ -163,6 +167,8 @@ class Socio extends Model
             return "<b class='text-danger'>Inativo</b>";
         }
     }
+
+    # ---------------- Scopes ----------------
 
     public function scopeAdmin($query, $user)
     {

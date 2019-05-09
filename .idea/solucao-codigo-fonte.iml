@@ -126,5 +126,6 @@
     <orderEntry type="library" name="select2" level="application" />
     <orderEntry type="library" name="hashids" level="application" />
     <orderEntry type="library" name="axios" level="application" />
+    <orderEntry type="library" name="trip" level="application" />
   </component>
 </module>

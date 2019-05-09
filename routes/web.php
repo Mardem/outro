@@ -51,6 +51,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
 
     Route::namespace('Single')->name('direct.')->group(function(){
         Route::get('ocurrency-direct-create', 'OccurrencyDirectController')->name('occurrency.index');
+
+        Route::namespace('Partner')->group(function() {
+            Route::post('partner-change-status/{partner}', 'PartnerChangeStatusController')->name('partner-change-status');
+        });
     });
 
     Route::group(['prefix' => 'contato'], function () {

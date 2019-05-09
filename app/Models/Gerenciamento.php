@@ -109,7 +109,7 @@ class Gerenciamento extends Model
         }
     }
 
-    # ---------------- Relacionamentos ----------------
+    # ---------------- Scopes ----------------
 
     public function scopeProfile($query, $profile)
     {

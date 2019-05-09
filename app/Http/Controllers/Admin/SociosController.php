@@ -70,11 +70,11 @@ class SociosController extends Controller
     public function show($id)
     {
         try {
-            $o = User::where('category', '2')->get();
-            $s = Socio::find($id);
-            $g = $s->gerenciamentos()->paginate();
+            $operadores = User::operator()->get();
+            $socio = Socio::find($id);
+            $ocorrencias = $socio->gerenciamentos()->paginate();
 
-            return view('admin.controle.socios.view')->with(['socio' => $s, 'operadores' => $o, 'ocorrencias' => $g]);
+            return view('admin.controle.socios.view', compact('socio', 'operadores', 'ocorrencias'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível econtrar este sócio: ' . $e->getMessage());
         }
