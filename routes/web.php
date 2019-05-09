@@ -50,7 +50,7 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
     });
 
     Route::namespace('Single')->name('direct.')->group(function(){
-        Route::get('ocurrency-direct-create', 'OccurrencyDirectController@index')->name('occurrency.index');
+        Route::get('ocurrency-direct-create', 'OccurrencyDirectController')->name('occurrency.index');
     });
 
     Route::group(['prefix' => 'contato'], function () {

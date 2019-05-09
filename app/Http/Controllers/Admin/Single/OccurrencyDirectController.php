@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 
 class OccurrencyDirectController extends Controller
 {
-    public function index(Request $request)
+    public function __invoke(Request $request)
     {
         $request['situacao'] = 2;
         $occurrency = Gerenciamento::create($request->all());

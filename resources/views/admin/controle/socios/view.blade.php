@@ -15,59 +15,45 @@
             </div>
         @endif
 
-            <div class="row">
-                <div class="col-sm-12 grid-margin-strech-card mb-1">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="cad-title">
-                                <nav class="breadcrumb" style="margin: 0">
-                                    <a class="breadcrumb-item" href="{{ route('socios.index') }}">Controle</a>
-                                    <span
-                                        class="breadcrumb-item active">Visualizando sócio <b>{{ $socio->nome }}</b></span>
-                                </nav>
-                            </div>
+        <div class="row">
+            <div class="col-sm-12 grid-margin-strech-card mb-1">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="cad-title">
+                            <nav class="breadcrumb" style="margin: 0">
+                                <a class="breadcrumb-item" href="{{ route('socios.index') }}">Controle</a>
+                                <span
+                                    class="breadcrumb-item active">Visualizando sócio <b>{{ $socio->nome }}</b></span>
+                            </nav>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
 
+
+        <div class="row">
+            <div class="col-sm-6 text-center">
+                <form action="{{ route('direct.occurrency.index') }}" method="get">
+                    <input type="hidden" name="socio_id" value="{{ $socio->id }}">
+                    <input type="hidden" name="operador_id" value="{{ $socio->operador->id }}">
+                    <input type="hidden" name="partner_name" value="{{ $socio->nome }}">
+                    <button class="btn btn-outline-primary mb-3 mt-3">Nova ocorrência</button>
+                </form>
+            </div>
+            <div class="col-sm-6 text-center">
+                <a href="{{ route('imagens.create', ['partner_id' => $socio->id]) }}"
+                   class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Adicionar imagem</a>
+            </div>
+        </div>
+
+        <form action="{{ route('socios.update', ['id' => $socio->id]) }}" method="post" id="form-send">
+            @csrf
+            @method('PUT')
+
+            <input type="hidden" name="antigo" value="{{ $socio->user_id }}">
 
             <div class="row">
-                <div class="col-sm-6 text-center">
-                    <form action="{{ route('direct.occurrency.index') }}" method="get">
-                        <input type="hidden" name="socio_id" value="{{ $socio->id }}">
-                        <input type="hidden" name="operador_id" value="{{ $socio->operador->id }}">
-                        <input type="hidden" name="partner_name" value="{{ $socio->nome }}">
-                        <button class="btn btn-outline-primary mb-3 mt-3">Nova ocorrência</button>
-                    </form>
-                </div>
-                <div class="col-sm-6 text-center">
-                    <a href="{{ route('imagens.create', ['partner_id' => $socio->id]) }}"
-                       class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Adicionar imagem</a>
-                </div>
-            </div>
-
-{{--            <div class="row">--}}
-{{--                <div class="col-sm-12" align="center">--}}
-{{--                    <form action="{{ route('direct.occurrency.index') }}" method="get">--}}
-{{--                        @csrf--}}
-{{--                        <input type="text" name="partner">--}}
-{{--                        <button>send</button>--}}
-{{--                    </form>--}}
-{{--                    <a href="{{ route('ocorrencia.create', ['id' => $socio->id, 'name' => $socio->nome]) }}" class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Nova ocorrência</a>--}}
-{{--                    <a href="{{ route('imagens.create', ['partner_id' => $socio->id]) }}"--}}
-{{--                       class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Adicionar imagem</a>--}}
-{{--                </div>--}}
-{{--            </div>--}}
-
-
-            <form action="{{ route('socios.update', ['id' => $socio->id]) }}" method="post" id="form-send">
-                @csrf
-                @method('PUT')
-
-                <input type="hidden" name="antigo" value="{{ $socio->user_id }}">
-
-                <div class="row">
                 <div class="col-sm-6 grid-margin strech-card">
 
                     <div class="card">
@@ -250,27 +236,40 @@
                     </div>
                 </div>
             @endcan
-
         </form>
 
-		@can('admin')
-			<div class="row">
-				<div class="col-sm-12 grid-margin strech-card">
-					<div class="card">
-						<div class="card-body" id="observation">
-							<form action="{{ route('saveObservation', [$socio->getKey()]) }}" method="post">
-								@csrf
-								@method('PUT')
-								<label for="observacao" style="font-weight: bold">Observação</label>
-								<textarea name="observacao" placeholder=" Digite sua observação" id="observacao" rows="4"
-										  class="form-control">{{ $socio->observacao }}</textarea>
-								<button class="btn btn-success mt-1">Salvar</button>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
-		@endcan
+        <div class="row">
+            <div class="col-sm-12 grid-margin strech-card">
+                <div class="card">
+                    <div class="card-body" id="observation">
+
+                        @can('operador')
+                            <label for="observacao" style="font-weight: bold">Observação</label>
+                            <div class="card">
+                                <div class="card-body">
+                                    <p>
+                                        {{ $socio->observacao }}
+                                    </p>
+                                </div>
+                            </div>
+                        @endcan
+
+                        @can('admin')
+                            <form action="{{ route('saveObservation', [$socio->getKey()]) }}" method="post">
+                                @csrf
+                                @method('PUT')
+                                <label for="observacao" style="font-weight: bold">Observação</label>
+                                <textarea name="observacao" placeholder=" Digite sua observação" id="observacao"
+                                          rows="4"
+                                          class="form-control">{{ $socio->observacao }}</textarea>
+                                <button class="btn btn-success mt-1">Salvar</button>
+                            </form>
+                        @endcan
+                    </div>
+                </div>
+            </div>
+        </div>
+
 
         <div class="row">
             <div class="col-sm-12 grid-margin strech-card">
@@ -391,12 +390,9 @@
                                 </thead>
                                 <tbody>
                                 @foreach($ocorrencias as $ocorrencia)
-                                    @php
-                                        $date = new Date($ocorrencia->data_ocorrencia);
-                                    @endphp
                                     <tr>
-                                        <td>{{ $date->format('d/m/Y') }}</td>
-                                        <td>{{ $ocorrencia->titulo }}</td>
+                                        <td>{{ $ocorrencia->data_ocorrencia_formated }}</td>
+                                        <td>{{ $ocorrencia->titulo ?? '...' }}</td>
                                         <td>
                                             <a href="{{ route('ocorrencia.show', ['id' => $ocorrencia->id]) }}"
                                                class="btn btn-outline-primary">Ver</a>

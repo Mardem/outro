@@ -67,19 +67,26 @@ class Gerenciamento extends Model
         'data_hora',
     ];
 
+    # ---------------- Relacionamentos ----------------
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class, 'ocorrencia_id');
+    }
+
     public function socio()
     {
         return $this->belongsTo(Socio::class);
     }
 
-    public function getDateTimeNotifyAttribute()
+    # ---------------- Accessor ----------------
+    public function getDateTimeNotifyAttribute() // date_time_notify
     {
-        # Teste
         $date = new Date($this->attributes['data_hora']);
         return $date->format('d/m/Y H:i:s');
     }
 
-    public function getDataOcorrenciaFormatedAttribute()
+    public function getDataOcorrenciaFormatedAttribute() // data_ocorrencia_formated
     {
         $date = new Date($this->attributes['data_ocorrencia']);
         return $date->format('d/m/Y');
@@ -91,6 +98,8 @@ class Gerenciamento extends Model
         return str_limit($value, 69, '...');
     }
 
+    # ---------------- Mutator ----------------
+
     public function setDataHoraAttribute($data)
     {
         if (!is_null($data)) {
@@ -100,7 +109,8 @@ class Gerenciamento extends Model
         }
     }
 
-    // TODO: Criar Query Scopes para os models
+    # ---------------- Relacionamentos ----------------
+
     public function scopeProfile($query, $profile)
     {
         if($profile == 1)

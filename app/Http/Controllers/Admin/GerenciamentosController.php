@@ -71,9 +71,9 @@ class GerenciamentosController extends Controller
     {
         try {
             $o = Gerenciamento::find($id);
+
             $not = Notification::where('gerenciamento_id', $o->id)->first();
             $operador = User::find($o->operador_id);
-
             $m = Message::where('ocorrencia_id', $id)->paginate();
             return view('admin.gerenciamento.ocorrencia.view')->with(['ocorrencia' => $o, 'notification' => $not, 'operador' => $operador, 'mensagens' => $m]);
         } catch (\Exception $e) {
