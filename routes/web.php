@@ -49,6 +49,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
         Route::put('/update-notification/{notification}', 'GerenciamentosController@updateNotification')->name('updateNotification');
     });
 
+    Route::namespace('Single')->name('direct.')->group(function(){
+        Route::get('ocurrency-direct-create', 'OccurrencyDirectController@index')->name('occurrency.index');
+    });
+
     Route::group(['prefix' => 'contato'], function () {
         Route::resource('/email', 'EmailController');
         Route::resource('/sms', 'MessagesController');

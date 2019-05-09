@@ -14,11 +14,6 @@
                 </ul>
             </div>
         @endif
-        <form action="{{ route('socios.update', ['id' => $socio->id]) }}" method="post" id="form-send">
-            @csrf
-            @method('PUT')
-
-            <input type="hidden" name="antigo" value="{{ $socio->user_id }}">
 
             <div class="row">
                 <div class="col-sm-12 grid-margin-strech-card mb-1">
@@ -36,19 +31,43 @@
                 </div>
             </div>
 
-            <div class="row">
-                <div class="col-sm-12" align="center">
-                    <a href="{{ route('ocorrencia.create', ['id' => $socio->id, 'name' => $socio->nome]) }}"
-                       class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Nova ocorrência</a>
 
+            <div class="row">
+                <div class="col-sm-6 text-center">
+                    <form action="{{ route('direct.occurrency.index') }}" method="get">
+                        <input type="hidden" name="socio_id" value="{{ $socio->id }}">
+                        <input type="hidden" name="operador_id" value="{{ $socio->operador->id }}">
+                        <input type="hidden" name="partner_name" value="{{ $socio->nome }}">
+                        <button class="btn btn-outline-primary mb-3 mt-3">Nova ocorrência</button>
+                    </form>
+                </div>
+                <div class="col-sm-6 text-center">
                     <a href="{{ route('imagens.create', ['partner_id' => $socio->id]) }}"
                        class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Adicionar imagem</a>
                 </div>
             </div>
 
-            <div class="row">
+{{--            <div class="row">--}}
+{{--                <div class="col-sm-12" align="center">--}}
+{{--                    <form action="{{ route('direct.occurrency.index') }}" method="get">--}}
+{{--                        @csrf--}}
+{{--                        <input type="text" name="partner">--}}
+{{--                        <button>send</button>--}}
+{{--                    </form>--}}
+{{--                    <a href="{{ route('ocorrencia.create', ['id' => $socio->id, 'name' => $socio->nome]) }}" class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Nova ocorrência</a>--}}
+{{--                    <a href="{{ route('imagens.create', ['partner_id' => $socio->id]) }}"--}}
+{{--                       class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Adicionar imagem</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
 
 
+            <form action="{{ route('socios.update', ['id' => $socio->id]) }}" method="post" id="form-send">
+                @csrf
+                @method('PUT')
+
+                <input type="hidden" name="antigo" value="{{ $socio->user_id }}">
+
+                <div class="row">
                 <div class="col-sm-6 grid-margin strech-card">
 
                     <div class="card">

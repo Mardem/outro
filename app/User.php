@@ -78,9 +78,11 @@ class User extends Authenticatable implements JWTSubject
      *
      * @var array
      */
+
     protected $hidden = [
         'password', 'remember_token', 'cpf', 'created_at', 'updated_at', 'activated', 'deleted_at', 'email_verified_at'
     ];
+
     protected $dates = ['deleted_at'];
 
     public function sendPasswordResetNotification($token)
