@@ -16,13 +16,13 @@ class PartnerController extends Controller
      */
     public function __invoke(Request $request)
     {
-        $result = Socio::where('nome', 'LIKE', "%{$request->socio}%")
+        $socios = Socio::where('nome', 'LIKE', "%{$request->socio}%")
+            ->orWhere('cpf_cnpj', 'LIKE', "%{$request->socio}%")
             ->orWhere('titulo', 'LIKE', "%{$request->socio}%")
             ->admin(\Auth::user())
             ->with('gerenciamentos')
             ->paginate();
 
-        $total = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->admin(\Auth::user())->count();
-        return view('admin.controle.socios.search')->with(['socios' => $result, 'total' => $total]);
+        return view('admin.controle.socios.search', compact('socios'));
     }
 }
