@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\User;
 use Eloquent;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -51,7 +52,6 @@ class Gerenciamento extends Model
     use SoftDeletes;
 
     protected $hidden = [
-        'socio_id',
         'situacao',
         'data_hora',
         'deleted_at',
@@ -77,6 +77,11 @@ class Gerenciamento extends Model
     public function socio()
     {
         return $this->belongsTo(Socio::class);
+    }
+
+    public function operador()
+    {
+        return $this->belongsTo(User::class, 'operador_id');
     }
 
     # ---------------- Accessor ----------------

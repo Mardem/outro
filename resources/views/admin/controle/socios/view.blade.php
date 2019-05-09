@@ -435,9 +435,16 @@
 
 @endsection
 
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.css"/>
-@endsection
+@if(\Auth::user()->category == 2)
+    @section('scripts')
+        <script src="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.js"></script>
+        <script src="{{ asset('js/admin/trip.js') }}"></script>
+    @endsection
+    @section('styles')
+        <link rel="stylesheet" type="text/css" href="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.css"/>
+    @endsection
+@endif
+
 @section('scripts')
     <script src="{{ asset('js/admin/socios.js') }}"></script>
     <script>
@@ -452,9 +459,4 @@
             z.value = v;
         }
     </script>
-
-    @if(\Auth::user()->category == 2)
-        <script src="//oss.maxcdn.com/jquery.trip.js/3.3.3/trip.min.js"></script>
-        <script src="{{ asset('js/admin/trip.js') }}"></script>
-    @endif
 @endsection

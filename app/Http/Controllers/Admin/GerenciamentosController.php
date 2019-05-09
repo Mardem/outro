@@ -42,7 +42,7 @@ class GerenciamentosController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -64,18 +64,20 @@ class GerenciamentosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
     {
-        try {
-            $o = Gerenciamento::find($id);
 
-            $not = Notification::where('gerenciamento_id', $o->id)->first();
-            $operador = User::find($o->operador_id);
-            $m = Message::where('ocorrencia_id', $id)->paginate();
-            return view('admin.gerenciamento.ocorrencia.view')->with(['ocorrencia' => $o, 'notification' => $not, 'operador' => $operador, 'mensagens' => $m]);
+
+        try {
+            $ocorrencia = Gerenciamento::find($id);
+            $notification = Notification::where('gerenciamento_id', $ocorrencia->id)->first();
+            $mensagens = $ocorrencia->messages()->paginate();
+
+            return view('admin.gerenciamento.ocorrencia.view',
+                compact('ocorrencia', 'notification', 'mensagens'));
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível econtrar esta ocorrência: ' . $e->getMessage());
         }
@@ -85,8 +87,8 @@ class GerenciamentosController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int $id
+     * @param \Illuminate\Http\Request $request
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -111,7 +113,7 @@ class GerenciamentosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)

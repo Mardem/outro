@@ -20,8 +20,6 @@
 <script src="<?php echo e(asset('js/jQuery.print.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/datepicker.min.js')); ?>"></script>
 <script src="<?php echo e(asset('js/datepicker.pt-BR.js')); ?>"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.4.1/jspdf.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/2.3.5/jspdf.plugin.autotable.min.js"></script>
 <script src="<?php echo e(asset("js/multiple-select.js")); ?>"></script>
 
 <?php echo $__env->make('layouts.components.alerts', \Illuminate\Support\Arr::except(get_defined_vars(), array('__data', '__path')))->render(); ?>
