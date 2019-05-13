@@ -80,6 +80,7 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         try {
+            // está atualizando sem sem encriptar
             User::find($id)->update($request->all());
             return redirect()->route('usuario.index')->with('success', 'Usuário editado com sucesso!');
         } catch (\Exception $e){

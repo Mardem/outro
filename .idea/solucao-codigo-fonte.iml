@@ -127,5 +127,6 @@
     <orderEntry type="library" name="hashids" level="application" />
     <orderEntry type="library" name="axios" level="application" />
     <orderEntry type="library" name="trip" level="application" />
+    <orderEntry type="library" name="vue" level="application" />
   </component>
 </module>

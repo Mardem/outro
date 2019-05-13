@@ -76,13 +76,13 @@
                                    required>
                         </div>
 
-                        <div class="form-group" style="display: none">
+                        <div class="form-group">
                             <label for="password">Senha:</label>
                             <input type="password" class="form-control" id="password" name="password"
                                    placeholder=" Senha de acesso" value="{{ $usuario->password }}">
                         </div>
 
-                        <div class="form-group" style="display: none">
+                        <div class="form-group">
                             <label for="password_confirmation">Confirmar senha:</label>
                             <input type="password" class="form-control" placeholder=" Digite a senha novamente">
                         </div>
