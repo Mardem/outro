@@ -234,22 +234,24 @@
             <div class="col-sm-6 grid-margin strech-card">
                 <div class="card">
                     <div class="card-body">
-                        <div class="form-group">
-                            <form action="{{ route('direct.partner-change-status', $socio->id) }}" method="post">
-                                @csrf
-                                <label for="situacao">Situação</label>
-                                <select name="situacao" id="situacao" class="form-control">
-                                    <optgroup label="Situação atual">
-                                        <option value="{{ $socio->situacao }}">{!! $socio->situacao_formated !!}</option>
-                                    </optgroup>
-                                    <optgroup label="Outras situações">
-                                        <option value="0">Ativo</option>
-                                        <option value="1">Inativo</option>
-                                    </optgroup>
-                                </select>
-                                <button class="btn btn-outline-success mt-2">Mudar</button>
-                            </form>
-                        </div>
+                        @can('admin')
+                            <div class="form-group">
+                                <form action="{{ route('direct.partner-change-status', $socio->id) }}" method="post">
+                                    @csrf
+                                    <label for="situacao">Situação</label>
+                                    <select name="situacao" id="situacao" class="form-control">
+                                        <optgroup label="Situação atual">
+                                            <option value="{{ $socio->situacao }}">{!! $socio->situacao_formated !!}</option>
+                                        </optgroup>
+                                        <optgroup label="Outras situações">
+                                            <option value="0">Ativo</option>
+                                            <option value="1">Inativo</option>
+                                        </optgroup>
+                                    </select>
+                                    <button class="btn btn-outline-success mt-2">Mudar</button>
+                                </form>
+                            </div>
+                        @endcan
 
                         <div class="form-group text-center">
                             <label for="">Situação atual</label>
