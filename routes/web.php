@@ -20,6 +20,23 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('me', 'Api\AuthController@getAuth');
 
+    Route::get('/recibos', 'ReceiptController')->name('receipt');
+    Route::get('/recibos/primeira-etapa', function(){
+        return view('admin.recibos.primeira-etapa');
+    });
+    Route::get('/recibos/segunda-etapa', function(){
+        return view('admin.recibos.segunda-etapa');
+    });
+    Route::get('/recibos/primeira-e-segunda-etapa', function(){
+        return view('admin.recibos.primeira-e-segunda-etapa');
+    });
+    Route::get('/recibos/edital-de-vendas', function(){
+        return view('admin.recibos.edital-de-vendas');
+    });
+    Route::get('/recibos/termo-de-cancelamento', function(){
+        return view('admin.recibos.termo-de-cancelamento');
+    });
+
     Route::get('/home', 'AdminController@index')->name('admin');
     Route::get('/token', 'AdminController@token')->name('token');
     Route::post('/update-token', 'AdminController@updateToken')->name('updateToken');

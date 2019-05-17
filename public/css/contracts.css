@@ -1,0 +1,43 @@
+@import url('https://fonts.googleapis.com/css?family=Cousine');
+
+@font-face {
+    font-family: 'Contracts';
+    src: url("../fonts/Courier Prime.ttf");
+}
+
+@font-face {
+    font-family: 'Galatia-SIL-Bold';
+    src:url('../fonts/Galatia-SIL-Bold.ttf.woff') format('woff'),
+        url('../fonts/Galatia-SIL-Bold.ttf.svg#Galatia-SIL-Bold') format('svg'),
+        url('../fonts/Galatia-SIL-Bold.ttf.eot'),
+        url('../fonts/Galatia-SIL-Bold.ttf.eot?#iefix') format('embedded-opentype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+body {
+    font-family: 'Contracts', sans-serif;
+    line-height: 2;
+    font-size: 18px;
+}
+
+h2 {
+    font-family: 'Galatia-SIL-bold';
+}
+
+p {
+    text-align: justify;
+}
+
+#logoIt {
+    border: 2px solid #333;
+    margin-bottom: 14px;
+    padding: 0 7px;
+    border-radius: 5px;
+}
+
+.ed-box {
+    border: 6px solid black;
+    padding: 10px;
+    margin-top: 15px;
+}
