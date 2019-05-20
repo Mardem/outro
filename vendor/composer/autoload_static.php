@@ -188,9 +188,11 @@ class ComposerStaticInit9ad2744aa9bc284177e46c77e5dfac3d
             'BeyondCode\\DumpServer\\' => 22,
             'Barryvdh\\LaravelIdeHelper\\' => 26,
             'Barryvdh\\Debugbar\\' => 18,
+            'Barryvdh\\Cors\\' => 14,
         ),
         'A' => 
         array (
+            'Asm89\\Stack\\' => 12,
             'App\\' => 4,
         ),
     );
@@ -531,6 +533,14 @@ class ComposerStaticInit9ad2744aa9bc284177e46c77e5dfac3d
         array (
             0 => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src',
         ),
+        'Barryvdh\\Cors\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/barryvdh/laravel-cors/src',
+        ),
+        'Asm89\\Stack\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack',
+        ),
         'App\\' => 
         array (
             0 => __DIR__ . '/../..' . '/app',
@@ -588,6 +598,7 @@ class ComposerStaticInit9ad2744aa9bc284177e46c77e5dfac3d
         'App\\Http\\Controllers\\Admin\\MessagesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MessagesController.php',
         'App\\Http\\Controllers\\Admin\\Partials\\MessagersController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Partials/MessagersController.php',
         'App\\Http\\Controllers\\Admin\\PesquisasController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/PesquisasController.php',
+        'App\\Http\\Controllers\\Admin\\ReceiptController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ReceiptController.php',
         'App\\Http\\Controllers\\Admin\\RelatorioController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/RelatorioController.php',
         'App\\Http\\Controllers\\Admin\\Search\\PartnerController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Search/PartnerController.php',
         'App\\Http\\Controllers\\Admin\\Single\\OccurrencyDirectController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/Single/OccurrencyDirectController.php',
@@ -630,6 +641,12 @@ class ComposerStaticInit9ad2744aa9bc284177e46c77e5dfac3d
         'App\\Providers\\RouteServiceProvider' => __DIR__ . '/../..' . '/app/Providers/RouteServiceProvider.php',
         'App\\RedefinirSenha' => __DIR__ . '/../..' . '/app/User.php',
         'App\\User' => __DIR__ . '/../..' . '/app/User.php',
+        'Asm89\\Stack\\Cors' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/Cors.php',
+        'Asm89\\Stack\\CorsService' => __DIR__ . '/..' . '/asm89/stack-cors/src/Asm89/Stack/CorsService.php',
+        'Barryvdh\\Cors\\HandleCors' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandleCors.php',
+        'Barryvdh\\Cors\\HandlePreflight' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/HandlePreflight.php',
+        'Barryvdh\\Cors\\LumenServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/LumenServiceProvider.php',
+        'Barryvdh\\Cors\\ServiceProvider' => __DIR__ . '/..' . '/barryvdh/laravel-cors/src/ServiceProvider.php',
         'Barryvdh\\Debugbar\\Console\\ClearCommand' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Console/ClearCommand.php',
         'Barryvdh\\Debugbar\\Controllers\\AssetController' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Controllers/AssetController.php',
         'Barryvdh\\Debugbar\\Controllers\\BaseController' => __DIR__ . '/..' . '/barryvdh/laravel-debugbar/src/Controllers/BaseController.php',

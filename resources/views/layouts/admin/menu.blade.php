@@ -107,7 +107,7 @@
         </li>
 
         <li class="nav-item @yield('ReceiptActive')">
-            <a class="nav-link" href="{{ route('receipt') }}">
+            <a class="nav-link" href="{{ route('receipt.index') }}">
                 <i class="menu-icon ti-bookmark-alt"></i>
                 <span class="menu-title">Recibos</span>
             </a>
