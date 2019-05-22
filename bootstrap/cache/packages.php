@@ -1,11 +1,4 @@
 <?php return array (
-  'barryvdh/laravel-cors' => 
-  array (
-    'providers' => 
-    array (
-      0 => 'Barryvdh\\Cors\\ServiceProvider',
-    ),
-  ),
   'barryvdh/laravel-debugbar' => 
   array (
     'providers' => 
