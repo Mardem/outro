@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Models\ReceiptLogs;
 
 class ReceiptController extends Controller
 {
@@ -13,9 +14,14 @@ class ReceiptController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function __invoke(Request $request)
+    public function index(Request $request)
     {
-        // return view('admin.recibos.view');
         return view('admin.recibos.index');
+    }
+
+    public function insertLog(Request $request)
+    {
+        ReceiptLogs::create($request->all());
+        return redirect()->back();
     }
 }

@@ -20,7 +20,8 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Admin'], function () {
     Route::get('me', 'Api\AuthController@getAuth');
 
-    Route::get('/recibos', 'ReceiptController')->name('receipt');
+    Route::get('/recibos', 'ReceiptController@index')->name('receipt.index');
+    Route::post('/recibos-insert-log', 'ReceiptController@insertLog')->name('receipt.insertLog');
     Route::get('/recibos/primeira-etapa', function(){
         return view('admin.recibos.primeira-etapa');
     });
