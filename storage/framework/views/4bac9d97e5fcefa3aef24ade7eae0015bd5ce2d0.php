@@ -106,5 +106,12 @@
                 </ul>
             </div>
         </li>
+
+        <li class="nav-item <?php echo $__env->yieldContent('ReceiptActive'); ?>">
+            <a class="nav-link" href="<?php echo e(route('receipt')); ?>">
+                <i class="menu-icon ti-bookmark-alt"></i>
+                <span class="menu-title">Recibos</span>
+            </a>
+        </li>
     </ul>
 </nav>

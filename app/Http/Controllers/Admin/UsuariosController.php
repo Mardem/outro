@@ -20,8 +20,7 @@ class UsuariosController extends Controller
         $a = User::where('situacao', 0)->count(); #ativos
         $i = User::where('situacao', 1)->count(); # inativos
         $o = User::where('category', 2)->count(); #operador
-        $t = User::all(); # todos
-        return view('admin.controle.usuarios.index')->with(['usuarios' => $u, 'ativos' => $a, 'inativos' => $i, 'operadores' => $o, 'todos' => $t]);
+        return view('admin.controle.usuarios.index')->with(['usuarios' => $u, 'ativos' => $a, 'inativos' => $i, 'operadores' => $o]);
     }
 
     /**
@@ -80,7 +79,6 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         try {
-            // está atualizando sem sem encriptar
             User::find($id)->update($request->all());
             return redirect()->route('usuario.index')->with('success', 'Usuário editado com sucesso!');
         } catch (\Exception $e){

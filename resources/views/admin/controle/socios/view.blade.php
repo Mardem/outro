@@ -41,10 +41,12 @@
                     <button class="btn btn-outline-primary mb-3 mt-3">Nova ocorrência</button>
                 </form>
             </div>
-            <div class="col-sm-6 text-center">
-                <a href="{{ route('imagens.create', ['partner_id' => $socio->id]) }}"
-                   class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Adicionar imagem</a>
-            </div>
+            @can('admin')
+                <div class="col-sm-6 text-center">
+                    <a href="{{ route('imagens.create', ['partner_id' => $socio->id]) }}"
+                       class="btn btn-outline-primary mb-3 mt-3" id="novaOcorrencia">Adicionar imagem</a>
+                </div>
+            @endcan
         </div>
 
         <form action="{{ route('socios.update', ['id' => $socio->id]) }}" method="post" id="form-send">
@@ -218,13 +220,15 @@
                                 <h5>{{ $socio->data_designacao_formated }}</h5>
                             </div>
                         </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <button class="btn btn-block btn-outline-success" type="submit" id="salvar">Atualizar
-                                    dados
-                                </button>
+                        @can('admin')
+                            <div class="card">
+                                <div class="card-body">
+                                    <button class="btn btn-block btn-outline-success" type="submit" id="salvar">Atualizar
+                                        dados
+                                    </button>
+                                </div>
                             </div>
-                        </div>
+                        @endcan
                     </div>
                 </div>
             </div>

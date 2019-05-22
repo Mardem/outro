@@ -121,6 +121,6 @@ class Gerenciamento extends Model
         if($profile == 1)
             return $query;
 
-        return $query->where('operador_id', \Auth::user()->id)->count();
+        return $query->where('operador_id', \Auth::user()->id);
     }
 }

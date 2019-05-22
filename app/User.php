@@ -119,6 +119,31 @@ class User extends Authenticatable implements JWTSubject
         return $query->where('category', '=', self::CATEGORY['OPERATOR']);
     }
 
+    # ---------------- Mutators ----------------
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
+
+    # ---------------- Accessor ----------------
+    public function getCategoryFormatedAttribute() // category_formated
+    {
+        if($this->attributes['category'] == self::CATEGORY['ADMINISTRATOR']) {
+            $category = 'Administrador';
+        } else {
+            $category = 'Operador';
+        }
+        return $category;
+    }
+    public function getStatusFormatedAttribute() // status_formated
+    {
+        if($this->attributes['situacao'] == 0) {
+            $status = 'Ativo';
+        } else {
+            $status = 'Inativo';
+        }
+        return $status;
+    }
 }
 
 class RedefinirSenha extends ResetPassword

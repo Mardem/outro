@@ -15,7 +15,7 @@
                         <div class="float-right">
                             <p class="mb-0 text-right">Total de usuários</p>
                             <div class="fluid-container">
-                                <h3 class="font-weight-medium text-right mb-0">{{ $todos->count() }}</h3>
+                                <h3 class="font-weight-medium text-right mb-0">{{ $usuarios->count() }}</h3>
                             </div>
                         </div>
                     </div>
@@ -99,11 +99,51 @@
                         Veja, edite e apague os usuários do sistema.
                     </p>
 
-                    <table id="tableDataTable" class="table table-striped table-bordered"></table>
-                    <form action="" method="post" class="hidden" id="deleteData">
-                        @csrf
-                        @method('DELETE')
-                    </form>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                            <tr>
+                                <th>Código</th>
+                                <th>Nome</th>
+                                <th>Login</th>
+                                <th>Perfil</th>
+                                <th>Situação</th>
+                                <th>Ações</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                            @forelse($usuarios as $usuario)
+                                <tr>
+                                    <td>{{ $usuario->id }}</td>
+                                    <td>{{ $usuario->name }}</td>
+                                    <td>{{ $usuario->email }}</td>
+                                    <td>{!! $usuario->category_formated !!}</td>
+                                    <td>
+                                        {!! $usuario->status_formated !!}
+                                    </td>
+                                    <td>
+                                        <a href="{{ route('usuario.show', [$usuario->getKey()]) }}"
+                                           class="btn btn-primary btn-sm btn-block mb-1">Ver</a>
+                                        @if(\Auth::user()->category == 1)
+                                            <form action="{{ route('usuario.destroy', $usuario->getKey()) }}"
+                                                  method="post">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger btn-sm btn-block">Apagar
+                                                </button>
+                                            </form>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @empty
+                                <p style="text-align: center">
+                                    Nenhum dado registrado.
+                                </p>
+                            @endforelse
+                            </tbody>
+                        </table>
+                        {{ $usuarios->links() }}
+                    </div>
                 </div>
             </div>
         </div>
@@ -124,55 +164,55 @@
     <script>
         let ver = "<a href='javascript:void(0);' class='btn btn-outline-primary btn-sm'>Ver</a>";
 
-         @if(\Auth::user()->category == 1)
-             let apagar = "<a href='javascript:void(0);' class='btn btn-outline-danger btn-sm'>Apagar</a>";
-         @else
-             let apagar = "";
-         @endif
+            @if(\Auth::user()->category == 1)
+        let apagar = "<a href='javascript:void(0);' class='btn btn-outline-danger btn-sm'>Apagar</a>";
+            @else
+        let apagar = "";
+            @endif
 
         let columns = [
-            {data: 'id', title: 'Código'},
-            {data: 'name', title: 'Nome'},
-            {data: 'email', title: 'Login'},
-            {
-                data: 'category',
-                title: 'Perfil',
-                "render": function (data) {
-                    let profile;
+                {data: 'id', title: 'Código'},
+                {data: 'name', title: 'Nome'},
+                {data: 'email', title: 'Login'},
+                {
+                    data: 'category',
+                    title: 'Perfil',
+                    "render": function (data) {
+                        let profile;
 
-                    switch (data){
-                        case(0):
-                            profile = "Sócio";
-                            break;
-                        case(1):
-                            profile = "Administrador";
-                            break;
-                        case(2):
-                            profile = "Operador";
-                            break;
+                        switch (data) {
+                            case(0):
+                                profile = "Sócio";
+                                break;
+                            case(1):
+                                profile = "Administrador";
+                                break;
+                            case(2):
+                                profile = "Operador";
+                                break;
+                        }
+                        return profile;
                     }
-                    return profile;
-                }
-            },
-            {
-                data: 'situacao',
-                title: 'Situação',
-                "render": function (data) {
-                    if (data == 0) {
-                        return "<b class='text-success'>Ativo</b>";
-                    } else {
-                        return "<b class='text-danger'>Inativo</b>";
+                },
+                {
+                    data: 'situacao',
+                    title: 'Situação',
+                    "render": function (data) {
+                        if (data == 0) {
+                            return "<b class='text-success'>Ativo</b>";
+                        } else {
+                            return "<b class='text-danger'>Inativo</b>";
+                        }
+                    }
+                },
+                {
+                    data: null,
+                    title: 'Ações',
+                    createdCell: function (td, cellData, rowData, row, col) {
+                        $(td).html(ver + apagar);
                     }
                 }
-            },
-            {
-                data: null,
-                title: 'Ações',
-                createdCell: function (td, cellData, rowData, row, col) {
-                    $(td).html(ver + apagar);
-                }
-            }
-        ];
+            ];
         jsonDataTables("{{ route('jsonUsers') }}", "{{ \Auth::user()->token }}", columns, 'usuario');
     </script>
 @endsection
