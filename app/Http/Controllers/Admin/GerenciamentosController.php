@@ -69,8 +69,6 @@ class GerenciamentosController extends Controller
      */
     public function show($id)
     {
-
-
         try {
             $ocorrencia = Gerenciamento::find($id);
             $notification = Notification::where('gerenciamento_id', $ocorrencia->id)->first();
@@ -93,7 +91,6 @@ class GerenciamentosController extends Controller
      */
     public function update(Request $request, $id)
     {
-
         /*
          * Função atualiza os dados e atualiza o novo campo com a data formatada
          * para inglês que vem em português da view

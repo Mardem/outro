@@ -93,7 +93,7 @@ class Gerenciamento extends Model
 
     public function getDataOcorrenciaFormatedAttribute() // data_ocorrencia_formated
     {
-        $date = new Date($this->attributes['data_ocorrencia']);
+        $date = new Date($this->attributes['data_hora']);
         return $date->format('d/m/Y');
     }
 
