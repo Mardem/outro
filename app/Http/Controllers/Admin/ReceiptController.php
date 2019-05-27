@@ -21,7 +21,18 @@ class ReceiptController extends Controller
 
     public function insertLog(Request $request)
     {
-        ReceiptLogs::create($request->all());
-        return redirect()->back();
+        if (
+            $request->has('name')  == false ||
+            $request->has('cpf') == false ||
+            $request->has('number_of_contract') == false ||
+            $request->has('number_of_serie') == false ||
+            $request->has('operator') == false ||
+            $request->has('type')
+        ) {
+            return redirect()->back();
+        } else {
+            ReceiptLogs::create($request->all());
+            return redirect()->back();
+        }
     }
 }

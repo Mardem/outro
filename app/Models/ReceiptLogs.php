@@ -10,7 +10,7 @@ class ReceiptLogs extends Model
     protected $table = 'receipt_logs';
 
     protected $fillable = [
-        'id', 'name', 'cpf', 'number_of_contract', 'operator', 'created_at', 'updated_at', 'type'
+        'id', 'name', 'cpf', 'number_of_contract', 'number_of_serie', 'operator', 'created_at', 'updated_at', 'type'
     ];
 
     public const TYPE = [

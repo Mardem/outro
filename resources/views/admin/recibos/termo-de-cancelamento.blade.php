@@ -13,7 +13,7 @@
 
     <div id="app" class="container mt-2 mb-4">
         <form action="{{ route('receipt.insertLog') }}" method="POST" id="form-insert-log">
-            <input type="hidden" name="number_of_contract" :value="numberContract">
+            <input type="hidden" name="number_of_serie" :value="numberSerie">
             <input type="hidden" name="type" value="{{ \App\Models\ReceiptLogs::TYPE['TERMO_DE_CANCELAMENTO'] }}">
             @csrf
             <div class="row mb-4">
@@ -30,6 +30,13 @@
                     <div class="form-group">
                         <label for="cpf">CPF do Sócio</label>
                         <input type="text" v-model="cpf" name="cpf" class="form-control" :value="cpf">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="number_of_contract">N° do Contrato</label>
+                        <input type="text" v-model="numberContract" class="form-control" name="number_of_contract"
+                            :value="numberContract">
                     </div>
                 </div>
             </div>
@@ -87,9 +94,10 @@
                 </div>
                 <div class="col">
                     <h2 class="text-center font-normal"><u><b>TERMO DE CANCELAMENTO</b></u></h2>
+                    <h5><u><b>n° serie: @{{ numberSerie }}</b></u></h5>
                 </div>
             </div>
-            <div class="row mb-5">
+            <div class="mb-5">
                 <div class="col-sm-12">
                     FORMOSA-GO, <b>@{{ date }}</b>
                     <div class="row border mb-4">
@@ -170,6 +178,11 @@
                         <p style="text-align: center;text-transform: uppercase;">
                             <B>@{{ name }}</B>
                         </p>
+                        <p style="text-align: center;">
+                            <b><u>
+                                    RESPONSÁVEL
+                                </u></b>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -190,7 +203,8 @@
             data: {
                 name: '',
                 date: date.format('LL'),
-                numberContract: Math.random() + 1,
+                numberSerie: Math.random() + 1,
+                numberContract: '',
                 cpf: '',
                 telephone: '',
                 address: '',

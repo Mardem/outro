@@ -18,6 +18,7 @@ class CreateReceiptLogsTable extends Migration
             $table->string('name');
             $table->string('cpf');
             $table->string('number_of_contract');
+            $table->string('number_of_serie');
             $table->string('operator');
             $table->integer('type');
             $table->timestamps();

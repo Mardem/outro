@@ -12,7 +12,7 @@
 
     <div id="app" class="container mt-2 mb-4">
         <form action="{{ route('receipt.insertLog') }}" method="POST" id="form-insert-log">
-            <input type="hidden" name="number_of_contract" :value="numberContract">
+            <input type="hidden" name="number_of_serie" :value="numberSerie">
             <input type="hidden" name="type" value="{{ \App\Models\ReceiptLogs::TYPE['PRIMEIRA_ETAPA'] }}">
             @csrf
             <div class="row mb-4">
@@ -29,6 +29,12 @@
                     <div class="form-group">
                         <label for="cpf">CPF do Sócio</label>
                         <input type="text" v-model="cpf" class="form-control" name="cpf" :value="cpf">
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label for="number_of_contract">N° do Contrato</label>
+                        <input type="text" v-model="numberContract" class="form-control" name="number_of_contract" :value="numberContract">
                     </div>
                 </div>
                 <div class="col-md-3">
@@ -108,7 +114,7 @@
                     </div>
                 </div>
                 <div class="col">
-                    <button class="btn btn-success float-right" id="btn-print">Imprimir</button>
+                    <a href="#" class="btn btn-success float-right" id="btn-print">Imprimir</a>
                 </div>
             </div>
         </form>
@@ -119,7 +125,10 @@
                     <img src="/img/logo-solucao.svg" width="350" class="float-left no-print" id="logoSol"
                         alt="Logo Solução">
                     <img src="/img/ItiquiraPark.svg" class="float-right" id="logoIt" alt="Logo Itiquira Park">
-                    <h2 class="float-right"><u><b>CERTIDÃO NEGATIVA DE DÉBITOS</b></u></h2>
+                    <div class="float-right">
+                        <h2><u><b>CERTIDÃO NEGATIVA DE DÉBITOS</b></u></h2>
+                        <h5><u><b>n° serie: @{{ numberSerie }}</b></u></h5>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -171,16 +180,16 @@
                 </div>
             </div>
 
-            <div class="row mt-5">
+            <div class="row mt-1">
                 <div class="col">
-                    <p v-if="telephone != ''"><b>TELEFONE:</b> @{{ telephone }}</p>
-                    <p v-if="address != ''"><b>ENDEREÇO:</b> @{{ address }}</p>
-                    <p v-if="city != ''"><b>CIDADE:</b> @{{ city }}</p>
-                    <p v-if="email != ''"><b>EMAIL:</b> @{{ email }} </p>
+                    <p v-if="telephone != ''" style="margin-bottom:0;"><b>TELEFONE:</b> @{{ telephone }}</p>
+                    <p v-if="address != ''" style="margin-bottom:0;"><b>ENDEREÇO:</b> @{{ address }}</p>
+                    <p v-if="city != ''" style="margin-bottom:0;"><b>CIDADE:</b> @{{ city }}</p>
+                    <p v-if="email != ''" style="margin-bottom:0;"><b>EMAIL:</b> @{{ email }} </p>
                 </div>
                 <div class="col">
-                    <p v-if="neighborhood != ''"><b>BAIRRO:</b> @{{ neighborhood }} </p>
-                    <p v-if="zipcode != ''"><b>CEP:</b> @{{ zipcode }}</p>
+                    <p v-if="neighborhood != ''" style="margin-bottom:0;"><b>BAIRRO:</b> @{{ neighborhood }} </p>
+                    <p v-if="zipcode != ''" style="margin-bottom:0;"><b>CEP:</b> @{{ zipcode }}</p>
                 </div>
             </div>
 
@@ -213,6 +222,11 @@
                         <p style="text-align: center;text-transform: uppercase;">
                             <B>@{{ name }}</B>
                         </p>
+                        <p style="text-align: center;">
+                            <b><u>
+                                    RESPONSÁVEL
+                                </u></b>
+                        </p>
                     </div>
                 </div>
             </div>
@@ -233,7 +247,8 @@
             data: {
                 name: '',
                 date: date.format('LL'),
-                numberContract: Math.random() + 1,
+                numberSerie: Math.random() + 1,
+                numberContract: '',
                 cpf: '',
                 value: 0,
                 valueTyped: '',
