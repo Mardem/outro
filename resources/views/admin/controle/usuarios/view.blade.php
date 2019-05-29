@@ -79,7 +79,7 @@
                         <div class="form-group">
                             <label for="password">Senha:</label>
                             <input type="password" class="form-control" id="password" name="password"
-                                   placeholder=" Senha de acesso" value="{{ $usuario->password }}">
+                                   placeholder=" Senha de acesso">
                         </div>
 
                         <div class="form-group">

@@ -79,6 +79,13 @@ class UsuariosController extends Controller
     public function update(Request $request, $id)
     {
         try {
+            if ($request->password != null) {
+                $request->request->add(['password' => Hash::make($request->password)]);
+            } else {
+                $request->request->remove('password');
+                $request->request->remove('password_confirmation');
+            }
+
             User::find($id)->update($request->all());
             return redirect()->route('usuario.index')->with('success', 'Usuário editado com sucesso!');
         } catch (\Exception $e){

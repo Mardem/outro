@@ -10,7 +10,7 @@
 <script src="{{ asset('admin/vendors/js/vendor.bundle.base.js') }}"></script>
 <script src="{{ asset('admin/vendors/js/vendor.bundle.addons.js') }}"></script>
 <script src="{{ asset('js/jquery.inputmask.bundle.min.js') }}"></script>
-<script src="{{ asset('js/sweetalert.min.js') }}"></script>
+<script src="{{ asset('js/iziToast.min.js') }}"></script>
 
 <script src="{{ asset('admin/vendors/dataTable/js/dataTables.bootstrap4.min.js') }}"></script>
 <script src="https://cdn.datatables.net/buttons/1.5.2/js/dataTables.buttons.min.js"></script>

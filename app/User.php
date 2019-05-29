@@ -119,12 +119,6 @@ class User extends Authenticatable implements JWTSubject
         return $query->where('category', '=', self::CATEGORY['OPERATOR']);
     }
 
-    # ---------------- Mutators ----------------
-    public function setPasswordAttribute($value)
-    {
-        $this->attributes['password'] = bcrypt($value);
-    }
-
     # ---------------- Accessor ----------------
     public function getCategoryFormatedAttribute() // category_formated
     {

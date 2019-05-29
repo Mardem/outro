@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/datepicker.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/iziToast.min.css') }}">
 
     <link rel="stylesheet" href="{{ asset('css/foundation-datepicker.css') }}">
     <link rel="apple-touch-icon" sizes="57x57" href="{{ asset('favicon/apple-icon-57x57.png') }}">
