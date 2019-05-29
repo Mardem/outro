@@ -158,7 +158,7 @@
         </div>
 
         <!-- Modal -->
-        <div class="modal fade show" id="mensagens" tabindex="-1" role="dialog" aria-labelledby="modelTitleId" 
+        <div class="modal fade show" id="mensagens" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
              aria-hidden="true" style="display: block;">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -182,9 +182,6 @@
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-dismiss="modal">
-                                Fechar
-                            </button>
                             <button type="submit" class="btn btn-primary">Salvar</button>
                         </div>
 
