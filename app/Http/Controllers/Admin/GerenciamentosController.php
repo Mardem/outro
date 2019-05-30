@@ -21,7 +21,7 @@ class GerenciamentosController extends Controller
      */
     public function index()
     {
-        $ocorrencias = Gerenciamento::profile(\Auth::user()->category)->paginate();
+        $ocorrencias = Gerenciamento::profile(\Auth::user()->category)->orderBy('id', 'desc')->paginate();
         return view('admin.gerenciamento.ocorrencia.index', compact('ocorrencias'));
     }
 

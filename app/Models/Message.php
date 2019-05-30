@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Query\Builder;
 use Illuminate\Support\Carbon;
+use Jenssegers\Date\Date;
 
 /**
  * App\Models\Message
@@ -38,9 +39,21 @@ use Illuminate\Support\Carbon;
 class Message extends Model
 {
     use SoftDeletes;
+
     protected $fillable = [
         'ocorrencia_id',
         'mensagem',
         'responsavel'
     ];
+
+    public function getCreatedAtFormatedAttribute() // created_at_formated
+    {
+        try {
+            $date = new Date($this->attributes['created_at']);
+            return $date->format('d/m/Y H:i \h\r\s');
+
+        } catch (\Exception $exception) {
+            return $this->attributes['created_at'];
+        }
+    }
 }

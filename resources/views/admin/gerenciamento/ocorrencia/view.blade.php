@@ -208,6 +208,7 @@
                                 <tr>
                                     <th scope="col" class="border-0">Mensagens</th>
                                     <th scope="col" class="border-0">Responsável</th>
+                                    <th scope="col" class="border-0">Data</th>
                                     <th></th>
                                 </tr>
                                 </thead>
@@ -216,6 +217,9 @@
                                     <tr>
                                         <td>{{ str_limit($mensagem->mensagem, 50) }}</td>
                                         <td>{{ $mensagem->responsavel }}</td>
+                                        <td>
+                                            {{ $mensagem->created_at_formated }}
+                                        </td>
                                         <td class="no-print">
                                             <div class="btn-group dropdown">
                                                 <button type="button"
@@ -242,10 +246,10 @@
                                                             <i class="ti-trash"></i>Apagar
                                                         </button>
                                                     </form>
-
                                                 </div>
                                             </div>
                                         </td>
+
                                     </tr>
                                 @endforeach
                                 </tbody>
