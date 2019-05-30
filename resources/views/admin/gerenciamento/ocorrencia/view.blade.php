@@ -159,7 +159,7 @@
 
         <!-- Modal -->
         <div class="modal fade show" id="mensagens" tabindex="-1" role="dialog" aria-labelledby="modelTitleId"
-             aria-hidden="true" style="display: block;">
+             aria-hidden="true" style="{{ $mensagens->total() >= 1 ? '' : 'display: block;'}}">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
 
@@ -201,54 +201,57 @@
                     </div>
                     <div class="card-body p-0 pb-3 text-center">
 
-                        <table class="table mb-0">
+                        <div class="table-responsive">
+                            <table class="table mb-0">
 
-                            <thead class="bg-light">
-                            <tr>
-                                <th scope="col" class="border-0">Mensagens</th>
-                                <th scope="col" class="border-0">Responsável</th>
-                                <th></th>
-                            </tr>
-                            </thead>
-                            <tbody>
-                            @foreach($mensagens as $mensagem)
+                                <thead class="bg-light">
                                 <tr>
-                                    <td>{{ str_limit($mensagem->mensagem, 50) }}</td>
-                                    <td>{{ $mensagem->responsavel }}</td>
-                                    <td class="no-print">
-                                        <div class="btn-group dropdown">
-                                            <button type="button"
-                                                    class="btn btn-success dropdown-toggle btn-sm"
-                                                    data-toggle="dropdown" aria-haspopup="true"
-                                                    aria-expanded="false">
-                                                Administrar
-                                            </button>
-                                            <div class="dropdown-menu">
-
-                                                <a class="dropdown-item"
-                                                   href="{{ route('mensagem.show', ['id' => $mensagem->id]) }}"><i
-                                                        class="ti-eye"></i> Ver</a>
-
-                                                <div class="dropdown-divider"></div>
-
-                                                <form
-                                                    action="{{ route('mensagem.destroy', ['id' => $mensagem->id]) }}"
-                                                    method="post">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button class="btn btn-link text-danger"
-                                                            type="submit">
-                                                        <i class="ti-trash"></i>Apagar
-                                                    </button>
-                                                </form>
-
-                                            </div>
-                                        </div>
-                                    </td>
+                                    <th scope="col" class="border-0">Mensagens</th>
+                                    <th scope="col" class="border-0">Responsável</th>
+                                    <th></th>
                                 </tr>
-                            @endforeach
-                            </tbody>
-                        </table>
+                                </thead>
+                                <tbody>
+                                @foreach($mensagens as $mensagem)
+                                    <tr>
+                                        <td>{{ str_limit($mensagem->mensagem, 50) }}</td>
+                                        <td>{{ $mensagem->responsavel }}</td>
+                                        <td class="no-print">
+                                            <div class="btn-group dropdown">
+                                                <button type="button"
+                                                        class="btn btn-success dropdown-toggle btn-sm"
+                                                        data-toggle="dropdown" aria-haspopup="true"
+                                                        aria-expanded="false">
+                                                    Administrar
+                                                </button>
+                                                <div class="dropdown-menu">
+
+                                                    <a class="dropdown-item"
+                                                       href="{{ route('mensagem.show', ['id' => $mensagem->id]) }}"><i
+                                                            class="ti-eye"></i> Ver</a>
+
+                                                    <div class="dropdown-divider"></div>
+
+                                                    <form
+                                                        action="{{ route('mensagem.destroy', ['id' => $mensagem->id]) }}"
+                                                        method="post">
+                                                        @method('DELETE')
+                                                        @csrf
+                                                        <button class="btn btn-link text-danger"
+                                                                type="submit">
+                                                            <i class="ti-trash"></i>Apagar
+                                                        </button>
+                                                    </form>
+
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+
                         {{ $mensagens->links() }}
                     </div>
                 </div>
