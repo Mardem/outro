@@ -217,7 +217,7 @@
 
                             <div class="form-group text-center">
                                 <label for="">Data de Designação para o operador ocorreu em:</label>
-                                <h5>{{ $socio->data_designacao_formated }}</h5>
+                                <h5>{!! $socio->data_designacao_formated !!}</h5>
                             </div>
                         </div>
                         @can('admin')

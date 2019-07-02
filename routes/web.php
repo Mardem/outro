@@ -1,15 +1,16 @@
 <?php
+use App\Models\SociosCheque;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+Route::get('/teste', function () {
+    $socios = SociosCheque::all();
+
+    foreach ($socios as $socio) {
+        $socio->telefone = str_replace('(', ',(', $socio->telefone);
+        $socio->save();
+    }
+
+    return $socios->telefone;
+});
 
 Route::get('/', 'HomeController@home');
 
@@ -22,19 +23,19 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
 
     Route::get('/recibos', 'ReceiptController@index')->name('receipt.index');
     Route::post('/recibos-insert-log', 'ReceiptController@insertLog')->name('receipt.insertLog');
-    Route::get('/recibos/primeira-etapa', function(){
+    Route::get('/recibos/primeira-etapa', function () {
         return view('admin.recibos.primeira-etapa');
     });
-    Route::get('/recibos/segunda-etapa', function(){
+    Route::get('/recibos/segunda-etapa', function () {
         return view('admin.recibos.segunda-etapa');
     });
-    Route::get('/recibos/primeira-e-segunda-etapa', function(){
+    Route::get('/recibos/primeira-e-segunda-etapa', function () {
         return view('admin.recibos.primeira-e-segunda-etapa');
     });
-    Route::get('/recibos/edital-de-vendas', function(){
+    Route::get('/recibos/edital-de-vendas', function () {
         return view('admin.recibos.edital-de-vendas');
     });
-    Route::get('/recibos/termo-de-cancelamento', function(){
+    Route::get('/recibos/termo-de-cancelamento', function () {
         return view('admin.recibos.termo-de-cancelamento');
     });
 
@@ -58,6 +59,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
         Route::get('/socios/pesquisa', 'Search\PartnerController')->name('searchPartner');
         Route::resource('/socios', 'SociosController');
         Route::put('/socios/observacao/{socio}', 'SociosController@observation')->name('saveObservation');
+
+        Route::get('/sociosCheque/pesquisa', 'Search\SocioChequeSearchController')->name('searchSocioCheque');
+        Route::resource('/sociosCheque', 'SociosChequeController');
+        Route::put('/sociosCheque/observacao/{socioCheque}', 'SociosChequeController@observation')->name('saveObservationCheque');
     });
 
     Route::group(['prefix' => 'gerenciamento'], function () {
@@ -67,10 +72,10 @@ Route::group(['middleware' => ['auth'], 'prefix' => 'admin', 'namespace' => 'Adm
         Route::put('/update-notification/{notification}', 'GerenciamentosController@updateNotification')->name('updateNotification');
     });
 
-    Route::namespace('Single')->name('direct.')->group(function(){
+    Route::namespace('Single')->name('direct.')->group(function () {
         Route::get('ocurrency-direct-create', 'OccurrencyDirectController')->name('occurrency.index');
 
-        Route::namespace('Partner')->group(function() {
+        Route::namespace('Partner')->group(function () {
             Route::post('partner-change-status/{partner}', 'PartnerChangeStatusController')->name('partner-change-status');
         });
     });

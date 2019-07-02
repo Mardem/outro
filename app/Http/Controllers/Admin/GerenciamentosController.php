@@ -11,6 +11,7 @@ use App\User;
 use Illuminate\Http\Request;
 use Jenssegers\Date\Date;
 use Mockery\Exception;
+use App\Models\SociosCheque;
 
 class GerenciamentosController extends Controller
 {
@@ -48,7 +49,11 @@ class GerenciamentosController extends Controller
     public function store(Request $request)
     {
         try {
-            $socio = Socio::find($request->socio_id);
+            if ($request->tipo_socio == Gerenciamento::TIPO_SOCIO['SOCIO'])
+                $socio = Socio::find($request->socio_id);
+            else {
+                $socio = SociosCheque::find($request->socio_cheque_id);
+            }
 
             $request->request->add(['operador_id' => $socio->operador->id]);
             $request->request->add(['data_ocorrencia' => Date::now()->format('Y-m-d')]);
@@ -74,8 +79,10 @@ class GerenciamentosController extends Controller
             $notification = Notification::where('gerenciamento_id', $ocorrencia->id)->first();
             $mensagens = $ocorrencia->messages()->paginate();
 
-            return view('admin.gerenciamento.ocorrencia.view',
-                compact('ocorrencia', 'notification', 'mensagens'));
+            return view(
+                'admin.gerenciamento.ocorrencia.view',
+                compact('ocorrencia', 'notification', 'mensagens')
+            );
         } catch (\Exception $e) {
             return redirect()->back()->with('error', 'Não foi possível econtrar esta ocorrência: ' . $e->getMessage());
         }

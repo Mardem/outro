@@ -14,7 +14,7 @@ if (!function_exists('dataHoraBRparaENG')) {
      * @param $dataParaFormatar
      * @return string
      */
-    function dataHoraBRparaENG($dataParaFormatar)
+     function dataHoraBRparaENG($dataParaFormatar)
     {
         $data = str_replace("/", "-", $dataParaFormatar);
         return date('Y-m-d H:i:s', strtotime($data));

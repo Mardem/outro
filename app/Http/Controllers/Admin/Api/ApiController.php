@@ -7,6 +7,7 @@ use App\Models\Gerenciamento;
 use App\Models\Socio;
 use App\User;
 use Illuminate\Http\Request;
+use App\Models\SociosCheque;
 
 class ApiController extends Controller
 {
@@ -26,6 +27,18 @@ class ApiController extends Controller
             $data = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->with('operador')->get();
         } else {
             $data = Socio::where('nome', 'LIKE', "%{$request->get('socio')}%")->with('operador')->where('user_id', \Auth::user()->id)->get();
+        }
+
+        return $data;
+    }
+
+    public function chequePartners(Request $request)
+    {
+        // Retorno para sócio cheque    
+        if (\Auth::user()->category == 1) {
+            $data = SociosCheque::where('emitente', 'LIKE', "%{$request->get('socio')}%")->with('operador')->get();
+        } else {
+            $data = SociosCheque::where('emitente', 'LIKE', "%{$request->get('socio')}%")->with('operador')->where('user_id', \Auth::user()->id)->get();
         }
 
         return $data;

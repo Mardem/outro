@@ -236,6 +236,11 @@
                     </div>
                 </div>
             </div>
+            <div class="row">
+                <div class="col mt-3">
+                    Este recibo só terá validade a partir do pagamento das parcelas, sejam elas cheque, cartão ou outros.
+                </div>
+            </div>
         </div>
 
     </div>

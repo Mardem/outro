@@ -51,6 +51,9 @@
                     <li class="nav-item">
                         <a class="nav-link @yield('activeSocios')" href="{{ route('socios.index') }}">Sócios</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link @yield('activeSociosCheque')" href="{{ route('sociosCheque.index') }}">Sócios Cheque</a>
+                    </li>
 
                     @can('admin')
                     <li class="nav-item">

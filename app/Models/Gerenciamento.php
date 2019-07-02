@@ -51,6 +51,11 @@ class Gerenciamento extends Model
 {
     use SoftDeletes;
 
+    const TIPO_SOCIO = [
+        'SOCIO' => 0,
+        'SOCIO_CHEQUE' => 1,
+    ];
+
     protected $hidden = [
         'situacao',
         'data_hora',
@@ -60,11 +65,13 @@ class Gerenciamento extends Model
     ];
     protected $fillable = [
         'socio_id',
+        'socio_cheque_id',
         'operador_id',
         'data_ocorrencia',
         'titulo',
         'situacao',
         'data_hora',
+        'tipo_socio',
     ];
 
     # ---------------- Relacionamentos ----------------
@@ -77,6 +84,10 @@ class Gerenciamento extends Model
     public function socio()
     {
         return $this->belongsTo(Socio::class);
+    }
+
+    public function socioCheque(){
+        return $this->belongsTo(SociosCheque::class);
     }
 
     public function operador()
@@ -109,7 +120,7 @@ class Gerenciamento extends Model
     {
         if (!is_null($data)) {
             $this->attributes['data_hora'] = dataHoraBRparaENG($data);
-        }else{
+        } else {
             now()->format('Y-m-d H:i:s');
         }
     }
@@ -118,7 +129,7 @@ class Gerenciamento extends Model
 
     public function scopeProfile($query, $profile)
     {
-        if($profile == 1)
+        if ($profile == 1)
             return $query;
 
         return $query->where('operador_id', \Auth::user()->id);
